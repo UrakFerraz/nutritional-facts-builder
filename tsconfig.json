@@ -1,20 +1,33 @@
 {
   "compilerOptions": {
-    "target": "ES2018",
-    "module": "ESNext",
+    "target": "EsNext",
+    "module": "commonjs",
     "moduleResolution": "Node",
     "lib": [
-      "ESNext",
+      "ESNext", "ES6",
       "ESNext.AsyncIterable",
       "DOM"
     ],
+    "skipLibCheck": true,
+    "removeComments": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowJs": true,
     "sourceMap": true,
     "strict": true,
     "noEmit": true,
     "experimentalDecorators": true,
-    "baseUrl": ".",
+    "jsx": "preserve",
     "paths": {
       "~/*": [
         "./*"
