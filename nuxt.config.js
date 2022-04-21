@@ -43,7 +43,9 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/composition-api/module',
+    '@pinia/nuxt',
   ],
   eslint: {
     fix: true
