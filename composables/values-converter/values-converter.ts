@@ -6,9 +6,17 @@ export class WheyValuesConverted {
     this._whey = whey
   }
 
-  private convertedWhey: any = {}
+  private _convertedWhey: any = {}
   get whey(): WheyProteinProtocol {
     return this._whey
+  }
+
+  get convertedWhey(): WheyProteinProtocol {
+    return this._convertedWhey
+  }
+
+  set convertedWhey(value: any) {
+    this._convertedWhey = value
   }
 
   convertValues() {
@@ -42,6 +50,5 @@ export class WheyValuesConverted {
     if (this.whey.contains !== undefined && this.whey.contains !== null) {
       this.convertedWhey.contains = this.whey.contains
     }
-    console.log(this.convertedWhey);
   }
 }

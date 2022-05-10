@@ -1,6 +1,7 @@
 const nutritionalValues = {
   biotin: { unit: 'mcg', value: 30 },
   calcium: { unit: 'mg', value: 1000 },
+  calories: { unit: 'kcal', value: 2000 },
   carbohydrate: { unit: 'g', value: 300 },
   cholesterol: { unit: 'mg', value: 300 },
   choline: { unit: 'mg', value: 550 },

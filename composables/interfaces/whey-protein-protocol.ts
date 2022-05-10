@@ -13,7 +13,7 @@ export interface WheyProteinProtocol {
   servings: number,
   // Serving Size About 1 Scoop
   servingSize: number,
-  calories: number,
+  calories: IngredientProtocol | IngredientWithVDProtocol,
   totalFat: IngredientProtocol | IngredientWithVDProtocol,
   saturatedFat: IngredientProtocol | IngredientWithVDProtocol,
   cholesterol: IngredientProtocol | IngredientWithVDProtocol,
