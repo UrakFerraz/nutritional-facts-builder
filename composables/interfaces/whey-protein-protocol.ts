@@ -1,55 +1,59 @@
-export type IngredientProtocol = { unit: string, value: number }
-export type IngredientWithVDProtocol = { unit: string, value: number, vd: number }
+export type IngredientProtocol = {
+  unit: string
+  value: number | null
+  vd?: number
+}
 export interface WheyProteinProtocol {
-  name: string,
-  brand: string,
-  category: string,
-  subCategory: string,
-  flavor?: string,
-  size: string,
+  name: string
+  brand: string
+  category: string
+  subCategory: string
+  flavor?: string
+  size: string
   // generics search sizes in grams: 100g, 500g, 1000g, 2000g ...
-  genericSize: number,
+  genericSize: number
   // servings per container
-  servings: number,
+  servings: number
   // Serving Size About 1 Scoop
-  servingSize: number,
-  calories: IngredientProtocol | IngredientWithVDProtocol,
-  totalFat: IngredientProtocol | IngredientWithVDProtocol,
-  saturatedFat: IngredientProtocol | IngredientWithVDProtocol,
-  cholesterol: IngredientProtocol | IngredientWithVDProtocol,
-  carbohydrate: IngredientProtocol | IngredientWithVDProtocol,
-  dietaryFibers?: IngredientProtocol | IngredientWithVDProtocol,
-  totalSugars?: IngredientProtocol | IngredientWithVDProtocol,
-  protein: IngredientProtocol | IngredientWithVDProtocol,
-  biotin?: IngredientProtocol | IngredientWithVDProtocol,
-  calcium?: IngredientProtocol | IngredientWithVDProtocol,
-  choline?: IngredientProtocol | IngredientWithVDProtocol,
-  chrome?: IngredientProtocol | IngredientWithVDProtocol,
-  copper?: IngredientProtocol | IngredientWithVDProtocol,
-  fluorine?: IngredientProtocol | IngredientWithVDProtocol,
-  folicAcid?: IngredientProtocol | IngredientWithVDProtocol,
-  iodine?: IngredientProtocol | IngredientWithVDProtocol,
-  iron?: IngredientProtocol | IngredientWithVDProtocol,
-  magnesium?: IngredientProtocol | IngredientWithVDProtocol,
-  manganese?: IngredientProtocol | IngredientWithVDProtocol,
-  molybdenum?: IngredientProtocol | IngredientWithVDProtocol,
-  niacin?: IngredientProtocol | IngredientWithVDProtocol,
-  pantothenicAcid?: IngredientProtocol | IngredientWithVDProtocol,
-  phosphorus?: IngredientProtocol | IngredientWithVDProtocol,
-  potassium?: IngredientProtocol | IngredientWithVDProtocol,
-  riboflvin?: IngredientProtocol | IngredientWithVDProtocol,
-  selenium?: IngredientProtocol | IngredientWithVDProtocol,
-  sodium?: IngredientProtocol | IngredientWithVDProtocol,
-  thiamine?: IngredientProtocol | IngredientWithVDProtocol,
-  vitaminA?: IngredientProtocol | IngredientWithVDProtocol,
-  vitaminB12?: IngredientProtocol | IngredientWithVDProtocol,
-  vitaminB6?: IngredientProtocol | IngredientWithVDProtocol,
-  vitaminC?: IngredientProtocol | IngredientWithVDProtocol,
-  vitaminD?: IngredientProtocol | IngredientWithVDProtocol,
-  vitaminE?: IngredientProtocol | IngredientWithVDProtocol,
-  vitaminK?: IngredientProtocol | IngredientWithVDProtocol,
-  zinc?: IngredientProtocol | IngredientWithVDProtocol,
-  infos: string[],
-  ingredients: string[],
-  contains?: string[],
+  servingSize: number
+  transFat: IngredientProtocol
+  calories: IngredientProtocol
+  totalFat: IngredientProtocol
+  saturatedFat: IngredientProtocol
+  cholesterol: IngredientProtocol
+  carbohydrate: IngredientProtocol
+  dietaryFibers?: IngredientProtocol
+  totalSugars?: IngredientProtocol
+  protein: IngredientProtocol
+  biotin?: IngredientProtocol
+  calcium?: IngredientProtocol
+  choline?: IngredientProtocol
+  chrome?: IngredientProtocol
+  copper?: IngredientProtocol
+  fluorine?: IngredientProtocol
+  folicAcid?: IngredientProtocol
+  iodine?: IngredientProtocol
+  iron?: IngredientProtocol
+  magnesium?: IngredientProtocol
+  manganese?: IngredientProtocol
+  molybdenum?: IngredientProtocol
+  niacin?: IngredientProtocol
+  pantothenicAcid?: IngredientProtocol
+  phosphorus?: IngredientProtocol
+  potassium?: IngredientProtocol
+  riboflvin?: IngredientProtocol
+  selenium?: IngredientProtocol
+  sodium?: IngredientProtocol
+  thiamine?: IngredientProtocol
+  vitaminA?: IngredientProtocol
+  vitaminB12?: IngredientProtocol
+  vitaminB6?: IngredientProtocol
+  vitaminC?: IngredientProtocol
+  vitaminD?: IngredientProtocol
+  vitaminE?: IngredientProtocol
+  vitaminK?: IngredientProtocol
+  zinc?: IngredientProtocol
+  infos: string[]
+  ingredients: string[]
+  contains?: string[]
 }
