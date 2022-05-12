@@ -12,6 +12,7 @@ const wheyProtein = [
     servings: 73,
     // Serving Size About 1 Scoop
     servingSize: 31,
+    transFat: { unit: 'g', value: 0 },
     calories: { unit: 'kcal', value: 120 },
     totalFat: { unit: 'g', value: 1 },
     saturatedFat: { unit: 'g', value: 0.5 },
@@ -19,6 +20,7 @@ const wheyProtein = [
     sodium: { unit: 'mg', value: 105 },
     carbohydrate: { unit: 'g', value: 4 },
     totalSugars: { unit: 'g', value: 1 },
+    dietaryFibers: { unit: 'g', value: 0 },
     protein: { unit: 'g', value: 24 },
     infos: [
       'Not a significant source of trans fat, dietary fiber, added sugars, vitamin D and iron.',
@@ -52,6 +54,7 @@ const wheyProtein = [
     servings: 48,
     // Serving Size About 1 Scoop
     servingSize: 47,
+    transFat: { unit: 'g', value: 0 },
     calories: { unit: 'kcal', value: 200 },
     totalFat: { unit: 'g', value: 6 },
     saturatedFat: { unit: 'g', value: 2 },

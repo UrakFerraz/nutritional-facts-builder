@@ -24,10 +24,20 @@ export class WheyValuesConverted {
     const nutriValues = Object.entries(nutritionalValues)
     const convertedValuesMap: any[] = []
     for (let index = 0; index < values.length; index++) {
-      const element = values[index];
-      nutriValues.forEach(item => {
-        if(element[0] === item[0]) {
-          convertedValuesMap.push({ [element[0]]: { unit: element[1].unit, value: element[1].value, vd: Math.round((element[1].value * 100) / item[1].value) }})
+      const element = values[index]
+      nutriValues.forEach((item) => {
+        const vd =
+          item[1].value !== null
+            ? Math.round((element[1].value * 100) / item[1].value)
+            : '**'
+        if (element[0] === item[0]) {
+          convertedValuesMap.push({
+            [element[0]]: {
+              unit: element[1].unit,
+              value: element[1].value,
+              vd,
+            },
+          })
         }
       })
     }
@@ -42,11 +52,12 @@ export class WheyValuesConverted {
     this.convertedWhey.genericSize = this.whey.genericSize
     this.convertedWhey.servings = this.whey.servings
     this.convertedWhey.servingSize = this.whey.servingSize
-    convertedValuesMap.forEach(item => {
+    convertedValuesMap.forEach((item) => {
       this.convertedWhey = Object.assign(this.convertedWhey, item)
     })
     this.convertedWhey.infos = this.whey.infos
     this.convertedWhey.ingredients = this.whey.ingredients
+    this.convertedWhey.transFat = this.whey.transFat
     if (this.whey.contains !== undefined && this.whey.contains !== null) {
       this.convertedWhey.contains = this.whey.contains
     }
