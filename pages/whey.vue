@@ -5,19 +5,19 @@
         <div class="nutritional-facts-table__header">
           <h1>Informação Nutricional</h1>
           <div class="nutritional-facts-table__line">
-            <h2>{{ convertedValues().name }}</h2>
+            <h2>{{ convertedValues().description.name }}</h2>
           </div>
           <div class="nutritional-facts-table__line">
             <h2>Tamanho:</h2>
-            <h2>{{ convertedValues().size }}</h2>
+            <h2>{{ convertedValues().description.size }}</h2>
           </div>
           <div class="nutritional-facts-table__line">
             <h2>Dose:</h2>
-            <h2>{{ convertedValues().servingSize }}g</h2>
+            <h2>{{ convertedValues().description.servingSize }}g</h2>
           </div>
           <div class="nutritional-facts-table__line">
             <h2>Total de doses:</h2>
-            <h2>{{ convertedValues().servings }} doses</h2>
+            <h2>{{ convertedValues().description.servings }} doses</h2>
           </div>
         </div>
         <div class="nutritional-facts-table__principal-info">
@@ -25,136 +25,18 @@
             <p>Quantidade por porção</p>
             <p>VD*</p>
           </div>
-          <div class="nutritional-facts-table__line">
-            <p>Valor energético:</p>
-            <p>
-              {{ convertCaloriesTokJ() }}
-            </p>
-            <p>{{ convertedValues().calories.vd }} %</p>
-          </div>
-          <div class="nutritional-facts-table__line">
-            <p>Carboidratos:</p>
-            <p>
-              {{
-                `${convertedValues().carbohydrate.value} ${
-                  convertedValues().carbohydrate.unit
-                }`
-              }}
-            </p>
-            <p>{{ convertedValues().carbohydrate.vd }} %</p>
-          </div>
-          <div class="nutritional-facts-table__line">
-            <p>Proteínas:</p>
-            <p>
-              {{ `${convertedValues().protein.value} ${convertedValues().protein.unit}` }}
-            </p>
-            <p>{{ convertedValues().protein.vd }} %</p>
-          </div>
-          <div class="nutritional-facts-table__line">
-            <p>Gorduras Totais:</p>
-            <p>
-              {{
-                `${convertedValues().totalFat.value} ${convertedValues().totalFat.unit}`
-              }}
-            </p>
-            <p>{{ convertedValues().totalFat.vd }} %</p>
-          </div>
-          <div class="nutritional-facts-table__line">
-            <p>Gorduras Saturadas:</p>
-            <p>
-              {{
-                `${convertedValues().saturatedFat.value} ${
-                  convertedValues().saturatedFat.unit
-                }`
-              }}
-            </p>
-            <p>{{ convertedValues().saturatedFat.vd }} %</p>
-          </div>
-          <div class="nutritional-facts-table__line">
-            <p>Gorduras Trans:</p>
-            <p>
-              {{ `${convertedValues().transFat.value} g` }}
-            </p>
-            <p>**</p>
-          </div>
-          <div class="nutritional-facts-table__line">
-            <p>Fibra Alimentar:</p>
-            <p>
-              {{
-                `${convertedValues().dietaryFibers.value} ${
-                  convertedValues().dietaryFibers.unit
-                }`
-              }}
-            </p>
-            <p>{{ convertedValues().dietaryFibers.vd }} %</p>
-          </div>
-          <div class="nutritional-facts-table__line">
-            <p>Sódio:</p>
-            <p>
-              {{ `${convertedValues().sodium.value} ${convertedValues().sodium.unit}` }}
-            </p>
-            <p>{{ convertedValues().sodium.vd }} %</p>
-          </div>
           <div
-            v-if="convertedValues().calcium !== undefined"
+            v-for="(ingredient, index) in convertedValues()"
+            :key="index"
             class="nutritional-facts-table__line"
           >
-            <p>Cálcio:</p>
-            <p>
-              {{ `${convertedValues().calcium.value} ${convertedValues().calcium.unit}` }}
-            </p>
-            <p>{{ convertedValues().calcium.vd }} %</p>
-          </div>
-          <div
-            v-if="convertedValues().potassium !== undefined"
-            class="nutritional-facts-table__line"
-          >
-            <p>Potássio:</p>
-            <p>
-              {{
-                `${convertedValues().potassium.value} ${convertedValues().potassium.unit}`
-              }}
-            </p>
-            <p>{{ convertedValues().potassium.vd }} %</p>
-          </div>
-          <div
-            v-if="convertedValues().iron !== undefined"
-            class="nutritional-facts-table__line"
-          >
-            <p>Ferro:</p>
-            <p>
-              {{ `${convertedValues().iron.value} ${convertedValues().iron.unit}` }}
-            </p>
-            <p>{{ convertedValues().iron.vd }} %</p>
-          </div>
-          <div
-            v-if="convertedValues().phosphorus !== undefined"
-            class="nutritional-facts-table__line"
-          >
-            <p>Fósforo:</p>
-            <p>
-              {{
-                `${convertedValues().phosphorus.value} ${
-                  convertedValues().phosphorus.unit
-                }`
-              }}
-            </p>
-            <p>{{ convertedValues().phosphorus.vd }} %</p>
-          </div>
-          <div
-            v-if="convertedValues().magnesium !== undefined"
-            class="nutritional-facts-table__line"
-          >
-            <p>Magnésio:</p>
-            <p>
-              {{
-                `${convertedValues().magnesium.value} ${convertedValues().magnesium.unit}`
-              }}
-            </p>
-            <p>{{ convertedValues().magnesium.vd }} %</p>
+            <p>{{ ingredient }}</p>
           </div>
           <div class="nutritional-facts-table__line--infos">
-            <span v-for="(info, index) in convertedValues().infos" :key="index">
+            <span
+              v-for="(info, index) in convertedValues().description.infos"
+              :key="index"
+            >
               {{ info }}
             </span>
           </div>
@@ -181,8 +63,10 @@ export default Vue.extend({
     },
     convertCaloriesTokJ() {
       const kJ = 4.184;
-      return `${this.convertedValues().calories.value} cal / ${Math.round(
-        this.convertedValues().calories.value! * kJ
+      // eslint-disable-next-line no-console
+      console.log(this.convertedValues().nutrients);
+      return `${this.convertedValues().nutrients.calories.value} cal / ${Math.round(
+        Number(this.convertedValues().nutrients.calories.value) * kJ
       )} kJ`;
     },
   },
