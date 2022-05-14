@@ -21,7 +21,7 @@ export class WheyValuesConverted {
 
   convertCaloriesTokJ(calories: number) {
     const kJ = 4.184
-    return `${calories} cal / ${Math.round(calories! * kJ)} kJ`
+    return `${calories} kcal / ${Math.round(calories! * kJ)} kJ`
   }
 
   convertValues() {
@@ -38,15 +38,15 @@ export class WheyValuesConverted {
         if (element[0] === item[0]) {
           if (item[0] === 'calories') {
             convertedValuesMap[element[0]] = {
-              unit: element[1].unit,
-              name: element[1].name,
+              unit: "",
+              name: item[1].name,
               value: this.convertCaloriesTokJ(element[1].value!),
               vd,
             }
           } else {
             convertedValuesMap[element[0]] = {
               unit: element[1].unit,
-              name: element[1].name,
+              name: item[1].name,
               value: element[1].value,
               vd,
             }

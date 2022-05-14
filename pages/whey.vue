@@ -26,11 +26,14 @@
             <p>VD*</p>
           </div>
           <div
-            v-for="(ingredient, index) in convertedValues()"
+            v-for="(nutrient, index) in convertedValues().nutrients"
             :key="index"
             class="nutritional-facts-table__line"
           >
-            <p>{{ ingredient }}</p>
+            <p v-if="nutrient">{{ nutrient.name }}</p>
+            <p v-if="nutrient">{{ `${nutrient.value} ${nutrient.unit}` }}</p>
+            <p v-if="nutrient && nutrient.vd === '**'">{{ nutrient.vd }}</p>
+            <p v-else-if="nutrient">{{ nutrient.vd }}%</p>
           </div>
           <div class="nutritional-facts-table__line--infos">
             <span
@@ -39,6 +42,9 @@
             >
               {{ info }}
             </span>
+          </div>
+          <div class="nutritional-facts-table__line--infos">
+            <span><stromg>Ingredientes:</stromg> {{ listOfingredients() }}</span>
           </div>
         </div>
       </div>
@@ -69,6 +75,9 @@ export default Vue.extend({
         Number(this.convertedValues().nutrients.calories.value) * kJ
       )} kJ`;
     },
+    listOfingredients() {
+      return this.whey.convertedWhey.description.ingredients.join(", ");
+    },
   },
 });
 </script>
@@ -89,6 +98,10 @@ export default Vue.extend({
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 0 10px;
+    &:nth-of-type(odd) {
+      background: rgba($color: #fff, $alpha: 0.1);
+    }
     p:nth-child(1) {
       flex-grow: 1;
       text-align: left;
