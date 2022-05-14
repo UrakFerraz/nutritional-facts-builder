@@ -28,7 +28,7 @@
           <div
             v-for="(nutrient, index) in convertedValues().nutrients"
             :key="index"
-            class="nutritional-facts-table__line"
+            class="nutritional-facts-table__line--nutrient"
           >
             <p v-if="nutrient">{{ nutrient.name }}</p>
             <p v-if="nutrient">{{ `${nutrient.value} ${nutrient.unit}` }}</p>
@@ -44,7 +44,13 @@
             </span>
           </div>
           <div class="nutritional-facts-table__line--infos">
-            <span><stromg>Ingredientes:</stromg> {{ listOfingredients() }}</span>
+            <span>Ingredientes: {{ listOfingredients() }}</span>
+          </div>
+          <div
+            v-if="listContains() !== undefined"
+            class="nutritional-facts-table__line--infos"
+          >
+            <span>Contém: {{ listContains() }}</span>
           </div>
         </div>
       </div>
@@ -53,36 +59,60 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import { WheyValuesConverted } from "../composables/values-converter/values-converter";
-import wheyProtein from "~/static/mocks/whey-protein-mock";
+import Vue from 'vue'
+import { WheyValuesConverted } from '../composables/values-converter/values-converter'
+import wheyProtein from '~/static/mocks/whey-protein-mock'
 export default Vue.extend({
   data() {
     return {
       whey: new WheyValuesConverted(wheyProtein[1]),
-    };
+    }
   },
   methods: {
     convertedValues() {
-      this.whey.convertValues();
-      return this.whey.convertedWhey;
+      this.whey.convertValues()
+      return this.whey.convertedWhey
     },
     convertCaloriesTokJ() {
-      const kJ = 4.184;
-      // eslint-disable-next-line no-console
-      console.log(this.convertedValues().nutrients);
-      return `${this.convertedValues().nutrients.calories.value} cal / ${Math.round(
+      const kJ = 4.184
+      return `${
+        this.convertedValues().nutrients.calories.value
+      } cal / ${Math.round(
         Number(this.convertedValues().nutrients.calories.value) * kJ
-      )} kJ`;
+      )} kJ`
     },
     listOfingredients() {
-      return this.whey.convertedWhey.description.ingredients.join(", ");
+      return this.whey.convertedWhey.description.ingredients.join(', ')
+    },
+    listContains() {
+      if (!this.whey.convertedWhey.description.contains) return undefined
+      return this.whey.convertedWhey.description.contains.join(', ')
     },
   },
-});
+})
 </script>
 
 <style lang="scss" scoped>
+@mixin nutrientRow {
+  p:nth-child(1) {
+    flex-grow: 1;
+    text-align: left;
+  }
+  p:nth-child(2) {
+    flex-grow: 2;
+    text-align: right;
+  }
+  p:last-child {
+    flex-basis: 80px;
+    text-align: right;
+  }
+}
+@mixin row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 10px;
+}
 .nutritional-facts-table {
   padding: 20px;
   &__container {
@@ -95,25 +125,15 @@ export default Vue.extend({
     flex-flow: column;
   }
   &__line {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 10px;
-    &:nth-of-type(odd) {
-      background: rgba($color: #fff, $alpha: 0.1);
+    @include row;
+    &--nutrient {
+      @include row;
+      &:nth-of-type(even) {
+        background: rgba($color: #fff, $alpha: 0.1);
+      }
+      @include nutrientRow;
     }
-    p:nth-child(1) {
-      flex-grow: 1;
-      text-align: left;
-    }
-    p:nth-child(2) {
-      flex-grow: 2;
-      text-align: right;
-    }
-    p:last-child {
-      flex-basis: 80px;
-      text-align: right;
-    }
+    @include nutrientRow;
     &--infos {
       margin: 10px 0;
       padding: 10px 0;
