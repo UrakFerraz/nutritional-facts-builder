@@ -1,7 +1,7 @@
 @import './colors';
 
 html {
-  background-color: $darkest-color;
+  background-color: #fff;
 }
 
 div,
@@ -33,7 +33,7 @@ h2,
 h3,
 p,
 li {
-  color: $light;
+  color: $dark-color;
   line-height: 1.5;
 }
 
@@ -78,7 +78,7 @@ p {
 span {
   line-height: 1.5;
   font-size: 12px;
-  color: $light-gray;
+  color: $gray;
 }
 
 @keyframes fade-in {

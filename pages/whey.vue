@@ -50,7 +50,7 @@
             v-if="listContains() !== undefined"
             class="nutritional-facts-table__line--infos"
           >
-            <span>Contém: {{ listContains() }}</span>
+            <span v-if="listContains()">Contém: {{ listContains() }}</span>
           </div>
         </div>
       </div>
@@ -59,37 +59,35 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { WheyValuesConverted } from '../composables/values-converter/values-converter'
-import wheyProtein from '~/static/mocks/whey-protein-mock'
+import Vue from "vue";
+import { WheyValuesConverted } from "../composables/values-converter/values-converter";
+import wheyProtein from "~/static/mocks/whey-protein-mock";
 export default Vue.extend({
   data() {
     return {
       whey: new WheyValuesConverted(wheyProtein[1]),
-    }
+    };
   },
   methods: {
     convertedValues() {
-      this.whey.convertValues()
-      return this.whey.convertedWhey
+      this.whey.convertValues();
+      return this.whey.convertedWhey;
     },
     convertCaloriesTokJ() {
-      const kJ = 4.184
-      return `${
-        this.convertedValues().nutrients.calories.value
-      } cal / ${Math.round(
+      const kJ = 4.184;
+      return `${this.convertedValues().nutrients.calories.value} cal / ${Math.round(
         Number(this.convertedValues().nutrients.calories.value) * kJ
-      )} kJ`
+      )} kJ`;
     },
     listOfingredients() {
-      return this.whey.convertedWhey.description.ingredients.join(', ')
+      return this.whey.convertedWhey.description.ingredients.join(", ");
     },
     listContains() {
-      if (!this.whey.convertedWhey.description.contains) return undefined
-      return this.whey.convertedWhey.description.contains.join(', ')
+      if (!this.whey.convertedWhey.description.contains) return undefined;
+      return this.whey.convertedWhey.description.contains.join(", ");
     },
   },
-})
+});
 </script>
 
 <style lang="scss" scoped>
@@ -112,6 +110,9 @@ export default Vue.extend({
   flex-direction: row;
   justify-content: space-between;
   padding: 0 10px;
+  &:hover {
+    background: rgba($color: rgb(188, 206, 218), $alpha: 0.5);
+  }
 }
 .nutritional-facts-table {
   padding: 20px;
@@ -125,21 +126,21 @@ export default Vue.extend({
     flex-flow: column;
   }
   &__line {
-    @include row;
     &--nutrient {
-      @include row;
       &:nth-of-type(even) {
-        background: rgba($color: #fff, $alpha: 0.1);
+        background: rgba($color: #000, $alpha: 0.1);
       }
       @include nutrientRow;
+      @include row;
     }
     @include nutrientRow;
     &--infos {
       margin: 10px 0;
       padding: 10px 0;
-      border-top: 1px solid white;
-      border-bottom: 1px solid white;
+      border-top: 1px solid rgb(112, 110, 133);
+      border-bottom: 1px solid rgb(112, 110, 133);
     }
+    @include row;
   }
 }
 </style>
