@@ -19,9 +19,19 @@ export class WheyValuesConverted {
     this._convertedWhey = value
   }
 
-  convertCaloriesTokJ(calories: number) {
-    const kJ = 4.184
-    return `${calories} kcal / ${Math.round(calories! * kJ)} kJ`
+  convertCaloriesTokJ(kJ: number) {
+    return `${this.whey.nutrients.calories.value} cal / ${Math.round(
+      Number(this.whey.nutrients.calories.value) * kJ
+    )} kJ`;
+  }
+
+  listOfingredients() {
+    return this.convertedWhey.description.ingredients.join(", ");
+  }
+
+  listContains() {
+    if (!this.convertedWhey.description.contains) return undefined;
+    return this.convertedWhey.description.contains.join(", ");
   }
 
   convertValues() {
@@ -40,7 +50,7 @@ export class WheyValuesConverted {
             convertedValuesMap[element[0]] = {
               unit: "",
               name: item[1].name,
-              value: this.convertCaloriesTokJ(element[1].value!),
+              value: this.convertCaloriesTokJ(4.184),
               vd,
             }
           } else {

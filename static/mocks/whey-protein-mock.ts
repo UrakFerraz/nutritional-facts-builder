@@ -1,5 +1,6 @@
 const wheyProtein = [
   {
+    id: 1,
     description: {
       name: 'GOLD STANDARD 100% WHEY PROTEIN',
       brand: 'OPTIMUM NUTRITION',
@@ -46,6 +47,7 @@ const wheyProtein = [
     },
   },
   {
+    id: 2,
     description: {
       name: 'SYNTHA-6 WHEY PROTEIN POWDER',
       brand: 'BSN',

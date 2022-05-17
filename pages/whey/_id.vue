@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 <template>
   <div>
     <div class="nutritional-facts-table">
@@ -5,19 +6,19 @@
         <div class="nutritional-facts-table__header">
           <h1>Informação Nutricional</h1>
           <div class="nutritional-facts-table__line">
-            <h2>{{ convertedValues().description.name }}</h2>
+            <h2>{{ whey.convertedWhey.description.name }}</h2>
           </div>
           <div class="nutritional-facts-table__line">
             <h2>Tamanho:</h2>
-            <h2>{{ convertedValues().description.size }}</h2>
+            <h2>{{ whey.convertedWhey.description.size }}</h2>
           </div>
           <div class="nutritional-facts-table__line">
             <h2>Dose:</h2>
-            <h2>{{ convertedValues().description.servingSize }}g</h2>
+            <h2>{{ whey.convertedWhey.description.servingSize }}g</h2>
           </div>
           <div class="nutritional-facts-table__line">
             <h2>Total de doses:</h2>
-            <h2>{{ convertedValues().description.servings }} doses</h2>
+            <h2>{{ whey.convertedWhey.description.servings }} doses</h2>
           </div>
         </div>
         <div class="nutritional-facts-table__principal-info">
@@ -26,7 +27,7 @@
             <p>VD*</p>
           </div>
           <div
-            v-for="(nutrient, index) in convertedValues().nutrients"
+            v-for="(nutrient, index) in whey.convertedWhey.nutrients"
             :key="index"
             class="nutritional-facts-table__line--nutrient"
           >
@@ -37,20 +38,20 @@
           </div>
           <div class="nutritional-facts-table__line--infos">
             <span
-              v-for="(info, index) in convertedValues().description.infos"
+              v-for="(info, index) in whey.convertedWhey.description.infos"
               :key="index"
             >
               {{ info }}
             </span>
           </div>
           <div class="nutritional-facts-table__line--infos">
-            <span>Ingredientes: {{ listOfingredients() }}</span>
+            <span>Ingredientes: {{ whey.listOfingredients() }}</span>
           </div>
           <div
-            v-if="listContains() !== undefined"
+            v-if="whey.listContains() !== undefined"
             class="nutritional-facts-table__line--infos"
           >
-            <span v-if="listContains()">Contém: {{ listContains() }}</span>
+            <span v-if="whey.listContains()">Contém: {{ whey.listContains() }}</span>
           </div>
         </div>
       </div>
@@ -60,32 +61,16 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { WheyValuesConverted } from "../composables/values-converter/values-converter";
+import { WheyValuesConverted } from "../../composables/values-converter/values-converter";
 import wheyProtein from "~/static/mocks/whey-protein-mock";
 export default Vue.extend({
   data() {
     return {
-      whey: new WheyValuesConverted(wheyProtein[1]),
+      whey: new WheyValuesConverted(wheyProtein[Number(this.$nuxt.$route.params.id)]),
     };
   },
-  methods: {
-    convertedValues() {
-      this.whey.convertValues();
-      return this.whey.convertedWhey;
-    },
-    convertCaloriesTokJ() {
-      const kJ = 4.184;
-      return `${this.convertedValues().nutrients.calories.value} cal / ${Math.round(
-        Number(this.convertedValues().nutrients.calories.value) * kJ
-      )} kJ`;
-    },
-    listOfingredients() {
-      return this.whey.convertedWhey.description.ingredients.join(", ");
-    },
-    listContains() {
-      if (!this.whey.convertedWhey.description.contains) return undefined;
-      return this.whey.convertedWhey.description.contains.join(", ");
-    },
+  created() {
+    this.whey.convertValues();
   },
 });
 </script>
