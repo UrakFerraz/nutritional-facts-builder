@@ -48,6 +48,7 @@
     "vue-jest": "^3.0.4"
   },
   "jest": {
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "moduleFileExtensions": [
       "js",
       "ts",
