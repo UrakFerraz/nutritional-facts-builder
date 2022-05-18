@@ -46,5 +46,18 @@
     "sass-loader": "^10.1.1",
     "ts-jest": "^27.1.1",
     "vue-jest": "^3.0.4"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "vue-jest",
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testURL": "http://localhost:3000/"
   }
 }
