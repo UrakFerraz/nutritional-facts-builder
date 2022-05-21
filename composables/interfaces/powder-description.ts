@@ -1,4 +1,4 @@
-export interface Description {
+export interface PowderDescriptionInterface {
   name: string
   brand: string
   category: string
