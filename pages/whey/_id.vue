@@ -66,12 +66,16 @@ import Vue from "vue";
 import wheyProtein from "~/static/mocks/whey-protein-mock";
 import { PowderNutritionalFacts } from "~/composables/nutritional-facts/powder/nutritional-facts-setter";
 import NutrientsVD from "~/composables/nutritional-facts/nutrients/nutrients-vd-setter";
+import PowderDescription from "~/composables/nutritional-facts/description/powder-description-setter";
 export default Vue.extend({
   data() {
     return {
       powder: new PowderNutritionalFacts(
         wheyProtein[Number(this.$nuxt.$route.params.id)],
-        new NutrientsVD(wheyProtein[Number(this.$nuxt.$route.params.id)].nutrients)
+        new NutrientsVD(wheyProtein[Number(this.$nuxt.$route.params.id)].nutrients),
+        new PowderDescription(
+          wheyProtein[Number(this.$nuxt.$route.params.id)].description
+        )
       ),
     };
   },
