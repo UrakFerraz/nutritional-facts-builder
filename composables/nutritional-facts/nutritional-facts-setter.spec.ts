@@ -20,7 +20,6 @@ describe('deve converter a whey para valores com VD', () => {
     const mock = new PowderNutritionalFacts(whey, nutrients, description)
     mock.setPowderWithVD()
     expect(mock.powderWithVD.nutrients.transFat.vd).toBe('**')
-    console.log(mock)
   })
   it('deve existir ingredients na whey convertida', () => {
     const whey = wheyProtein[0]

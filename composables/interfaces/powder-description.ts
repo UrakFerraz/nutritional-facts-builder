@@ -12,6 +12,6 @@ export interface PowderDescriptionInterface {
   // Serving Size About 1 Scoop
   servingSize: number | undefined
   infos: string[] | undefined
-  ingredients: string[] | undefined
-  contains: string[] | undefined
+  ingredients: string | undefined
+  contains: string | undefined
 }
