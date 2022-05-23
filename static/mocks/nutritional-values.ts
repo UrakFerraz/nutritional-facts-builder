@@ -1,7 +1,7 @@
 const nutritionalValues = {
   calories: { unit: 'kcal', value: 2000, name: 'Calorias' },
   carbohydrate: { unit: 'g', value: 300, name: 'Carboidrato' },
-  protein: { unit: 'g', value: 75, name: 'Proteína' },
+  protein: { unit: 'g', value: 75, name: 'Proteínas' },
   totalFat: { unit: 'g', value: 55, name: 'Gorduras Totais' },
   saturatedFat: { unit: 'g', value: 22, name: 'Gorduras Saturadas' },
   transFat: { unit: 'g', value: null, name: 'Gorduras Trans' },
