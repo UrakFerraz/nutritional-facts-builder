@@ -6,19 +6,19 @@
         <div class="nutritional-facts-table__header">
           <h1>Informação Nutricional</h1>
           <div class="nutritional-facts-table__line">
-            <h2>{{ powder.powderWithVD.description.name }}</h2>
+            <h2>{{ nutritionalFacts.powderWithVD.description.name }}</h2>
           </div>
           <div class="nutritional-facts-table__line">
             <h2>Tamanho:</h2>
-            <h2>{{ powder.powderWithVD.description.size }}</h2>
+            <h2>{{ nutritionalFacts.powderWithVD.description.size }}</h2>
           </div>
           <div class="nutritional-facts-table__line">
             <h2>Dose:</h2>
-            <h2>{{ powder.powderWithVD.description.servingSize }}g</h2>
+            <h2>{{ nutritionalFacts.powderWithVD.description.servingSize }}g</h2>
           </div>
           <div class="nutritional-facts-table__line">
             <h2>Total de doses:</h2>
-            <h2>{{ powder.powderWithVD.description.servings }} doses</h2>
+            <h2>{{ nutritionalFacts.powderWithVD.description.servings }} doses</h2>
           </div>
         </div>
         <div class="nutritional-facts-table__principal-info">
@@ -27,7 +27,7 @@
             <p>VD*</p>
           </div>
           <div
-            v-for="(nutrient, index) in powder.powderWithVD.nutrients"
+            v-for="(nutrient, index) in nutritionalFacts.powderWithVD.nutrients"
             :key="index"
             class="nutritional-facts-table__line--nutrient"
           >
@@ -38,20 +38,26 @@
           </div>
           <div class="nutritional-facts-table__line--infos">
             <span
-              v-for="(info, index) in powder.powderWithVD.description.infos"
+              v-for="(info, index) in nutritionalFacts.powderWithVD.description.infos"
               :key="index"
             >
               {{ info }}
             </span>
           </div>
           <div class="nutritional-facts-table__line--infos">
-            <span>Ingredientes: {{ powder.powderWithVD.description.ingredients }}</span>
+            <span
+              >Ingredientes:
+              {{ nutritionalFacts.powderWithVD.description.ingredients }}</span
+            >
           </div>
           <div
-            v-if="powder.powderWithVD.description.contains !== undefined"
+            v-if="nutritionalFacts.powderWithVD.description.contains !== undefined"
             class="nutritional-facts-table__line--infos"
           >
-            <span v-for="item in powder.powderWithVD.description.contains" :key="item">
+            <span
+              v-for="item in nutritionalFacts.powderWithVD.description.contains"
+              :key="item"
+            >
               {{ item + ", " }}
             </span>
           </div>
@@ -70,7 +76,8 @@ import PowderDescription from "~/composables/nutritional-facts/description/powde
 export default Vue.extend({
   data() {
     return {
-      powder: new PowderNutritionalFacts(
+      powder: wheyProtein[Number(this.$nuxt.$route.params.id)],
+      nutritionalFacts: new PowderNutritionalFacts(
         wheyProtein[Number(this.$nuxt.$route.params.id)],
         new NutrientsVD(wheyProtein[Number(this.$nuxt.$route.params.id)].nutrients),
         new PowderDescription(
@@ -80,7 +87,7 @@ export default Vue.extend({
     };
   },
   created() {
-    this.powder.setPowderWithVD();
+    this.nutritionalFacts.setPowderWithVD();
   },
 });
 </script>
