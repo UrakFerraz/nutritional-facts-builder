@@ -36,12 +36,12 @@
             <p v-if="nutrient && nutrient.vd === '**'">{{ nutrient.vd }}</p>
             <p v-else-if="nutrient">{{ nutrient.vd }}%</p>
           </div>
-          <div class="nutritional-facts-table__line--infos">
-            <span
-              v-for="(info, index) in nutritionalFacts.powderWithVD.description.infos"
-              :key="index"
-            >
-              {{ info }}
+          <div
+            v-if="nutritionalFacts.setNotSignificantNutrient() !== undefined"
+            class="nutritional-facts-table__line--infos"
+          >
+            <span>
+              {{ nutritionalFacts.setNotSignificantNutrient() }}
             </span>
           </div>
           <div class="nutritional-facts-table__line--infos">

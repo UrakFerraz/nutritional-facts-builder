@@ -58,6 +58,6 @@ export class PowderNutritionalFacts {
         return acc + ', ' + nutrient[1].name
       }
     }, infos[0])
-    return info
+    return (info === infos[0]) ? undefined : info
   }
 }
