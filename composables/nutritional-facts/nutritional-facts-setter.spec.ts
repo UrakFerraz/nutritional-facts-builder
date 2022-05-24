@@ -31,4 +31,15 @@ describe('deve converter a whey para valores com VD', () => {
       whey.description.ingredients
     )
   })
+  it('deve verificar nutrientes em quantidade não significante', () => {
+    const filtered = [ [ 'dietaryFibers', { grams: 25, name: 'Fibra Alimentar' } ] ]
+    const whey = wheyProtein[0]
+    const nutrients = new NutrientsVD(whey.nutrients)
+    const description = new PowderDescription(whey.description)
+    const mock = new PowderNutritionalFacts(whey, nutrients, description)
+    mock.setPowderWithVD()
+    mock.setNotSignificantNutrient()
+    expect(mock.powder.description.ingredients).toEqual(whey.description.ingredients)
+    expect(mock.nutrients.notSignificantNutrient).toEqual(filtered)
+  })
 })
