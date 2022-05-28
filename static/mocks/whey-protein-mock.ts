@@ -63,7 +63,7 @@ const wheyProtein = [
       calories: { unit: 'kcal', value: 200 },
       totalFat: { unit: 'g', value: 6 },
       saturatedFat: { unit: 'g', value: 2 },
-      cholesterol: { unit: 'mcg', value: 55 },
+      cholesterol: { unit: 'mg', value: 55 },
       sodium: { unit: 'mg', value: 22 },
       carbohydrate: { unit: 'g', value: 15 },
       totalSugars: { unit: 'g', value: 2 },
