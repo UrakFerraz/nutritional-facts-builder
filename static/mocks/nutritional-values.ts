@@ -1,4 +1,6 @@
-const nutritionalValues = {
+import { NutritionalValues } from '~/composables/interfaces/nutritional-values'
+
+const nutritionalValues: NutritionalValues = {
   calories: { unit: 'kcal', value: 2000, name: 'Calorias' },
   carbohydrate: { unit: 'g', value: 300, name: 'Carboidrato' },
   protein: { unit: 'g', value: 75, name: 'Proteínas' },
