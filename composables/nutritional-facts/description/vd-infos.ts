@@ -1,6 +1,7 @@
 const infos = [
   'Não contém quantidades significativas de',
-  '* The % Daily Value tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice',
+  '(*) % Valores Diários de referência com base em uma dieta de 2.000kcal ou 8.400kJ. Seus valores diários podem ser maiores ou menores, dependendo das suas necessidades energéticas',
+  '(**) Valores diários não estabelecidos.'
 ]
 
 export default infos
