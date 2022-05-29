@@ -27,25 +27,25 @@ export default class NutrientsVD {
 
   convertValues() {
     const values = Object.entries(this.nutrients)
-    const nutriValues = Object.entries(nutritionalValues)
+    const defaultNutriValues = Object.entries(nutritionalValues)
     const convertedValuesMap: any = {}
     for (let index = 0; index < values.length; index++) {
-      const element = values[index]
-      nutriValues.forEach((item) => {
-        if (element[0] === item[0]) {
-          if (item[0] === 'calories') {
-            convertedValuesMap[element[0]] = {
-              unit: element[1].unit,
-              name: item[1].name,
+      const nutrients = values[index]
+      defaultNutriValues.forEach((defaultNutriValue) => {
+        if (nutrients[0] === defaultNutriValue[0]) {
+          if (defaultNutriValue[0] === 'calories') {
+            convertedValuesMap[nutrients[0]] = {
+              unit: nutrients[1].unit,
+              name: defaultNutriValue[1].name,
               value: this.convertCaloriesTokJ(4.184),
-              vd: this.setVD(item[1].value, element[1].value),
+              vd: this.setVD(defaultNutriValue[1].value, nutrients[1].value),
             }
           } else {
-            convertedValuesMap[element[0]] = {
-              unit: element[1].unit,
-              name: item[1].name,
-              value: element[1].value,
-              vd: this.setVD(item[1].value, element[1].value),
+            convertedValuesMap[nutrients[0]] = {
+              unit: nutrients[1].unit,
+              name: defaultNutriValue[1].name,
+              value: nutrients[1].value,
+              vd: this.setVD(defaultNutriValue[1].value, nutrients[1].value),
             }
           }
         }
@@ -59,8 +59,8 @@ export default class NutrientsVD {
     const vd = Object.entries(VD)
     const identified = nutrients.filter((nutrient) => nutrient[1].vd < 1)
     const filtered: any[] = []
-    identified.forEach(nutrient => {
-      const res = vd.filter(item => item[0] === nutrient[0])
+    identified.forEach((nutrient) => {
+      const res = vd.filter((item) => item[0] === nutrient[0])
       filtered.push(...res)
     })
     this.notSignificantNutrient = filtered || undefined
