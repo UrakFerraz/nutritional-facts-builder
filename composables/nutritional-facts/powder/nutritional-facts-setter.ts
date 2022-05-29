@@ -33,7 +33,7 @@ export class PowderNutritionalFacts {
   }
 
   setPowderWithVD() {
-    this.nutrients.convertValues()
+    this.nutrients.addVD()
     const model = {
       id: this.powder.id,
       nutrients: this.nutrients.nutrientsWithVD,
@@ -45,19 +45,25 @@ export class PowderNutritionalFacts {
   setNotSignificantNutrient() {
     this.nutrients.setNotSignificantNutrient()
     const notSignificantNutrient = this.nutrients.notSignificantNutrient
-    const info = notSignificantNutrient.reduce((acc: any, nutrient: any, index: number) => {
-      if ((index === notSignificantNutrient.length - 1) && (notSignificantNutrient.length > 1)) {
-        return acc + ' e ' + nutrient[1].name.toLowerCase() + '.'
-      } else if (notSignificantNutrient.length === 1) {
-        return acc + ' ' + nutrient[1].name.toLowerCase() + '.'
-      } else if (index === notSignificantNutrient.length - 2) {
-        return acc + ' ' + nutrient[1].name.toLowerCase()
-      } else if (index === 0) {
-        return acc + ' ' + nutrient[1].name.toLowerCase()
-      } else {
-        return acc + ', ' + nutrient[1].name
-      }
-    }, infos[0])
-    return (info === infos[0]) ? undefined : info
+    const info = notSignificantNutrient.reduce(
+      (acc: any, nutrient: any, index: number) => {
+        if (
+          index === notSignificantNutrient.length - 1 &&
+          notSignificantNutrient.length > 1
+        ) {
+          return acc + ' e ' + nutrient[1].name.toLowerCase() + '.'
+        } else if (notSignificantNutrient.length === 1) {
+          return acc + ' ' + nutrient[1].name.toLowerCase() + '.'
+        } else if (index === notSignificantNutrient.length - 2) {
+          return acc + ' ' + nutrient[1].name.toLowerCase()
+        } else if (index === 0) {
+          return acc + ' ' + nutrient[1].name.toLowerCase()
+        } else {
+          return acc + ', ' + nutrient[1].name
+        }
+      },
+      infos[0]
+    )
+    return info === infos[0] ? undefined : info
   }
 }

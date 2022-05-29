@@ -25,7 +25,7 @@ export default class NutrientsVD {
     )} kJ`
   }
 
-  convertValues() {
+  addVD() {
     const values = Object.entries(this.nutrients)
     const defaultNutriValues = Object.entries(nutritionalValues)
     const convertedValuesMap: any = {}
