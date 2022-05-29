@@ -1,10 +1,34 @@
 import PowderUnitsConverter from './powder-units-converter'
 import wheyProtein from '~/static/mocks/whey-protein-mock'
+import wheyWrongUnits from '~/static/mocks/wrong-units-whey'
+
+const convertedValues = [
+  { unit: 'g', nutrientName: 'sodium', convertion: 0.022 },
+  { unit: 'g', nutrientName: 'potassium', convertion: 0.003 },
+]
+
+const convertedValues2 = [
+  { unit: 'g', nutrientName: 'totalFat', convertion: 6 },
+  { unit: 'g', nutrientName: 'saturatedFat', convertion: 2 },
+  { unit: 'mg', nutrientName: 'cholesterol', convertion: 55 },
+  { unit: 'g', nutrientName: 'dietaryFibers', convertion: 1 },
+  { unit: 'g', nutrientName: 'sodium', convertion: 0.022 },
+  { unit: 'mg', nutrientName: 'calcium', convertion: 150 },
+  { unit: 'g', nutrientName: 'potassium', convertion: 0.003 },
+]
 
 describe('deve converter unidades de pós', () => {
-  it('deve manter o mesmo valor sem conversão', () => {
+  it('deve converter 2 valores', () => {
     const converter = new PowderUnitsConverter(wheyProtein[1])
     converter.convertUnits()
-    console.log(converter.converterConfig)
+    converter.setConvertedPowder()
+    expect(converter.converterConfig).toEqual(convertedValues)
+  })
+  it('deve converter as informações de nutrientes no powder', () => {
+    const converter = new PowderUnitsConverter(wheyWrongUnits)
+    converter.convertUnits()
+    expect(converter.converterConfig).toEqual(convertedValues2)
+    converter.setConvertedPowder()
+    expect(converter.converted).toEqual(wheyProtein[1])
   })
 })
