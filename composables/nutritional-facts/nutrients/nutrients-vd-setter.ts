@@ -1,9 +1,7 @@
 import { NutrientsInterface } from '../../interfaces/Nutrients'
 import nutritionalValues from '../../../static/mocks/nutritional-values'
-import VD from '~/static/mocks/BR_VD'
 
 export default class NutrientsVD {
-  notSignificantNutrient: any
   private _nutrientsWithVD: NutrientsInterface | null = null
   constructor(private _nutrients: NutrientsInterface) {}
 
@@ -52,17 +50,5 @@ export default class NutrientsVD {
       })
     }
     this._nutrientsWithVD = convertedValuesMap
-  }
-
-  setNotSignificantNutrient() {
-    const nutrients = Object.entries(this.nutrientsWithVD!)
-    const vd = Object.entries(VD)
-    const identified = nutrients.filter((nutrient) => nutrient[1].vd < 1)
-    const filtered: any[] = []
-    identified.forEach((nutrient) => {
-      const res = vd.filter((item) => item[0] === nutrient[0])
-      filtered.push(...res)
-    })
-    this.notSignificantNutrient = filtered || undefined
   }
 }

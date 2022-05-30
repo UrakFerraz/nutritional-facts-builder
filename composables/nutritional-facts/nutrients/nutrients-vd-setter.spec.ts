@@ -1,6 +1,5 @@
 import NutrientsVD from './nutrients-vd-setter'
 import wheyProtein from '~/static/mocks/whey-protein-mock'
-import wrongValuesWheyProtein from '~/static/mocks/wrong-values-whey'
 
 const nutrientsWithVdMock = {
   transFat: { unit: 'g', name: 'Gorduras Trans', value: 0, vd: '**' },
@@ -24,24 +23,10 @@ const nutrientsWithVdMock = {
   magnesium: { unit: 'mg', name: 'Magnésio', value: 24, vd: 9 },
 }
 
-const notSignificantValuesMock = [
-  ['totalFat', { grams: 55, name: 'Gorduras Totais' }],
-  ['saturatedFat', { grams: 22, name: 'Gorduras Saturadas' }],
-  ['carbohydrate', { grams: 300, name: 'Carboidrato' }],
-  ['dietaryFibers', { grams: 25, name: 'Fibra Alimentar' }],
-]
-
 describe('deve adicionar vd', () => {
   it('deve adicionar vd no powder', () => {
     const nutrients = new NutrientsVD(wheyProtein[1].nutrients)
     nutrients.addVD()
     expect(nutrients.nutrientsWithVD).toEqual(nutrientsWithVdMock)
-    nutrients.setNotSignificantNutrient()
-  })
-  it('deve criar frese de valores não significativos', () => {
-    const nutrients = new NutrientsVD(wrongValuesWheyProtein.nutrients)
-    nutrients.addVD()
-    nutrients.setNotSignificantNutrient()
-    expect(nutrients.notSignificantNutrient).toEqual(notSignificantValuesMock)
   })
 })
