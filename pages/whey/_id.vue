@@ -1,24 +1,24 @@
 /* eslint-disable no-console */
 <template>
-  <div>
+  <div v-if="nutritionalFacts.description !== null">
     <div class="nutritional-facts-table">
       <div class="nutritional-facts-table__container">
         <div class="nutritional-facts-table__header">
           <h1>Informação Nutricional</h1>
           <div class="nutritional-facts-table__line">
-            <h2>{{ nutritionalFacts.powderWithVD.description.name }}</h2>
+            <h2>{{ nutritionalFacts.description.name }}</h2>
           </div>
           <div class="nutritional-facts-table__line">
             <h2>Tamanho:</h2>
-            <h2>{{ nutritionalFacts.powderWithVD.description.size }}</h2>
+            <h2>{{ nutritionalFacts.description.size }}</h2>
           </div>
           <div class="nutritional-facts-table__line">
             <h2>Dose:</h2>
-            <h2>{{ nutritionalFacts.powderWithVD.description.servingSize }}g</h2>
+            <h2>{{ nutritionalFacts.description.servingSize }}g</h2>
           </div>
           <div class="nutritional-facts-table__line">
             <h2>Total de doses:</h2>
-            <h2>{{ nutritionalFacts.powderWithVD.description.servings }} doses</h2>
+            <h2>{{ nutritionalFacts.description.servings }} doses</h2>
           </div>
         </div>
         <div class="nutritional-facts-table__principal-info">
@@ -27,7 +27,7 @@
             <p>VD*</p>
           </div>
           <div
-            v-for="(nutrient, index) in nutritionalFacts.powderWithVD.nutrients"
+            v-for="(nutrient, index) in nutritionalFacts.nutrients"
             :key="index"
             class="nutritional-facts-table__line--nutrient"
           >
@@ -37,27 +37,21 @@
             <p v-else-if="nutrient">{{ nutrient.vd }}%</p>
           </div>
           <div
-            v-if="nutritionalFacts.setNotSignificantNutrient() !== undefined"
+            v-if="nutritionalFacts.description.infos !== undefined"
             class="nutritional-facts-table__line--infos"
           >
             <span>
-              {{ nutritionalFacts.setNotSignificantNutrient() }}
+              {{ nutritionalFacts.description.infos[0] }}
             </span>
           </div>
           <div class="nutritional-facts-table__line--infos">
-            <span
-              >Ingredientes:
-              {{ nutritionalFacts.powderWithVD.description.ingredients }}</span
-            >
+            <span>Ingredientes: {{ nutritionalFacts.description.ingredients }}</span>
           </div>
           <div
-            v-if="nutritionalFacts.powderWithVD.description.contains !== undefined"
+            v-if="nutritionalFacts.description.contains !== undefined"
             class="nutritional-facts-table__line--infos"
           >
-            <span
-              v-for="item in nutritionalFacts.powderWithVD.description.contains"
-              :key="item"
-            >
+            <span v-for="item in nutritionalFacts.description.contains" :key="item">
               {{ item + ", " }}
             </span>
           </div>
@@ -70,24 +64,17 @@
 <script lang="ts">
 import Vue from "vue";
 import wheyProtein from "~/static/mocks/whey-protein-mock";
-import { PowderNutritionalFacts } from "~/composables/nutritional-facts/powder/nutritional-facts-setter";
-import NutrientsVD from "~/composables/nutritional-facts/nutrients/nutrients-vd-setter";
-import PowderDescription from "~/composables/nutritional-facts/description/powder-description-setter";
+import { PowderNutritionalFactsSetter } from "~/composables/nutritional-facts/powder/nutritional-facts-setter";
 export default Vue.extend({
   data() {
     return {
       powder: wheyProtein[Number(this.$nuxt.$route.params.id)],
-      nutritionalFacts: new PowderNutritionalFacts(
-        wheyProtein[Number(this.$nuxt.$route.params.id)],
-        new NutrientsVD(wheyProtein[Number(this.$nuxt.$route.params.id)].nutrients),
-        new PowderDescription(
-          wheyProtein[Number(this.$nuxt.$route.params.id)].description
-        )
-      ),
+      nutritionalFacts: new PowderNutritionalFactsSetter(
+        wheyProtein[Number(this.$nuxt.$route.params.id)]
+      )
+        .init()
+        .getNutritionalFacts(),
     };
-  },
-  created() {
-    this.nutritionalFacts.setPowderWithVD();
   },
 });
 </script>

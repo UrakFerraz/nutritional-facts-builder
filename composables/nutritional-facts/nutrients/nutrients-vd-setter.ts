@@ -50,5 +50,6 @@ export default class NutrientsVD {
       })
     }
     this._nutrientsWithVD = convertedValuesMap
+    return this
   }
 }

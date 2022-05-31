@@ -2,42 +2,59 @@
 import NutrientsVD from '../nutrients/nutrients-vd-setter'
 import PowderDescription from '../description/powder-description-setter'
 import { PowderInterface } from '~/composables/interfaces/powder'
-export class PowderNutritionalFacts {
-  constructor(
-    private _powder: PowderInterface,
-    private _nutrients: NutrientsVD,
-    private _description: PowderDescription
-  ) {}
+import { NutrientsInterface } from '~/composables/interfaces/Nutrients'
+import { PowderDescriptionInterface } from '~/composables/interfaces/powder-description'
+export class PowderNutritionalFactsSetter {
+  constructor(private readonly powder: PowderInterface) {}
 
-  private _powderWithVD: any
+  private _id: number | null = null
 
-  get powder(): PowderInterface {
-    return this._powder
+  private _nutrientsWithVD: NutrientsInterface | null = null
+
+  private _description: PowderDescriptionInterface | null = null
+
+  get nutrientsWithVD() {
+    return this._nutrientsWithVD
   }
 
-  get nutrients(): NutrientsVD {
-    return this._nutrients
-  }
-
-  get description(): PowderDescription {
+  get description() {
     return this._description
   }
 
-  set powderWithVD(powder) {
-    this._powderWithVD = powder
+  get id() {
+    return this._id
   }
 
-  get powderWithVD() {
-    return this._powderWithVD
+  private setId() {
+    this._id = this.powder.id
   }
 
-  setPowderWithVD() {
-    this.nutrients.addVD()
-    const model = {
-      id: this.powder.id,
-      nutrients: this.nutrients.nutrientsWithVD,
-      description: this.description.powderDescription,
+  private setNutrientsVD() {
+    const vdSetter = new NutrientsVD(this.powder.nutrients)
+    this._nutrientsWithVD = vdSetter.addVD().nutrientsWithVD
+  }
+
+  private setDescription() {
+    if (this.nutrientsWithVD === null) return
+    const powderWithVD = Object.assign({}, this.powder, {
+      nutrients: this.nutrientsWithVD,
+    })
+    const descriptionSetter = new PowderDescription(powderWithVD)
+    this._description = descriptionSetter.init().powderDescription
+  }
+
+  getNutritionalFacts() {
+    return {
+      id: this._id,
+      nutrients: this.nutrientsWithVD,
+      description: this.description,
     }
-    this.powderWithVD = Object.assign({}, model)
+  }
+
+  init() {
+    this.setId()
+    this.setNutrientsVD()
+    this.setDescription()
+    return this
   }
 }

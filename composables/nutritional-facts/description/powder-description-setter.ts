@@ -1,26 +1,33 @@
 import { PowderDescriptionInterface } from '../../interfaces/powder-description'
-import IdentifyIngredients from '../nutrients/ingredients-identify'
+import NotSignificantVD from './not-sgnificant-vd'
+import infos from './vd-infos'
+import { PowderInterface } from '~/composables/interfaces/powder'
 
 export default class PowderDescription {
-  private _contains: IdentifyIngredients | null = null
-
-  get powderDescription(): PowderDescriptionInterface {
+  private _powderDescription: PowderDescriptionInterface | null = null
+  constructor(private readonly _powder: PowderInterface) {}
+  get powderDescription(): PowderDescriptionInterface | null {
     return this._powderDescription
   }
 
-  constructor(
-    private readonly _powderDescription: PowderDescriptionInterface
-  ) {}
-
-  set contains(value: IdentifyIngredients | null) {
-    this._contains = value
+  setPowderDescription() {
+    this._powderDescription = this._powder.description
   }
 
-  get contains(): IdentifyIngredients | null {
-    return this._contains
+  setNotSignificantInfo() {
+    this._powderDescription = this._powder.description
+    const text = new NotSignificantVD(this._powder.nutrients)
+    text.setNotSignificantNutrient()
+    this._powderDescription.infos! = [
+      text.notSignificantNutrientText()!,
+      infos[1],
+      infos[2],
+    ]
   }
 
-  getContains(): string[] | null {
-    return this.contains!.identify()
+  init() {
+    this.setPowderDescription()
+    this.setNotSignificantInfo()
+    return this
   }
 }
