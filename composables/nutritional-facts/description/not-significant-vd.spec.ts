@@ -12,7 +12,7 @@ const nutrientsWithVdMock = {
   cholesterol: { unit: 'mg', name: 'Colesterol', value: 55, vd: 18 },
   sodium: { unit: 'mg', name: 'Sódio', value: 22, vd: 0 },
   carbohydrate: { unit: 'g', name: 'Carboidrato', value: 15, vd: 5 },
-  dietaryFibers: { unit: 'g', name: 'Fibras', value: 1, vd: 0 },
+  dietaryFibers: { unit: 'g', name: 'Fibra Alimentar', value: 1, vd: 0 },
   protein: { unit: 'g', name: 'Proteínas', value: 22, vd: 29 },
   calcium: { unit: 'mg', name: 'Cálcio', value: 150, vd: 15 },
   potassium: { unit: 'mg', name: 'Potássio', value: 3, vd: 64 },

@@ -1,15 +1,16 @@
 import { IngredientInterface } from './Ingredient'
 
 export interface NutrientsInterface {
-  transFat: IngredientInterface
   calories: IngredientInterface
+  carbohydrate: IngredientInterface
+  protein: IngredientInterface
   totalFat: IngredientInterface
   saturatedFat: IngredientInterface
-  cholesterol: IngredientInterface
-  carbohydrate: IngredientInterface
+  transFat: IngredientInterface
   dietaryFibers?: IngredientInterface
+  sodium?: IngredientInterface
+  cholesterol: IngredientInterface
   totalSugars?: IngredientInterface
-  protein: IngredientInterface
   biotin?: IngredientInterface
   calcium?: IngredientInterface
   choline?: IngredientInterface
@@ -28,7 +29,6 @@ export interface NutrientsInterface {
   potassium?: IngredientInterface
   riboflvin?: IngredientInterface
   selenium?: IngredientInterface
-  sodium?: IngredientInterface
   thiamine?: IngredientInterface
   vitaminA?: IngredientInterface
   vitaminB12?: IngredientInterface
