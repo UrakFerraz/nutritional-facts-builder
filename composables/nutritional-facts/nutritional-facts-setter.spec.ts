@@ -31,28 +31,26 @@ const wheyMock = {
       totalFat: { unit: 'g', value: 1 },
       saturatedFat: { unit: 'g', value: 0.5 },
       transFat: { unit: 'g', value: 0 },
-      cholesterol: { unit: 'mg', value: 0.035 },
       dietaryFibers: { unit: 'g', value: 0 },
       sodium: { unit: 'mg', value: 105 },
+      cholesterol: { unit: 'mg', value: 0.035 },
       totalSugars: { unit: 'g', value: 1 },
     },
   },
   _id: 1,
   _nutrientsWithVD: {
-    transFat: { unit: 'g', name: 'Gorduras Trans', value: 0, vd: '**' },
     calories: {
       unit: 'kcal',
       name: 'Calorias',
       value: '120 cal / 502 kJ',
       vd: 6,
     },
+    carbohydrate: { unit: 'g', name: 'Carboidrato', value: 4, vd: 1 },
+    protein: { unit: 'g', name: 'Proteínas', value: 24, vd: 32 },
     totalFat: { unit: 'g', name: 'Gorduras Totais', value: 1, vd: 2 },
     saturatedFat: { unit: 'g', name: 'Gorduras Saturadas', value: 0.5, vd: 2 },
-    cholesterol: { unit: 'mg', name: 'Colesterol', value: 0.035, vd: 0 },
+    transFat: { unit: 'g', name: 'Gorduras Trans', value: 0, vd: '**' },
     sodium: { unit: 'mg', name: 'Sódio', value: 105, vd: 5 },
-    carbohydrate: { unit: 'g', name: 'Carboidrato', value: 4, vd: 1 },
-    dietaryFibers: { unit: 'g', name: 'Fibra Alimentar', value: 0, vd: 0 },
-    protein: { unit: 'g', name: 'Proteínas', value: 24, vd: 32 },
   },
   _description: {
     name: 'GOLD STANDARD 100% WHEY PROTEIN',
@@ -90,8 +88,7 @@ describe('deve converter a whey para valores com VD', () => {
   })
   it('deve converter powder', () => {
     const whey = wheyProtein[0]
-    const powder = new PowderNutritionalFactsSetter(whey)
-    powder.init()
+    const powder = new PowderNutritionalFactsSetter(whey).init()
     expect(JSON.stringify(powder)).toBe(JSON.stringify(wheyMock))
   })
   it('deve retornar o powder tratado', () => {

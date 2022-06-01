@@ -7,10 +7,10 @@ export interface NutritionalValues {
   totalFat: IngredientInterface
   saturatedFat: IngredientInterface
   transFat: IngredientInterface
-  cholesterol: IngredientInterface
   dietaryFibers: IngredientInterface
   sodium: IngredientInterface
   calcium: IngredientInterface
+  cholesterol: IngredientInterface
   biotin: IngredientInterface
   choline: IngredientInterface
   chrome: IngredientInterface

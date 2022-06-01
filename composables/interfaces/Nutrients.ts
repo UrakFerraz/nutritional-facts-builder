@@ -9,10 +9,10 @@ export interface NutrientsInterface {
   transFat: IngredientInterface
   dietaryFibers?: IngredientInterface
   sodium?: IngredientInterface
+  calcium?: IngredientInterface
   cholesterol: IngredientInterface
   totalSugars?: IngredientInterface
   biotin?: IngredientInterface
-  calcium?: IngredientInterface
   choline?: IngredientInterface
   chrome?: IngredientInterface
   copper?: IngredientInterface

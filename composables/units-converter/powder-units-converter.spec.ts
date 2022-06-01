@@ -10,10 +10,10 @@ const convertedValues = [
 const convertedValues2 = [
   { unit: 'g', nutrientName: 'totalFat', convertion: 6 },
   { unit: 'g', nutrientName: 'saturatedFat', convertion: 2 },
-  { unit: 'mg', nutrientName: 'cholesterol', convertion: 55 },
   { unit: 'g', nutrientName: 'dietaryFibers', convertion: 1 },
   { unit: 'g', nutrientName: 'sodium', convertion: 0.022 },
   { unit: 'mg', nutrientName: 'calcium', convertion: 150 },
+  { unit: 'mg', nutrientName: 'cholesterol', convertion: 55 },
   { unit: 'g', nutrientName: 'potassium', convertion: 0.003 },
 ]
 

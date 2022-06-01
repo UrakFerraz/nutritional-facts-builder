@@ -7,7 +7,7 @@ const nutritionalValues: NutritionalValues = {
   totalFat: { unit: 'g', value: 55, name: 'Gorduras Totais' },
   saturatedFat: { unit: 'g', value: 22, name: 'Gorduras Saturadas' },
   transFat: { unit: 'g', value: null, name: 'Gorduras Trans' },
-  dietaryFibers: { unit: 'g', value: 25, name: 'FIbra Alimentar' },
+  dietaryFibers: { unit: 'g', value: 25, name: 'Fibra Alimentar' },
   sodium: { unit: 'g', value: 2000, name: 'Sódio' },
   calcium: { unit: 'mg', value: 1000, name: 'Cálcio' },
   cholesterol: { unit: 'mg', value: 300, name: 'Colesterol' },
