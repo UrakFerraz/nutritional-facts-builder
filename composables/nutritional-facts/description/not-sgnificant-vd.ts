@@ -3,7 +3,7 @@ import { NutrientsInterface } from '~/composables/interfaces/Nutrients'
 import VD from '~/static/mocks/BR_VD'
 
 export default class NotSignificantVD {
-  private _notSignificantNutrient: string[] = []
+  private _notSignificantNutrient: any[] = []
   constructor(private readonly nutrientsWithVD: NutrientsInterface) {}
 
   get notSignificantNutrient(): string[] {
@@ -17,9 +17,15 @@ export default class NotSignificantVD {
     const filtered: any[] = []
     identified.forEach((nutrient) => {
       const res = vd.filter((item) => item[0] === nutrient[0])
+      if (
+        this.notSignificantNutrient.some((notSign) =>
+          notSign[0].includes(nutrient[0])
+        )
+      )
+        return
       filtered.push(...res)
     })
-    this._notSignificantNutrient = filtered || undefined
+    this._notSignificantNutrient.push(...filtered)
   }
 
   notSignificantNutrientText() {
@@ -33,12 +39,15 @@ export default class NotSignificantVD {
           return acc + ' e ' + nutrient[1].name.toLowerCase() + '.'
         } else if (this.notSignificantNutrient.length === 1) {
           return acc + ' ' + nutrient[1].name.toLowerCase() + '.'
-        } else if (index === this.notSignificantNutrient.length - 2) {
+        } else if (
+          index === this.notSignificantNutrient.length - 2 &&
+          this.notSignificantNutrient.length > 2
+        ) {
           return acc + ', ' + nutrient[1].name.toLowerCase()
         } else if (index === 0) {
           return acc + ' ' + nutrient[1].name.toLowerCase()
         } else {
-          return acc + ', ' + nutrient[1].name
+          return acc + ', ' + nutrient[1].name.toLowerCase()
         }
       },
       infos[0]
