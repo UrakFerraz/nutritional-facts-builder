@@ -43,6 +43,17 @@ export class PowderNutritionalFactsSetter {
     this._description = descriptionSetter.init().powderDescription
   }
 
+  private removeNotSignificantVDNutrientes() {
+    const newly = Object.entries(this.nutrientsWithVD!)
+    newly.forEach((nutrient) => {
+      if (nutrient[1].vd < 1) {
+        const nutrientName = nutrient[0] as keyof typeof this._nutrientsWithVD
+        delete this._nutrientsWithVD![nutrientName]
+      }
+    })
+    return this
+  }
+
   getNutritionalFacts() {
     return {
       id: this._id,
@@ -55,6 +66,7 @@ export class PowderNutritionalFactsSetter {
     this.setId()
     this.setNutrientsVD()
     this.setDescription()
+    this.removeNotSignificantVDNutrientes()
     return this
   }
 }

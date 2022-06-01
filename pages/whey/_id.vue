@@ -40,8 +40,11 @@
             v-if="nutritionalFacts.description.infos !== undefined"
             class="nutritional-facts-table__line--infos"
           >
-            <span>
-              {{ nutritionalFacts.description.infos[0] }}
+            <span
+              v-for="(info, index) in nutritionalFacts.description.infos"
+              :key="index"
+            >
+              {{ info }}
             </span>
           </div>
           <div class="nutritional-facts-table__line--infos">
