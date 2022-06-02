@@ -4,7 +4,7 @@ export interface PowderDescriptionInterface {
   category: string | undefined
   subCategory: string | undefined
   flavor: string | undefined
-  size: string | undefined
+  size: number | undefined
   // generics search sizes in grams: 100g, 500g, 1000g, 2000g ...
   genericSize: number | undefined
   // servings per container
