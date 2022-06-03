@@ -34,7 +34,7 @@
             <p v-if="nutrient">{{ nutrient.name }}</p>
             <p v-if="nutrient">{{ `${nutrient.value} ${nutrient.unit}` }}</p>
             <p v-if="nutrient && nutrient.vd === '**'">{{ nutrient.vd }}</p>
-            <p v-else-if="nutrient">{{ nutrient.vd }}%</p>
+            <p v-else-if="nutrient">{{ nutrient.vd }} %</p>
           </div>
           <div
             v-if="nutritionalFacts.description.infos !== undefined"
@@ -50,13 +50,16 @@
           <div class="nutritional-facts-table__line--infos">
             <span>Ingredientes: {{ nutritionalFacts.description.ingredients }}</span>
           </div>
-          <div
-            v-if="nutritionalFacts.description.contains !== undefined"
-            class="nutritional-facts-table__line--infos"
-          >
-            <span v-for="item in nutritionalFacts.description.contains" :key="item">
-              {{ item + ", " }}
-            </span>
+          <div>
+            <p>
+              Proteína por dose:
+              {{ disassembledProtein.nutrientInServingSize }} %
+            </p>
+            <p>
+              Preço da proteína por dose: R$
+              {{ disassembledProtein.nutrientPriceInServingSize }}
+            </p>
+            <p>Preço da dose: R$ {{ disassembledProtein.servingSizePrice }}</p>
           </div>
         </div>
       </div>
@@ -68,16 +71,27 @@
 import Vue from "vue";
 import wheyProtein from "~/static/mocks/whey-protein-mock";
 import { PowderNutritionalFactsSetter } from "~/composables/nutritional-facts/powder/nutritional-facts-setter";
+import NutrientDisassemble from "~/composables/disassemble/nutrient";
 export default Vue.extend({
   data() {
     return {
-      powder: wheyProtein[Number(this.$nuxt.$route.params.id)],
       nutritionalFacts: new PowderNutritionalFactsSetter(
         wheyProtein[Number(this.$nuxt.$route.params.id)]
       )
         .init()
         .getNutritionalFacts(),
     };
+  },
+  computed: {
+    disassembledProtein() {
+      const protein = new NutrientDisassemble(
+        wheyProtein[Number(this.$nuxt.$route.params.id)],
+        "protein",
+        538
+      );
+      protein.disjoin();
+      return protein.context;
+    },
   },
 });
 </script>
@@ -103,7 +117,7 @@ export default Vue.extend({
   justify-content: space-between;
   padding: 0 10px;
   &:hover {
-    background: rgba($color: rgb(188, 206, 218), $alpha: 0.5);
+    background: rgba($color: rgb(188, 206, 218), $alpha: 0.2);
   }
 }
 .nutritional-facts-table {

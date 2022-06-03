@@ -1,4 +1,4 @@
-export interface IngredientInterface {
+export interface NutrientInterface {
   unit: string
   value: number | null | string
   vd?: number | string
