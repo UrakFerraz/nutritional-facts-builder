@@ -10,7 +10,17 @@
           </div>
           <div class="nutritional-facts-table__line">
             <h2>Tamanho:</h2>
-            <h2>{{ nutritionalFacts.description.size }}</h2>
+            <h2
+              v-if="
+                nutritionalFacts.description.size !== undefined &&
+                nutritionalFacts.description.size < 1000
+              "
+            >
+              {{ nutritionalFacts.description.size }}
+            </h2>
+            <h2 v-else-if="nutritionalFacts.description.size !== undefined">
+              {{ nutritionalFacts.description.size / 1000 }} kg
+            </h2>
           </div>
           <div class="nutritional-facts-table__line">
             <h2>Dose:</h2>
@@ -107,8 +117,11 @@ export default Vue.extend({
     text-align: right;
   }
   p:last-child {
-    flex-basis: 80px;
+    flex-basis: 60px;
     text-align: right;
+    @media screen and (min-width: 768px) {
+      flex-basis: 80px;
+    }
   }
 }
 @mixin row {
@@ -117,11 +130,11 @@ export default Vue.extend({
   justify-content: space-between;
   padding: 0 10px;
   &:hover {
-    background: rgba($color: rgb(188, 206, 218), $alpha: 0.2);
+    background: rgba($color: #000, $alpha: 0.1);
   }
 }
 .nutritional-facts-table {
-  padding: 20px;
+  padding: 10px;
   &__container {
     display: flex;
     flex-flow: column;
@@ -134,7 +147,7 @@ export default Vue.extend({
   &__line {
     &--nutrient {
       &:nth-of-type(even) {
-        background: rgba($color: #000, $alpha: 0.1);
+        background: rgba($color: rgb(188, 206, 218), $alpha: 0.2);
       }
       @include nutrientRow;
       @include row;
@@ -147,6 +160,9 @@ export default Vue.extend({
       border-bottom: 1px solid rgb(112, 110, 133);
     }
     @include row;
+  }
+  @media screen and (min-width: 768px) {
+    padding: 20px;
   }
 }
 </style>
