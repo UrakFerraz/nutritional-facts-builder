@@ -29,17 +29,15 @@ const notSignificantMock = [
 
 describe('deve procurar valores não significativos', () => {
   it('deve guardar valores não significativos', () => {
-    const mock = new NotSignificantVD(nutrientsWithVdMock)
-    mock.setNotSignificantNutrient()
+    const mock = new NotSignificantVD(nutrientsWithVdMock).setNotSignificantNutrient()
     expect(mock.notSignificantNutrient).toEqual(notSignificantMock)
     expect(JSON.stringify(mock.notSignificantNutrient)).toBe(
       JSON.stringify(notSignificantMock)
     )
   })
   it('deve criar frase para tabela nutricional', () => {
-    const mock = new NotSignificantVD(nutrientsWithVdMock)
-    mock.setNotSignificantNutrient()
-    expect(mock.notSignificantNutrientText()).toEqual(
+    const mock = new NotSignificantVD(nutrientsWithVdMock).setNotSignificantNutrient().setNotSignificantNutrientText()
+    expect(mock.notSignificantNutrientText).toEqual(
       'Não contém quantidades significativas de gorduras saturadas, fibra alimentar e sódio.'
     )
   })

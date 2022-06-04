@@ -4,13 +4,19 @@ import VD from '~/static/mocks/BR_VD'
 
 export default class NotSignificantVD {
   private _notSignificantNutrient: any[] = []
+
+  private _notSignificantNutrientText: string | undefined = undefined
   constructor(private readonly nutrientsWithVD: NutrientsInterface) {}
 
-  get notSignificantNutrient(): string[] {
+  get notSignificantNutrient(): any[] {
     return this._notSignificantNutrient
   }
 
-  setNotSignificantNutrient() {
+  get notSignificantNutrientText(): string | undefined {
+    return this._notSignificantNutrientText
+  }
+
+  private findNotSignificantNutrients() {
     const nutrients = Object.entries(this.nutrientsWithVD!)
     const vd = Object.entries(VD)
     const identified = nutrients.filter((nutrient) => nutrient[1].vd < 1)
@@ -25,23 +31,27 @@ export default class NotSignificantVD {
         return
       filtered.push(...res)
     })
-    this._notSignificantNutrient.push(...filtered)
+    return filtered
   }
 
-  notSignificantNutrientText() {
-    this.setNotSignificantNutrient()
-    const info = this.notSignificantNutrient.reduce(
+  setNotSignificantNutrient() {
+    this._notSignificantNutrient.push(...this.findNotSignificantNutrients())
+    return this
+  }
+
+  private formatText(nutrients: any[]) {
+    return nutrients.reduce(
       (acc: any, nutrient: any, index: number) => {
         if (
-          index === this.notSignificantNutrient.length - 1 &&
-          this.notSignificantNutrient.length > 1
+          index === nutrients.length - 1 &&
+          nutrients.length > 1
         ) {
           return acc + ' e ' + nutrient[1].name.toLowerCase() + '.'
-        } else if (this.notSignificantNutrient.length === 1) {
+        } else if (nutrients.length === 1) {
           return acc + ' ' + nutrient[1].name.toLowerCase() + '.'
         } else if (
-          index === this.notSignificantNutrient.length - 2 &&
-          this.notSignificantNutrient.length > 2
+          index === nutrients.length - 2 &&
+          nutrients.length > 2
         ) {
           return acc + ', ' + nutrient[1].name.toLowerCase()
         } else if (index === 0) {
@@ -52,6 +62,11 @@ export default class NotSignificantVD {
       },
       infos[0]
     )
-    return info === infos[0] ? undefined : info
+  }
+
+  setNotSignificantNutrientText() {
+    const info = this.formatText(this.notSignificantNutrient)
+    this._notSignificantNutrientText = info === infos[0] ? undefined : info
+    return this
   }
 }
