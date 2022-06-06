@@ -1,10 +1,12 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console */ /* eslint-disable no-console */
 <template>
   <div v-if="nutritionalFacts.description !== null">
+    <div>
+      <Donut :percentage="Math.round(disassembledProtein.nutrientInServingSize)" />
+    </div>
     <div class="nutritional-facts-table">
       <div class="nutritional-facts-table__container">
         <div class="nutritional-facts-table__header">
-          <h1>Informação Nutricional</h1>
           <div class="nutritional-facts-table__line">
             <h2>{{ nutritionalFacts.description.name }}</h2>
           </div>
@@ -23,12 +25,15 @@
             </h2>
           </div>
           <div class="nutritional-facts-table__line">
-            <h2>Dose:</h2>
-            <h2>{{ nutritionalFacts.description.servingSize }}g</h2>
-          </div>
-          <div class="nutritional-facts-table__line">
             <h2>Total de doses:</h2>
             <h2>{{ nutritionalFacts.description.servings }} doses</h2>
+          </div>
+          <div class="nutritional-facts-table__line">
+            <h1 class="nutritional-facts-table__line--title">Informação Nutricional</h1>
+          </div>
+          <div class="nutritional-facts-table__line">
+            <h2>Dose:</h2>
+            <h2>{{ nutritionalFacts.description.servingSize }}g</h2>
           </div>
         </div>
         <div class="nutritional-facts-table__principal-info">
@@ -79,10 +84,12 @@
 
 <script lang="ts">
 import Vue from "vue";
+import Donut from "../../components/charts/Donut.vue";
 import wheyProtein from "~/static/mocks/whey-protein-mock";
 import { PowderNutritionalFactsSetter } from "~/composables/nutritional-facts/powder/nutritional-facts-setter";
 import NutrientDisassemble from "~/composables/disassemble/nutrient";
 export default Vue.extend({
+  components: { Donut },
   data() {
     return {
       nutritionalFacts: new PowderNutritionalFactsSetter(
@@ -160,6 +167,12 @@ export default Vue.extend({
       border-bottom: 1px solid rgb(112, 110, 133);
     }
     @include row;
+    &--title {
+      border-top: 1px solid rgba(112, 110, 133, 0.5);
+      margin-top: 20px;
+      padding-top: 10px;
+      width: 100%;
+    }
   }
   @media screen and (min-width: 768px) {
     padding: 20px;
