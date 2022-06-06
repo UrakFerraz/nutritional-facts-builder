@@ -25,14 +25,14 @@
             </h2>
           </div>
           <div class="nutritional-facts-table__line">
-            <h2>Total de doses:</h2>
+            <h2>Total de porções:</h2>
             <h2>{{ nutritionalFacts.description.servings }} doses</h2>
           </div>
           <div class="nutritional-facts-table__line">
             <h1 class="nutritional-facts-table__line--title">Informação Nutricional</h1>
           </div>
           <div class="nutritional-facts-table__line">
-            <h2>Dose:</h2>
+            <h2>Porção:</h2>
             <h2>{{ nutritionalFacts.description.servingSize }}g</h2>
           </div>
         </div>
