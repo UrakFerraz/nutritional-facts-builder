@@ -1,5 +1,5 @@
 import infos from './vd-infos'
-import { NutrientsInterface } from '~/composables/interfaces/Nutrients'
+import { NutrientsInterface } from '~/composables/interfaces/nutrients'
 import VD from '~/static/mocks/BR_VD'
 
 export default class NotSignificantVD {

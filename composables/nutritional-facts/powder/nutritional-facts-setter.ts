@@ -1,8 +1,7 @@
-/* eslint-disable no-console */
 import NutrientsVD from '../nutrients/nutrients-vd-setter'
 import PowderDescription from '../description/powder-description-setter'
 import { PowderInterface } from '~/composables/interfaces/powder'
-import { NutrientsInterface } from '~/composables/interfaces/Nutrients'
+import { NutrientsInterface } from '~/composables/interfaces/nutrients'
 import { PowderDescriptionInterface } from '~/composables/interfaces/powder-description'
 export class PowderNutritionalFactsSetter {
   constructor(private readonly powder: PowderInterface) {}

@@ -1,4 +1,4 @@
-import { NutrientsInterface } from '../../interfaces/Nutrients'
+import { NutrientsInterface } from '../../interfaces/nutrients'
 import nutritionalValues from '../../../static/mocks/nutritional-values'
 
 export default class NutrientsVD {

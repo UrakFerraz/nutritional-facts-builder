@@ -1,5 +1,5 @@
 import { PowderDescriptionInterface } from './powder-description'
-import { NutrientsInterface } from './Nutrients'
+import { NutrientsInterface } from './nutrients'
 
 export interface PowderInterface {
   id: number
