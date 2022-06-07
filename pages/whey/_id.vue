@@ -1,8 +1,23 @@
 /* eslint-disable no-console */ /* eslint-disable no-console */
 <template>
   <div v-if="nutritionalFacts.description !== null">
-    <div>
-      <Donut :percentage="Math.round(disassembledProtein.nutrientInServingSize)" />
+    <div class="donut-chart">
+      <p class="donut-chart__title">
+        Proteína <br />
+        por porção
+      </p>
+      <Donut
+        :percentage="Math.round(disassembledNutrients.protein.nutrientInServingSize)"
+      />
+    </div>
+    <div class="donut-chart">
+      <p class="donut-chart__title">
+        Carboidrato <br />
+        por porção
+      </p>
+      <Donut
+        :percentage="Math.round(disassembledNutrients.carbohydrate.nutrientInServingSize)"
+      />
     </div>
     <div class="nutritional-facts-table">
       <div class="nutritional-facts-table__container">
@@ -24,16 +39,30 @@
               {{ nutritionalFacts.description.size / 1000 }} kg
             </h2>
           </div>
-          <div class="nutritional-facts-table__line">
+          <div
+            v-if="
+              nutritionalFacts.description.size !== undefined &&
+              nutritionalFacts.description.servingSize !== undefined
+            "
+            class="nutritional-facts-table__line"
+          >
             <h2>Total de porções:</h2>
-            <h2>{{ nutritionalFacts.description.servings }} doses</h2>
+            <h2>
+              {{
+                Math.floor(
+                  nutritionalFacts.description.size /
+                    nutritionalFacts.description.servingSize
+                )
+              }}
+              porções
+            </h2>
           </div>
           <div class="nutritional-facts-table__line">
             <h1 class="nutritional-facts-table__line--title">Informação Nutricional</h1>
           </div>
           <div class="nutritional-facts-table__line">
             <h2>Porção:</h2>
-            <h2>{{ nutritionalFacts.description.servingSize }}g</h2>
+            <h2>{{ nutritionalFacts.description.servingSize }} g</h2>
           </div>
         </div>
         <div class="nutritional-facts-table__principal-info">
@@ -63,18 +92,24 @@
             </span>
           </div>
           <div class="nutritional-facts-table__line--infos">
-            <span>Ingredientes: {{ nutritionalFacts.description.ingredients }}</span>
+            <span
+              ><strong>Ingredientes:</strong>
+              {{ nutritionalFacts.description.ingredients }}</span
+            >
           </div>
           <div>
             <p>
               Proteína por dose:
-              {{ disassembledProtein.nutrientInServingSize }} %
+              {{ disassembledNutrients.protein.nutrientInServingSize }} %
             </p>
             <p>
               Preço da proteína por dose: R$
-              {{ disassembledProtein.nutrientPriceInServingSize }}
+              {{ disassembledNutrients.protein.nutrientPriceInServingSize }}
             </p>
-            <p>Preço da dose: R$ {{ disassembledProtein.servingSizePrice }}</p>
+            <p>
+              Preço da dose: R$
+              {{ disassembledNutrients.protein.servingSizePrice }}
+            </p>
           </div>
         </div>
       </div>
@@ -100,14 +135,20 @@ export default Vue.extend({
     };
   },
   computed: {
-    disassembledProtein() {
+    disassembledNutrients() {
       const protein = new NutrientDisassemble(
         wheyProtein[Number(this.$nuxt.$route.params.id)],
         "protein",
         538
       );
       protein.disjoin();
-      return protein.context;
+      const carbo = new NutrientDisassemble(
+        wheyProtein[Number(this.$nuxt.$route.params.id)],
+        "carbohydrate",
+        538
+      );
+      carbo.disjoin();
+      return { protein: protein.context, carbohydrate: carbo.context };
     },
   },
 });
@@ -140,6 +181,20 @@ export default Vue.extend({
     background: rgba($color: #000, $alpha: 0.1);
   }
 }
+
+.donut-chart {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.04);
+  border-radius: 0 0 10px 10px;
+  &__title {
+    font-size: 16px;
+    text-align: center;
+    flex: 1;
+  }
+}
 .nutritional-facts-table {
   padding: 10px;
   &__container {
@@ -161,9 +216,7 @@ export default Vue.extend({
     }
     @include nutrientRow;
     &--infos {
-      margin: 10px 0;
       padding: 10px 0;
-      border-top: 1px solid rgb(112, 110, 133);
       border-bottom: 1px solid rgb(112, 110, 133);
     }
     @include row;

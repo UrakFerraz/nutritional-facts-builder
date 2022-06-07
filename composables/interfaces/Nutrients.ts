@@ -1,4 +1,4 @@
-import { NutrientInterface } from './Ingredient'
+import { NutrientInterface } from './nutrient'
 
 export interface NutrientsInterface {
   calories: NutrientInterface

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { PowderInterface } from '../interfaces/powder'
-import { NutrientInterface } from '../interfaces/Ingredient'
+import { NutrientInterface } from '../interfaces/nutrient'
 import nutritionalValues from '~/static/mocks/nutritional-values'
 
 type PowderNutrients = Pick<PowderInterface, 'nutrients'>

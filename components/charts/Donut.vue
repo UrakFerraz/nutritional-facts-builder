@@ -40,9 +40,6 @@ export default Vue.extend({
   },
   computed: {
     percentageStroke() {
-      // eslint-disable-next-line no-console
-      console.log(`${this.percentage} ${100 - Number(this.percentage)}`);
-
       return `${this.percentage} ${100 - Number(this.percentage)}`;
     },
   },
@@ -61,29 +58,42 @@ export default Vue.extend({
   grid-template-columns: 1fr auto 1fr;
   grid-template-rows: 1fr auto 1fr;
   align-content: center;
+  .donut {
+    display: flex;
+    position: relative;
+    align-content: center;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+  }
+  .donut-ring {
+    stroke: #ebebeb;
+    stroke-width: 3.5;
+  }
+  .donut-segment {
+    transition: 1s ease all;
+    stroke-width: 3.5;
+    transform-origin: center;
+    stroke: #6c8a9b;
+    animation: donut1 3s;
+    animation-fill-mode: both;
+    stroke-dashoffset: 25;
+  }
 }
-
-.donut {
-  display: flex;
+.donut-percent {
+  grid-column: 2 / -2;
+  grid-row: 2 / -2;
+  font-size: 30px;
+  font-weight: bold;
+  display: block;
   position: relative;
-  align-content: center;
-  grid-column: 1 / -1;
-  grid-row: 1 / -1;
-}
 
-.donut-ring {
-  stroke: #ebebeb;
-  stroke-width: 3.5;
-}
-
-.donut-segment {
-  transition: 1s ease all;
-  stroke-width: 3.5;
-  transform-origin: center;
-  stroke: #6c8a9b;
-  animation: donut1 3s;
-  animation-fill-mode: both;
-  stroke-dashoffset: 25;
+  &:after {
+    content: "%";
+    position: absolute;
+    bottom: 5px;
+    right: -18px;
+    font-size: 18px;
+  }
 }
 
 @keyframes donutfade {
@@ -98,31 +108,6 @@ export default Vue.extend({
 @keyframes donut1 {
   0% {
     stroke-dasharray: 0, 100;
-  }
-}
-
-.donut-text {
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.donut-percent {
-  grid-column: 2 / -2;
-  grid-row: 2 / -2;
-  font-size: 30px;
-  font-weight: bold;
-  display: block;
-  position: relative;
-
-  &:after {
-    content: "%";
-    position: absolute;
-    bottom: 0;
-    right: -18px;
-    font-size: 18px;
   }
 }
 </style>
