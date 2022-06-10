@@ -26,7 +26,7 @@ const nutritionalValues: NutritionalValues = {
   niacin: { unit: 'mg', value: 16, name: 'Niacina' },
   pantothenicAcid: { unit: 'mg', value: 5, name: 'Ácido Pantotênico' },
   phosphorus: { unit: 'mg', value: 700, name: 'Fósforo' },
-  potassium: { unit: 'g', value: 4.7, name: 'Potássio' },
+  potassium: { unit: 'mg', value: null, name: 'Potássio' },
   riboflavin: { unit: 'mg', value: 1.3, name: 'Riboflavina' },
   saturatedFattyAcids: {
     unit: 'g',
@@ -36,7 +36,7 @@ const nutritionalValues: NutritionalValues = {
   selenium: { unit: 'mcg', value: 55, name: 'Selênio' },
   thiamine: { unit: 'mg', value: 1.2, name: 'Tiamina' },
   vitaminA: { unit: 'mcg', value: 600, name: 'Vitamina A' },
-  vitaminB12: { unit: 'mcg', value: 4, name: 'Vitamina B12' },
+  vitaminB12: { unit: 'mcg', value: 2.4, name: 'Vitamina B12' },
   vitaminB6: { unit: 'mg', value: 1.6, name: 'Vitamina B6' },
   vitaminC: { unit: 'mg', value: 45, name: 'Vitamina C' },
   vitaminD: { unit: 'mcg', value: 5, name: 'Vitamina D' },
