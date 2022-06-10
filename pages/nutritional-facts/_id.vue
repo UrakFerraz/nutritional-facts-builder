@@ -118,7 +118,7 @@
 <script lang="ts">
 import Vue from "vue";
 import Donut from "~/components/charts/Donut.vue";
-import wheyProtein from "~/static/mocks/whey-protein-mock";
+import powders from "~/static/mocks/powders";
 import { PowderNutritionalFactsSetter } from "~/composables/nutritional-facts/powder/nutritional-facts-setter";
 import DisassembleNutrient from "~/composables/disassemble/nutrient";
 export default Vue.extend({
@@ -126,7 +126,7 @@ export default Vue.extend({
   data() {
     return {
       nutritionalFacts: new PowderNutritionalFactsSetter(
-        wheyProtein[Number(this.$nuxt.$route.params.id)]
+        powders[Number(this.$nuxt.$route.params.id)]
       )
         .init()
         .getNutritionalFacts(),
@@ -135,13 +135,13 @@ export default Vue.extend({
   computed: {
     disassembledNutrients() {
       const protein = new DisassembleNutrient(
-        wheyProtein[Number(this.$nuxt.$route.params.id)],
+        powders[Number(this.$nuxt.$route.params.id)],
         "protein",
         538
       );
       protein.disjoin();
       const carbo = new DisassembleNutrient(
-        wheyProtein[Number(this.$nuxt.$route.params.id)],
+        powders[Number(this.$nuxt.$route.params.id)],
         "carbohydrate",
         538
       );

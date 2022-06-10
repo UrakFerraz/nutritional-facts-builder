@@ -1,5 +1,5 @@
 import NutrientsVD from './nutrients-vd-setter'
-import wheyProtein from '~/static/mocks/whey-protein-mock'
+import powders from '~/static/mocks/powders'
 
 const nutrientsWithVdMock = {
   calories: {
@@ -25,7 +25,7 @@ const nutrientsWithVdMock = {
 
 describe('deve adicionar vd', () => {
   it('deve adicionar vd no powder', () => {
-    const nutrients = new NutrientsVD(wheyProtein[1].nutrients)
+    const nutrients = new NutrientsVD(powders[1].nutrients)
     nutrients.addVD()
     expect(nutrients.nutrientsWithVD).toEqual(nutrientsWithVdMock)
   })

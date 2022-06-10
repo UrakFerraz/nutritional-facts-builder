@@ -1,5 +1,5 @@
 import { PowderNutritionalFactsSetter } from './powder/nutritional-facts-setter'
-import wheyProtein from '~/static/mocks/whey-protein-mock'
+import powders from '~/static/mocks/powders'
 
 const wheyMock = {
   powder: {
@@ -32,7 +32,6 @@ const wheyMock = {
       dietaryFibers: { unit: 'g', value: 0 },
       sodium: { unit: 'mg', value: 105 },
       cholesterol: { unit: 'mg', value: 0.035 },
-      totalSugars: { unit: 'g', value: 1 },
     },
   },
   _id: 1,
@@ -72,24 +71,24 @@ const wheyMock = {
 
 describe('deve converter a whey para valores com VD', () => {
   it('deve existir a classe de converter', () => {
-    const whey = wheyProtein[0]
+    const whey = powders[0]
     const powder = new PowderNutritionalFactsSetter(whey)
     powder.init()
     expect(powder).toBeDefined()
   })
   it('deve existir vd na whey convertida', () => {
-    const whey = wheyProtein[0]
+    const whey = powders[0]
     const powder = new PowderNutritionalFactsSetter(whey)
     powder.init()
     expect(powder.nutrientsWithVD!.transFat.vd).toBe('**')
   })
   it('deve converter powder', () => {
-    const whey = wheyProtein[0]
+    const whey = powders[0]
     const powder = new PowderNutritionalFactsSetter(whey).init()
     expect(JSON.stringify(powder)).toBe(JSON.stringify(wheyMock))
   })
   it('deve retornar o powder tratado', () => {
-    const whey = wheyProtein[0]
+    const whey = powders[0]
     const powder = new PowderNutritionalFactsSetter(whey)
     powder.init()
     expect(JSON.stringify(powder.getNutritionalFacts())).toBe(

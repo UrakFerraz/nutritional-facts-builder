@@ -1,5 +1,5 @@
 import PowderUnitsConverter from './powder-units-converter'
-import wheyProtein from '~/static/mocks/whey-protein-mock'
+import powders from '~/static/mocks/powders'
 import wheyWrongUnits from '~/static/mocks/wrong-units-whey'
 
 const convertedValues = [
@@ -19,7 +19,7 @@ const convertedValues2 = [
 
 describe('deve converter unidades de pós', () => {
   it('deve converter 2 valores', () => {
-    const converter = new PowderUnitsConverter(wheyProtein[1])
+    const converter = new PowderUnitsConverter(powders[1])
     converter.convertUnits()
     converter.setConvertedPowder()
     expect(converter.converterConfig).toEqual(convertedValues)
@@ -29,6 +29,6 @@ describe('deve converter unidades de pós', () => {
     converter.convertUnits()
     expect(converter.converterConfig).toEqual(convertedValues2)
     converter.setConvertedPowder()
-    expect(converter.converted).toEqual(wheyProtein[1])
+    expect(converter.converted).toEqual(powders[1])
   })
 })
