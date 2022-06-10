@@ -33,7 +33,7 @@ import Vue from "vue";
 
 export default Vue.extend({
   props: {
-    percentage: { type: Number, required: true, default: 0 },
+    percentage: { type: Number, required: true },
   },
   data() {
     return {};
