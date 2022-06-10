@@ -1,23 +1,21 @@
 /* eslint-disable no-console */ /* eslint-disable no-console */
 <template>
   <div v-if="nutritionalFacts.description !== null">
-    <div class="donut-chart">
-      <p class="donut-chart__title">
-        Proteína <br />
-        por porção
-      </p>
-      <Donut
-        :percentage="Math.round(disassembledNutrients.protein.nutrientInServingSize)"
-      />
-    </div>
-    <div class="donut-chart">
-      <p class="donut-chart__title">
-        Carboidrato <br />
-        por porção
-      </p>
-      <Donut
-        :percentage="Math.round(disassembledNutrients.carbohydrate.nutrientInServingSize)"
-      />
+    <div class="charts">
+      <div class="donut-chart">
+        <Donut
+          :percentage="Math.round(disassembledNutrients.protein.nutrientInServingSize)"
+        />
+        <p class="donut-chart__title">Proteínas</p>
+      </div>
+      <div class="donut-chart">
+        <Donut
+          :percentage="
+            Math.round(disassembledNutrients.carbohydrate.nutrientInServingSize)
+          "
+        />
+        <p class="donut-chart__title">Carboidratos</p>
+      </div>
     </div>
     <div class="nutritional-facts-table">
       <div class="nutritional-facts-table__container">
@@ -119,10 +117,10 @@
 
 <script lang="ts">
 import Vue from "vue";
-import Donut from "../../components/charts/Donut.vue";
+import Donut from "~/components/charts/Donut.vue";
 import wheyProtein from "~/static/mocks/whey-protein-mock";
 import { PowderNutritionalFactsSetter } from "~/composables/nutritional-facts/powder/nutritional-facts-setter";
-import NutrientDisassemble from "~/composables/disassemble/nutrient";
+import DisassembleNutrient from "~/composables/disassemble/nutrient";
 export default Vue.extend({
   components: { Donut },
   data() {
@@ -136,13 +134,13 @@ export default Vue.extend({
   },
   computed: {
     disassembledNutrients() {
-      const protein = new NutrientDisassemble(
+      const protein = new DisassembleNutrient(
         wheyProtein[Number(this.$nuxt.$route.params.id)],
         "protein",
         538
       );
       protein.disjoin();
-      const carbo = new NutrientDisassemble(
+      const carbo = new DisassembleNutrient(
         wheyProtein[Number(this.$nuxt.$route.params.id)],
         "carbohydrate",
         538
@@ -182,10 +180,17 @@ export default Vue.extend({
   }
 }
 
+.charts {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
 .donut-chart {
   display: flex;
+  flex-flow: column;
   align-items: center;
-  margin: 20px;
   padding: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.04);
   border-radius: 0 0 10px 10px;

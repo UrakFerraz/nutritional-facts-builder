@@ -1,4 +1,5 @@
-import ingredientsList from './ingredients-analysis'
+import ingredientsList from '~/static/mocks/ingredients-list'
+
 export default class IdentifyIngredients {
   private list = ingredientsList
   constructor(private _ingredients: string) {}
