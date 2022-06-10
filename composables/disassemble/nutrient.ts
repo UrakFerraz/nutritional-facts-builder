@@ -1,6 +1,6 @@
 import { PowderInterface } from '~/composables/interfaces/powder'
 
-export default class NutrientDisassemble {
+export default class DisassembleNutrient {
   constructor(
     private readonly powder: PowderInterface,
     private readonly nutrientName: string,

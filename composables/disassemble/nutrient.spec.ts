@@ -1,12 +1,12 @@
-import NutrientDisassemble from './nutrient'
+import DisassembleNutrient from './nutrient'
 import wheyProtein from '~/static/mocks/whey-protein-mock'
 describe('deve fracionar o powder', () => {
   it('deve criar a classe de fracionamento', () => {
-    const sut = new NutrientDisassemble(wheyProtein[0], 'protein', 550)
+    const sut = new DisassembleNutrient(wheyProtein[0], 'protein', 550)
     expect(sut).toBeDefined()
   })
   it('deve criar a classe de fracionamento e calcular o nutriente', () => {
-    const sut = new NutrientDisassemble(wheyProtein[0], 'protein', 550)
+    const sut = new DisassembleNutrient(wheyProtein[0], 'protein', 550)
     expect(sut).toBeDefined()
     sut.disjoin()
     const convertedMock = {
@@ -17,7 +17,7 @@ describe('deve fracionar o powder', () => {
     expect(sut.context).toEqual(convertedMock)
   })
   it('deve criar outra classe de fracionamento e calcular o nutriente', () => {
-    const sut = new NutrientDisassemble(wheyProtein[1], 'protein', 630)
+    const sut = new DisassembleNutrient(wheyProtein[1], 'protein', 630)
     expect(sut).toBeDefined()
     sut.disjoin()
     const convertedMock = {
