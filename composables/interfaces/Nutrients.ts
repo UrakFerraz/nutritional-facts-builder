@@ -10,7 +10,7 @@ export interface NutrientsInterface {
   dietaryFibers?: NutrientInterface
   sodium?: NutrientInterface
   calcium?: NutrientInterface
-  cholesterol: NutrientInterface
+  cholesterol?: NutrientInterface
   totalSugars?: NutrientInterface
   biotin?: NutrientInterface
   choline?: NutrientInterface

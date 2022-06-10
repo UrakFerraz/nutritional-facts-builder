@@ -5,6 +5,7 @@ export interface NutritionalValues {
   carbohydrate: NutrientInterface
   protein: NutrientInterface
   totalFat: NutrientInterface
+  totalSugars: NutrientInterface
   saturatedFat: NutrientInterface
   transFat: NutrientInterface
   dietaryFibers: NutrientInterface

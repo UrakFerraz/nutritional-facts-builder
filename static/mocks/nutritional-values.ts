@@ -7,6 +7,7 @@ const nutritionalValues: NutritionalValues = {
   totalFat: { unit: 'g', value: 55, name: 'Gorduras Totais' },
   saturatedFat: { unit: 'g', value: 22, name: 'Gorduras Saturadas' },
   transFat: { unit: 'g', value: null, name: 'Gorduras Trans' },
+  totalSugars: { unit: 'g', value: null, name: 'Açúcares' },
   dietaryFibers: { unit: 'g', value: 25, name: 'Fibra Alimentar' },
   sodium: { unit: 'g', value: 2000, name: 'Sódio' },
   calcium: { unit: 'mg', value: 1000, name: 'Cálcio' },
@@ -26,7 +27,7 @@ const nutritionalValues: NutritionalValues = {
   pantothenicAcid: { unit: 'mg', value: 5, name: 'Ácido Pantotênico' },
   phosphorus: { unit: 'mg', value: 700, name: 'Fósforo' },
   potassium: { unit: 'g', value: 4.7, name: 'Potássio' },
-  riboflavin: { unit: 'mg', value: 1.3, name: 'Roboflavona' },
+  riboflavin: { unit: 'mg', value: 1.3, name: 'Riboflavina' },
   saturatedFattyAcids: {
     unit: 'g',
     value: 20,

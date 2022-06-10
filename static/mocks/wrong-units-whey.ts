@@ -31,7 +31,6 @@ const wheyWrongUnits = {
     calcium: { unit: 'g', value: 0.15 },
     cholesterol: { unit: 'mcg', value: 55_000 },
     iron: { unit: 'mg', value: 0.011 },
-    totalSugars: { unit: 'g', value: 2 },
     potassium: { unit: 'mg', value: 3 },
     phosphorus: { unit: 'mg', value: 150 },
     magnesium: { unit: 'mg', value: 24 },
