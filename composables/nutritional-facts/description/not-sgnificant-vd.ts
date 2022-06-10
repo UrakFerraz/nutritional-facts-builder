@@ -40,28 +40,19 @@ export default class NotSignificantVD {
   }
 
   private formatText(nutrients: any[]) {
-    return nutrients.reduce(
-      (acc: any, nutrient: any, index: number) => {
-        if (
-          index === nutrients.length - 1 &&
-          nutrients.length > 1
-        ) {
-          return acc + ' e ' + nutrient[1].name.toLowerCase() + '.'
-        } else if (nutrients.length === 1) {
-          return acc + ' ' + nutrient[1].name.toLowerCase() + '.'
-        } else if (
-          index === nutrients.length - 2 &&
-          nutrients.length > 2
-        ) {
-          return acc + ', ' + nutrient[1].name.toLowerCase()
-        } else if (index === 0) {
-          return acc + ' ' + nutrient[1].name.toLowerCase()
-        } else {
-          return acc + ', ' + nutrient[1].name.toLowerCase()
-        }
-      },
-      infos[0]
-    )
+    return nutrients.reduce((acc: any, nutrient: any, index: number) => {
+      if (index === nutrients.length - 1 && nutrients.length > 1) {
+        return acc + ' e ' + nutrient[1].name.toLowerCase() + '.'
+      } else if (nutrients.length === 1) {
+        return acc + ' ' + nutrient[1].name.toLowerCase() + '.'
+      } else if (index === nutrients.length - 2 && nutrients.length > 2) {
+        return acc + ', ' + nutrient[1].name.toLowerCase()
+      } else if (index === 0) {
+        return acc + ' ' + nutrient[1].name.toLowerCase()
+      } else {
+        return acc + ', ' + nutrient[1].name.toLowerCase()
+      }
+    }, infos[0])
   }
 
   setNotSignificantNutrientText() {
