@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-import wheyProtein from '../../static/mocks/whey-protein-mock'
 import { PowderNutritionalFactsSetter } from './powder/nutritional-facts-setter'
 
 const wheyMock = {
@@ -12,7 +10,6 @@ const wheyMock = {
       subCategory: 'whey protein',
       flavor: 'Vanilla Ice Cream',
       size: 2200,
-      genericSize: 2000,
       servings: 73,
       servingSize: 31,
       infos: [
@@ -59,7 +56,6 @@ const wheyMock = {
     subCategory: 'whey protein',
     flavor: 'Vanilla Ice Cream',
     size: 2200,
-    genericSize: 2000,
     servings: 73,
     servingSize: 31,
     infos: [

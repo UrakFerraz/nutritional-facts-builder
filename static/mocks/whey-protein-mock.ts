@@ -8,8 +8,6 @@ const wheyProtein = [
       subCategory: 'whey protein',
       flavor: 'Vanilla Ice Cream',
       size: 2200,
-      // generics search sizes in grams: 100g, 500g, 1000g, 2000g ...
-      genericSize: 2000,
       // servings per container
       servings: 73,
       // Serving Size About 1 Scoop
@@ -45,8 +43,6 @@ const wheyProtein = [
       subCategory: 'whey protein',
       flavor: 'Vanilla Ice Cream',
       size: 2200,
-      // generics search sizes in grams: 100g, 500g, 1000g, 2000g ...
-      genericSize: 2000,
       // servings per container
       servings: 48,
       // Serving Size About 1 Scoop

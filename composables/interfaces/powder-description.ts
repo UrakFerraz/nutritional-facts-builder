@@ -5,8 +5,6 @@ export interface PowderDescriptionInterface {
   subCategory: string | undefined
   flavor: string | undefined
   size: number | undefined
-  // generics search sizes in grams: 100g, 500g, 1000g, 2000g ...
-  genericSize: number | undefined
   // servings per container
   servings: number | undefined
   // Serving Size About 1 Scoop
