@@ -4,7 +4,6 @@ import wheyWrongUnits from '~/static/mocks/wrong-units-whey'
 
 const convertedValues = [
   { unit: 'g', nutrientName: 'sodium', convertion: 0.022 },
-  { unit: 'g', nutrientName: 'potassium', convertion: 0.003 },
 ]
 
 const convertedValues2 = [
@@ -14,11 +13,10 @@ const convertedValues2 = [
   { unit: 'g', nutrientName: 'sodium', convertion: 0.022 },
   { unit: 'mg', nutrientName: 'calcium', convertion: 150 },
   { unit: 'mg', nutrientName: 'cholesterol', convertion: 55 },
-  { unit: 'g', nutrientName: 'potassium', convertion: 0.003 },
 ]
 
 describe('deve converter unidades de pós', () => {
-  it('deve converter 2 valores', () => {
+  it('deve converter 1 valor', () => {
     const converter = new PowderUnitsConverter(powders[1])
     converter.convertUnits()
     converter.setConvertedPowder()

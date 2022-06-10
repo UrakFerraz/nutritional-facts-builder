@@ -17,7 +17,7 @@ const nutrientsWithVdMock = {
   dietaryFibers: { unit: 'g', name: 'Fibra Alimentar', value: 1, vd: 4 },
   calcium: { unit: 'mg', name: 'Cálcio', value: 150, vd: 15 },
   cholesterol: { unit: 'mg', name: 'Colesterol', value: 55, vd: 18 },
-  potassium: { unit: 'mg', name: 'Potássio', value: 3, vd: 64 },
+  potassium: { unit: 'mg', name: 'Potássio', value: 3, vd: '**' },
   iron: { unit: 'mg', name: 'Ferro', value: 0.011, vd: 0 },
   phosphorus: { unit: 'mg', name: 'Fósforo', value: 150, vd: 21 },
   magnesium: { unit: 'mg', name: 'Magnésio', value: 24, vd: 9 },
