@@ -1,7 +1,7 @@
-import { PowderDescriptionInterface } from '../../interfaces/powder-description'
 import NotSignificantVD from './not-sgnificant-vd'
 import infos from './vd-infos'
 import { PowderInterface } from '~/composables/interfaces/powder'
+import { PowderDescriptionInterface } from '~/composables/interfaces/powder-description'
 
 export default class PowderDescription {
   private _powderDescription: PowderDescriptionInterface | null = null

@@ -1,4 +1,5 @@
 import { PowderNutritionalFactsSetter } from './powder/nutritional-facts-setter'
+import wheyProtein from '~/static/mocks/whey-protein-mock'
 
 const wheyMock = {
   powder: {

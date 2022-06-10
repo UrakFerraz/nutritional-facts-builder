@@ -1,5 +1,5 @@
-import { NutrientsInterface } from '../../interfaces/nutrients'
-import nutritionalValues from '../../../static/mocks/nutritional-values'
+import { NutrientsInterface } from '~/composables/interfaces/nutrients'
+import nutritionalValues from '~/static/mocks/nutritional-values'
 
 export default class NutrientsVD {
   private _nutrientsWithVD: NutrientsInterface | null = null
