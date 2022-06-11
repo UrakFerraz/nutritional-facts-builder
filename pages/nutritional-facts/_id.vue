@@ -74,7 +74,16 @@
             class="nutritional-facts-table__line--nutrient"
           >
             <p v-if="nutrient">{{ nutrient.name }}</p>
-            <p v-if="nutrient">{{ `${nutrient.value} ${nutrient.unit}` }}</p>
+            <p
+              v-if="
+                nutrient && nutrient.unit === 'kcal' && typeof nutrient.value === 'string'
+              "
+            >
+              {{ `${nutrient.value}` }}
+            </p>
+            <p v-if="nutrient && nutrient.unit !== 'kcal'">
+              {{ `${nutrient.value} ${nutrient.unit}` }}
+            </p>
             <p v-if="nutrient && nutrient.vd === '**'">{{ nutrient.vd }}</p>
             <p v-else-if="nutrient">{{ nutrient.vd }} %</p>
           </div>
