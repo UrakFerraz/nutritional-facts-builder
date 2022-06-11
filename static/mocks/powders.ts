@@ -8,9 +8,6 @@ const powders = [
       subCategory: 'whey protein',
       flavor: 'Vanilla Ice Cream',
       size: 2200,
-      // servings per container
-      servings: 73,
-      // Serving Size About 1 Scoop
       servingSize: 31,
       infos: [
         'Not a significant source of trans fat, dietary fiber, added sugars, vitamin D and iron.',
@@ -42,9 +39,6 @@ const powders = [
       subCategory: 'whey protein',
       flavor: 'Vanilla Ice Cream',
       size: 2200,
-      // servings per container
-      servings: 48,
-      // Serving Size About 1 Scoop
       servingSize: 47,
       infos: [
         'Not a significant source of trans fat and vitamin D.',
@@ -81,9 +75,6 @@ const powders = [
       subCategory: 'achocolatado em pó',
       flavor: 'Chocolate',
       size: 400,
-      // servings per container
-      servings: 20,
-      // Serving Size About 1 Scoop
       servingSize: 20,
       infos: [
         'Not a significant source of trans fat and vitamin D.',

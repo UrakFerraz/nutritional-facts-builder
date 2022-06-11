@@ -7,9 +7,6 @@ const wheyWrongUnits = {
     subCategory: 'whey protein',
     flavor: 'Vanilla Ice Cream',
     size: 2200,
-    // servings per container
-    servings: 48,
-    // Serving Size About 1 Scoop
     servingSize: 47,
     infos: [
       'Not a significant source of trans fat and vitamin D.',
