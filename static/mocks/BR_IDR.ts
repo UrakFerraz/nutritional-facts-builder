@@ -31,7 +31,7 @@ const IDR = {
   'Vitamina C': { mg: 45 },
   'Vitamina E': { mg: 10 },
   Tiamina: { mg: 1.2 },
-  Riboflvina: { mg: 1.3 },
+  Riboflavina: { mg: 1.3 },
   Niacina: { mg: 16 },
   'Vitamina B6': { mg: 1.3 },
   'Ácido fólico': { mcg: 400 },
