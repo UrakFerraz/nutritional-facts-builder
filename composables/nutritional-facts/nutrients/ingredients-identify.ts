@@ -8,12 +8,11 @@ export default class IdentifyIngredients {
   }
 
   identify(): string[] {
-    const list: string[] = []
-    this.list.forEach((item) => {
+    return this.list.reduce((acc: string[], item) => {
       if (this.ingredients.includes(item)) {
-        list.push(item)
+        acc.push(item)
       }
-    })
-    return list
+      return acc
+    }, [])
   }
 }
