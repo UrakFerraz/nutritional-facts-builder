@@ -24,9 +24,9 @@ const nutrientsWithVdMock = {
 }
 
 describe('deve adicionar vd', () => {
+
   it('deve adicionar vd no powder', () => {
-    const nutrients = new NutrientsVD(powders[1].nutrients)
-    nutrients.addVD()
+    const nutrients = new NutrientsVD(powders[1].nutrients).addVD()
     expect(nutrients.nutrientsWithVD).toEqual(nutrientsWithVdMock)
   })
 })

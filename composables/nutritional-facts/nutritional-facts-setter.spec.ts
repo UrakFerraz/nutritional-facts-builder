@@ -11,7 +11,6 @@ const wheyMock = {
       subCategory: 'whey protein',
       flavor: 'Vanilla Ice Cream',
       size: 2200,
-      servings: 73,
       servingSize: 31,
       infos: [
         'Não contém quantidades significativas de fibra alimentar.',
@@ -34,8 +33,11 @@ const wheyMock = {
       cholesterol: { unit: 'mg', value: 0.035 },
     },
   },
-  _id: 1,
-  _nutrientsWithVD: {
+}
+
+const wheyMockChanged = {
+  id: 1,
+  nutrients: {
     calories: {
       unit: 'kcal',
       name: 'Calorias',
@@ -49,14 +51,13 @@ const wheyMock = {
     transFat: { unit: 'g', name: 'Gorduras Trans', value: 0, vd: '**' },
     sodium: { unit: 'mg', name: 'Sódio', value: 105, vd: 5 },
   },
-  _description: {
+  description: {
     name: 'GOLD STANDARD 100% WHEY PROTEIN',
     brand: 'OPTIMUM NUTRITION',
     category: 'protein',
     subCategory: 'whey protein',
     flavor: 'Vanilla Ice Cream',
     size: 2200,
-    servings: 73,
     servingSize: 31,
     infos: [
       'Não contém quantidades significativas de fibra alimentar.',
@@ -68,7 +69,6 @@ const wheyMock = {
     contains: 'Milk ans soy',
   },
 }
-
 describe('deve converter a whey para valores com VD', () => {
   it('deve existir a classe de converter', () => {
     const whey = powders[0]
@@ -84,7 +84,8 @@ describe('deve converter a whey para valores com VD', () => {
   })
   it('deve converter powder', () => {
     const whey = powders[0]
-    const powder = new PowderNutritionalFactsSetter(whey).init()
+    const powder = new PowderNutritionalFactsSetter(whey)
+    powder.init()
     expect(JSON.stringify(powder)).toBe(JSON.stringify(wheyMock))
   })
   it('deve retornar o powder tratado', () => {
@@ -92,11 +93,7 @@ describe('deve converter a whey para valores com VD', () => {
     const powder = new PowderNutritionalFactsSetter(whey)
     powder.init()
     expect(JSON.stringify(powder.getNutritionalFacts())).toBe(
-      JSON.stringify({
-        id: powder.id,
-        nutrients: powder.nutrientsWithVD,
-        description: powder.description,
-      })
+      JSON.stringify(wheyMockChanged)
     )
   })
 })
