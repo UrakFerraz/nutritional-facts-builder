@@ -2,7 +2,7 @@ import { NutrientsInterface } from '~/composables/interfaces/nutrients'
 import nutritionalValues from '~/static/mocks/nutritional-values'
 
 export default class NutrientsVD {
-  private static _nutrientsWithVD: NutrientsInterface;
+  private static _nutrientsWithVD: NutrientsInterface
   constructor(private readonly _nutrients: NutrientsInterface) {}
 
   get nutrients(): NutrientsInterface {
@@ -17,8 +17,9 @@ export default class NutrientsVD {
     return vd !== undefined ? Math.round((source! * 100) / vd) : '**'
   }
 
-  convertCaloriesTokJ(kJ: number) {
-    return `${this.nutrients.calories.value} cal / ${Math.round(
+  convertCaloriesTokJ() {
+    const kJ = 4.184
+    return `${this.nutrients.calories.value} kcal / ${Math.round(
       Number(this.nutrients.calories.value) * kJ
     )} kJ`
   }
@@ -35,7 +36,7 @@ export default class NutrientsVD {
             convertedValuesMap[nutrients[0]] = {
               unit: nutrients[1].unit,
               name: defaultNutriValue[1].name,
-              value: this.convertCaloriesTokJ(4.184),
+              value: this.convertCaloriesTokJ(),
               vd: this.setVD(defaultNutriValue[1].value, nutrients[1].value),
             }
           } else {
