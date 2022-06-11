@@ -4,34 +4,32 @@ import VD from '~/static/mocks/BR_VD'
 
 export default class NotSignificantVD {
   private _notSignificantNutrient: any[] = []
-
-  private _notSignificantNutrientText: string | undefined = undefined
+  private static _notSignificantNutrientText: string
   constructor(private readonly nutrientsWithVD: NutrientsInterface) {}
 
   get notSignificantNutrient(): any[] {
     return this._notSignificantNutrient
   }
 
-  get notSignificantNutrientText(): string | undefined {
-    return this._notSignificantNutrientText
+  get notSignificantNutrientText(): string {
+    return NotSignificantVD._notSignificantNutrientText
   }
 
   private findNotSignificantNutrients() {
     const nutrients = Object.entries(this.nutrientsWithVD!)
     const vd = Object.entries(VD)
     const identified = nutrients.filter((nutrient) => nutrient[1].vd < 1)
-    const filtered: any[] = []
-    identified.forEach((nutrient) => {
+    return identified.reduce((filtered: any[], nutrient) => {
       const res = vd.filter((item) => item[0] === nutrient[0])
       if (
-        this.notSignificantNutrient.some((notSign) =>
+        !this.notSignificantNutrient.some((notSign) =>
           notSign[0].includes(nutrient[0])
         )
-      )
-        return
-      filtered.push(...res)
-    })
-    return filtered
+      ) {
+        filtered.push(...res)
+      }
+      return filtered
+    }, [])
   }
 
   setNotSignificantNutrient() {
@@ -57,7 +55,8 @@ export default class NotSignificantVD {
 
   setNotSignificantNutrientText() {
     const info = this.formatText(this.notSignificantNutrient)
-    this._notSignificantNutrientText = info === infos[0] ? undefined : info
+    NotSignificantVD._notSignificantNutrientText =
+      info === infos[0] ? undefined : info
     return this
   }
 }
