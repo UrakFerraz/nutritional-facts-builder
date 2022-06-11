@@ -19,7 +19,7 @@ type ConverterConfig = {
 export default class PowderUnitsConverter {
   readonly converterConfig: ConverterConfig[] = []
 
-  converted: PowderNutrients | null = null
+  private static _converted: PowderNutrients
 
   private readonly _to = nutritionalValues
   constructor(private readonly _from: PowderNutrients) {}
@@ -32,13 +32,17 @@ export default class PowderUnitsConverter {
     return this._to
   }
 
+  get converted(): PowderNutrients {
+    return PowderUnitsConverter._converted
+  }
+
   setConverterConfig(from: PowderNutrients, to: Nutrients, name: string) {
     const fromNutrientName = name as keyof typeof from.nutrients
     const toNutrientName = name as keyof typeof to
     if (!from.nutrients[fromNutrientName]) return
     if (
       from.nutrients[fromNutrientName]!.unit === 'g' &&
-      to[toNutrientName]!.unit !== 'g'
+      to[toNutrientName].unit !== 'g'
     ) {
       if (to[toNutrientName].unit === 'mg') {
         this.converterConfig.push({
@@ -105,15 +109,15 @@ export default class PowderUnitsConverter {
   }
 
   setConvertedPowder() {
-    this.converted = Object.assign({}, this.from)
+    PowderUnitsConverter._converted = Object.assign({}, this.from)
     const fromNutrients = Object.entries(this.from.nutrients)
     fromNutrients.forEach((nutrient) => {
       this.converterConfig.forEach((item) => {
         if (nutrient[0] === item.nutrientName) {
           const fromNutrientName =
             item.nutrientName as keyof typeof this.converted.nutrients
-          this.converted!.nutrients[fromNutrientName]!.unit = item.unit
-          this.converted!.nutrients[fromNutrientName]!.value = item.convertion
+          this.converted.nutrients[fromNutrientName]!.unit = item.unit
+          this.converted.nutrients[fromNutrientName]!.value = item.convertion
         }
       })
     })

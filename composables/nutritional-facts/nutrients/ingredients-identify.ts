@@ -7,13 +7,13 @@ export default class IdentifyIngredients {
     return this._ingredients
   }
 
-  identify(): string[] | null {
+  identify(): string[] {
     const list: string[] = []
     this.list.forEach((item) => {
       if (this.ingredients.includes(item)) {
         list.push(item)
       }
     })
-    return list.length ? list : null
+    return list
   }
 }

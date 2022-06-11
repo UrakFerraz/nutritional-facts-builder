@@ -2,7 +2,7 @@ import IdentifyIngredients from '../nutrients/ingredients-identify'
 import { PowderDescriptionInterface } from '~/composables/interfaces/powder-description'
 
 export default class Contains {
-  private _contains: IdentifyIngredients | null = null
+  private static _contains: IdentifyIngredients
 
   get powderDescription(): PowderDescriptionInterface {
     return this._powderDescription
@@ -12,17 +12,15 @@ export default class Contains {
     private readonly _powderDescription: PowderDescriptionInterface
   ) {}
 
-  set contains(value: IdentifyIngredients | null) {
-    if (value === null) return
-    this._contains = value
+  set contains(value: IdentifyIngredients) {
+    Contains._contains = value
   }
 
-  get contains(): IdentifyIngredients | null {
-    return this._contains
+  get contains(): IdentifyIngredients {
+    return Contains._contains
   }
 
-  getContains(): string[] | null {
-    if (this.contains !== null) return this.contains.identify()
-    return null
+  getContains(): string[] {
+    return this.contains.identify()
   }
 }

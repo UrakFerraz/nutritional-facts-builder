@@ -4,21 +4,21 @@ import { PowderInterface } from '~/composables/interfaces/powder'
 import { PowderDescriptionInterface } from '~/composables/interfaces/powder-description'
 
 export default class PowderDescription {
-  private _powderDescription: PowderDescriptionInterface | null = null
+  private static _powderDescription: PowderDescriptionInterface
   constructor(private readonly _powder: PowderInterface) {}
-  get powderDescription(): PowderDescriptionInterface | null {
-    return this._powderDescription
+  get powderDescription(): PowderDescriptionInterface {
+    return PowderDescription._powderDescription
   }
 
   setPowderDescription() {
-    this._powderDescription = this._powder.description
+    PowderDescription._powderDescription = this._powder.description
   }
 
   setNotSignificantVD() {
     const text = new NotSignificantVD(this._powder.nutrients)
       .setNotSignificantNutrient()
       .setNotSignificantNutrientText()
-    this._powderDescription!.infos = [
+      PowderDescription._powderDescription!.infos = [
       text.notSignificantNutrientText!,
       infos[1],
       infos[2],
