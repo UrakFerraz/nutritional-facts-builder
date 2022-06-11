@@ -128,13 +128,11 @@ export default Vue.extend({
     disassembledNutrients() {
       const protein = new DisassembleNutrient(
         powders[Number(this.$nuxt.$route.params.id)],
-        "protein",
-        538
+        "protein"
       ).disjoin();
       const carbo = new DisassembleNutrient(
         powders[Number(this.$nuxt.$route.params.id)],
-        "carbohydrate",
-        538
+        "carbohydrate"
       ).disjoin();
       return { protein: protein.data, carbohydrate: carbo.data };
     },
