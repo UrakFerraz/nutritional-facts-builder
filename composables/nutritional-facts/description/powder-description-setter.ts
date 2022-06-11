@@ -17,7 +17,7 @@ export default class PowderDescription {
   setNotSignificantVD() {
     const text = new NotSignificantVD(this._powder.nutrients)
       .setNotSignificantNutrient()
-      .setNotSignificantNutrientText()
+      .createNotSignificantNutrientText()
     PowderDescription._powderDescription!.infos = [
       text.notSignificantNutrientText!,
       infos[1],
