@@ -22,21 +22,25 @@ const nutrientsWithVdMock = {
 }
 
 const notSignificantMock = [
-  ['saturatedFat', { grams: 22, name: 'Gorduras Saturadas' }],
-  ['dietaryFibers', { grams: 25, name: 'Fibra Alimentar' }],
-  ['sodium', { mg: 2400, name: 'Sódio' }],
+  ['saturatedFat', { unit: 'g', value: 22, name: 'Gorduras Saturadas' }],
+  ['dietaryFibers', { unit: 'g', value: 25, name: 'Fibra Alimentar' }],
+  ['sodium', { unit: 'g', value: 2000, name: 'Sódio' }],
 ]
 
 describe('deve procurar valores não significativos', () => {
   it('deve guardar valores não significativos', () => {
-    const mock = new NotSignificantVD(nutrientsWithVdMock).setNotSignificantNutrient()
+    const mock = new NotSignificantVD(
+      nutrientsWithVdMock
+    ).setNotSignificantNutrient()
     expect(mock.notSignificantNutrient).toEqual(notSignificantMock)
     expect(JSON.stringify(mock.notSignificantNutrient)).toBe(
       JSON.stringify(notSignificantMock)
     )
   })
   it('deve criar frase para tabela nutricional', () => {
-    const mock = new NotSignificantVD(nutrientsWithVdMock).setNotSignificantNutrient().setNotSignificantNutrientText()
+    const mock = new NotSignificantVD(nutrientsWithVdMock)
+      .setNotSignificantNutrient()
+      .createNotSignificantNutrientText()
     expect(mock.notSignificantNutrientText).toEqual(
       'Não contém quantidades significativas de gorduras saturadas, fibra alimentar e sódio.'
     )

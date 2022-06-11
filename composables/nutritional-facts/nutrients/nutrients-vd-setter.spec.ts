@@ -5,7 +5,7 @@ const nutrientsWithVdMock = {
   calories: {
     unit: 'kcal',
     name: 'Calorias',
-    value: '200 cal / 837 kJ',
+    value: '200 kcal / 837 kJ',
     vd: 10,
   },
   carbohydrate: { unit: 'g', name: 'Carboidrato', value: 15, vd: 5 },
@@ -24,7 +24,6 @@ const nutrientsWithVdMock = {
 }
 
 describe('deve adicionar vd', () => {
-
   it('deve adicionar vd no powder', () => {
     const nutrients = new NutrientsVD(powders[1].nutrients).addVD()
     expect(nutrients.nutrientsWithVD).toEqual(nutrientsWithVdMock)

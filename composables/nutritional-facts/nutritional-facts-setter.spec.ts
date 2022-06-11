@@ -41,7 +41,7 @@ const wheyMockChanged = {
     calories: {
       unit: 'kcal',
       name: 'Calorias',
-      value: '120 cal / 502 kJ',
+      value: '120 kcal / 502 kJ',
       vd: 6,
     },
     carbohydrate: { unit: 'g', name: 'Carboidrato', value: 4, vd: 1 },
