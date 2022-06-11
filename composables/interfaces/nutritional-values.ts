@@ -1,6 +1,6 @@
 import { NutrientInterface } from './nutrient'
 
-export interface NutritionalValues {
+export interface NutritionalValuesInterface {
   calories: NutrientInterface
   carbohydrate: NutrientInterface
   protein: NutrientInterface

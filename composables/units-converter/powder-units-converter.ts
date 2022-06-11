@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
 import { PowderInterface } from '../interfaces/powder'
 import { NutrientInterface } from '../interfaces/nutrient'
-import { NutritionalValues } from '../interfaces/nutritional-values'
+import { NutritionalValuesInterface } from '../interfaces/nutritional-values'
 import nutritionalValues from '~/static/mocks/nutritional-values'
 
 type PowderNutrients = Pick<PowderInterface, 'nutrients'>
 
 type Nutrients = {
-  [key in keyof NutritionalValues]: NutrientInterface
+  [key in keyof NutritionalValuesInterface]: NutrientInterface
 } // type para objetos  Destructuring
 
 type ConverterConfig = {
