@@ -2,19 +2,19 @@ import { NutrientsInterface } from '~/composables/interfaces/nutrients'
 import nutritionalValues from '~/static/mocks/nutritional-values'
 
 export default class NutrientsVD {
-  private _nutrientsWithVD: NutrientsInterface | null = null
-  constructor(private _nutrients: NutrientsInterface) {}
+  private static _nutrientsWithVD: NutrientsInterface;
+  constructor(private readonly _nutrients: NutrientsInterface) {}
 
   get nutrients(): NutrientsInterface {
     return this._nutrients
   }
 
-  get nutrientsWithVD(): NutrientsInterface | null {
-    return this._nutrientsWithVD
+  get nutrientsWithVD(): NutrientsInterface {
+    return NutrientsVD._nutrientsWithVD
   }
 
-  setVD(vd: number | null, source: number) {
-    return vd !== null ? Math.round((source! * 100) / vd) : '**'
+  setVD(vd: number | undefined, source: number) {
+    return vd !== undefined ? Math.round((source! * 100) / vd) : '**'
   }
 
   convertCaloriesTokJ(kJ: number) {
@@ -49,7 +49,7 @@ export default class NutrientsVD {
         }
       })
     }
-    this._nutrientsWithVD = convertedValuesMap
+    NutrientsVD._nutrientsWithVD = convertedValuesMap
     return this
   }
 }
