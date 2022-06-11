@@ -1,6 +1,6 @@
 /* eslint-disable no-console */ /* eslint-disable no-console */
 <template>
-  <div v-if="nutritionalFacts.description !== null">
+  <div>
     <div class="charts">
       <div class="donut-chart">
         <Donut
@@ -99,14 +99,6 @@
             <p>
               Proteína por dose:
               {{ disassembledNutrients.protein.nutrientInServingSize }} %
-            </p>
-            <p>
-              Preço da proteína por dose: R$
-              {{ disassembledNutrients.protein.nutrientPriceInServingSize }}
-            </p>
-            <p>
-              Preço da dose: R$
-              {{ disassembledNutrients.protein.servingSizePrice }}
             </p>
           </div>
         </div>
