@@ -14,7 +14,7 @@ describe('deve fracionar o powder', () => {
       servingSizePrice: 7.75,
       nutrientPriceInServingSize: 6,
     }
-    expect(sut.context).toEqual(convertedMock)
+    expect(sut.data).toEqual(convertedMock)
   })
   it('deve criar outra classe de fracionamento e calcular o nutriente', () => {
     const sut = new DisassembleNutrient(powders[1], 'protein', 630)
@@ -25,6 +25,6 @@ describe('deve fracionar o powder', () => {
       servingSizePrice: 13.46,
       nutrientPriceInServingSize: 6.3,
     }
-    expect(sut.context).toEqual(convertedMock)
+    expect(sut.data).toEqual(convertedMock)
   })
 })
