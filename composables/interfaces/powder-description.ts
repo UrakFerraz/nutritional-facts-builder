@@ -1,12 +1,12 @@
 export interface PowderDescriptionInterface {
-  name: string | undefined
-  brand: string | undefined
-  category: string | undefined
-  subCategory: string | undefined
-  flavor: string | undefined
-  size: number | undefined
-  servingSize: number | undefined
-  infos: string[] | undefined
-  ingredients: string | undefined
-  contains: string | undefined
+  name: string
+  brand: string
+  category: string
+  subCategory?: string
+  flavor?: string
+  size: number
+  servingSize: number
+  infos: string[]
+  ingredients: string
+  contains?: string
 }
