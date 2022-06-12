@@ -4,14 +4,14 @@
     <div class="charts">
       <div class="donut-chart">
         <Donut
-          :percentage="Math.round(disassembledNutrients.protein.nutrientInServingSize)"
+          :percentage="Math.round(disassembledNutrients.protein.percentageInServingSize)"
         />
         <p class="donut-chart__title">Proteínas</p>
       </div>
       <div class="donut-chart">
         <Donut
           :percentage="
-            Math.round(disassembledNutrients.carbohydrate.nutrientInServingSize)
+            Math.round(disassembledNutrients.carbohydrate.percentageInServingSize)
           "
         />
         <p class="donut-chart__title">Carboidratos</p>
@@ -107,7 +107,7 @@
           <div>
             <p>
               Proteína por dose:
-              {{ disassembledNutrients.protein.nutrientInServingSize }} %
+              {{ disassembledNutrients.protein.percentageInServingSize }} %
             </p>
           </div>
         </div>
@@ -121,7 +121,8 @@ import Vue from "vue";
 import Donut from "~/components/charts/Donut.vue";
 import powders from "~/static/mocks/powders";
 import { PowderNutritionalFactsSetter } from "~/composables/nutritional-facts/powder/nutritional-facts-setter";
-import DisassembleNutrient from "~/composables/disassemble/nutrient";
+import CarbohydrateServing from "~/composables/disassembled/nutrient-serving-carbo";
+import ProteinServing from "~/composables/disassembled/nutrient-serving-protein";
 export default Vue.extend({
   components: { Donut },
   data() {
@@ -135,15 +136,14 @@ export default Vue.extend({
   },
   computed: {
     disassembledNutrients() {
-      const protein = new DisassembleNutrient(
-        powders[Number(this.$nuxt.$route.params.id)],
-        "protein"
-      ).disjoin();
-      const carbo = new DisassembleNutrient(
-        powders[Number(this.$nuxt.$route.params.id)],
-        "carbohydrate"
-      ).disjoin();
-      return { protein: protein.data, carbohydrate: carbo.data };
+      return {
+        carbohydrate: CarbohydrateServing.getSpecification(
+          powders[Number(this.$nuxt.$route.params.id)]
+        ),
+        protein: ProteinServing.getSpecification(
+          powders[Number(this.$nuxt.$route.params.id)]
+        ),
+      };
     },
   },
 });
