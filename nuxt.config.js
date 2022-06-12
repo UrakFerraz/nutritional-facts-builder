@@ -41,7 +41,14 @@ export default {
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: {
-    dirs: ['~/components', '~/components/charts'],
+    dirs: [
+      '~/components',
+      '~/components/charts',
+      '~/components/nutritional-facts-table',
+      '~/components/base',
+      '~/components/base/charts',
+      '~/components/base/nutritional-facts-table',
+    ],
   },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
