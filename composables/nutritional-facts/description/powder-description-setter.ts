@@ -10,11 +10,11 @@ export default class PowderDescription {
     return PowderDescription._powderDescription
   }
 
-  setPowderDescription() {
+  private setPowderDescription() {
     PowderDescription._powderDescription = this._powder.description
   }
 
-  setNotSignificantVD() {
+  private setNotSignificantVD() {
     const text = new NotSignificantVD(this._powder.nutrients)
       .setNotSignificantNutrient()
       .createNotSignificantNutrientText()
