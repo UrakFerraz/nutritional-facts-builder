@@ -26,7 +26,7 @@ export default class NotSignificantVD {
     const identified = nutrients.filter((nutrient) => nutrient[1].vd! < 1)
     return identified.reduce(
       (
-        filtered: NotSignificantNutrients[],
+        filtered: any[],
         nutrient: NotSignificantNutrients
       ) => {
         const res = vd.filter((item) => item[0] === nutrient[0])
