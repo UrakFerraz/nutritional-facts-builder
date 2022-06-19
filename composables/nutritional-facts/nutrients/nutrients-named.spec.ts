@@ -12,7 +12,6 @@ describe('deve criar adicionar nomes dos nutrientes ao todos os nutrientes', () 
         totalFat: { unit: 'g', value: 1, name: 'Gorduras Totais' },
         saturatedFat: { unit: 'g', value: 0.5, name: 'Gorduras Saturadas' },
         transFat: { unit: 'g', value: 0, name: 'Gorduras Trans' },
-        dietaryFibers: { unit: 'g', value: 0, name: 'Fibra Alimentar' },
         sodium: { unit: 'mg', value: 105, name: 'Sódio' },
         cholesterol: { unit: 'mg', value: 0.035, name: 'Colesterol' },
       },

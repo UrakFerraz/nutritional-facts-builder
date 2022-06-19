@@ -56,7 +56,7 @@ export class PowderNutritionalFactsSetter {
   private removeNotSignificantVDNutrientes() {
     const newly = Object.entries(this.nutrients)
     newly.forEach((nutrient) => {
-      if (nutrient[1].vd < 1) {
+      if (nutrient[1].vd < 1 && nutrient[1].value !== 0) {
         const nutrientName =
           nutrient[0] as keyof typeof PowderNutritionalFactsSetter._nutrients
         delete PowderNutritionalFactsSetter._nutrients[nutrientName]

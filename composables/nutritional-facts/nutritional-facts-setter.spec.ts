@@ -13,7 +13,7 @@ const wheyMock = {
       size: 2200,
       servingSize: 31,
       infos: [
-        'Não contém quantidades significativas de fibra alimentar.',
+        '',
         '(*) % Valores Diários de referência com base em uma dieta de 2.000kcal ou 8.400kJ. Seus valores diários podem ser maiores ou menores, dependendo das suas necessidades energéticas',
         '(**) Valores diários não estabelecidos.',
       ],
@@ -28,9 +28,7 @@ const wheyMock = {
       totalFat: { unit: 'g', value: 1 },
       saturatedFat: { unit: 'g', value: 0.5 },
       transFat: { unit: 'g', value: 0 },
-      dietaryFibers: { unit: 'g', value: 0 },
       sodium: { unit: 'mg', value: 105 },
-      cholesterol: { unit: 'mg', value: 0.035 },
     },
   },
 }
@@ -60,7 +58,7 @@ const wheyMockChanged = {
     size: 2200,
     servingSize: 31,
     infos: [
-      'Não contém quantidades significativas de fibra alimentar.',
+      '',
       '(*) % Valores Diários de referência com base em uma dieta de 2.000kcal ou 8.400kJ. Seus valores diários podem ser maiores ou menores, dependendo das suas necessidades energéticas',
       '(**) Valores diários não estabelecidos.',
     ],
@@ -72,14 +70,12 @@ const wheyMockChanged = {
 describe('deve converter a whey para valores com VD', () => {
   it('deve existir a classe de converter', () => {
     const whey = powders[0]
-    const sut = new PowderNutritionalFactsSetter(whey)
-    sut.main()
+    const sut = new PowderNutritionalFactsSetter(whey).main()
     expect(sut).toBeDefined()
   })
   it('deve existir vd na whey convertida', () => {
     const whey = powders[0]
-    const sut = new PowderNutritionalFactsSetter(whey)
-    sut.main()
+    const sut = new PowderNutritionalFactsSetter(whey).main()
     expect(sut.nutrients!.transFat.vd).toBe('**')
   })
   it('deve converter powder', () => {
