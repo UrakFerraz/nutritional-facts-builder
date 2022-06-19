@@ -17,8 +17,6 @@ describe('deve criar adicionar nomes dos nutrientes ao todos os nutrientes', () 
         cholesterol: { unit: 'mg', value: 0.035, name: 'Colesterol' },
       },
     }
-    expect(JSON.stringify(nutrientsNamed)).toEqual(
-      JSON.stringify(nutrientsMock)
-    )
+    expect(nutrientsNamed).toMatchObject(nutrientsMock)
   })
 })

@@ -21,7 +21,7 @@ describe('deve inicializar a página de tabela nutricional', () => {
         },
       },
     })
-    expect(sut.contains('div')).toBe(true)
+    expect(sut.html()).toContain('div')
   })
   it('deve renderizar a página de tabela nutricional', async () => {
     const sut = await renderToString(_idVue, {

@@ -41,7 +41,7 @@ const wheyMockChanged = {
     calories: {
       unit: 'kcal',
       name: 'Calorias',
-      value: '120 kcal / 502 kJ',
+      value: 120,
       vd: 6,
     },
     carbohydrate: { unit: 'g', name: 'Carboidrato', value: 4, vd: 1 },
@@ -72,28 +72,24 @@ const wheyMockChanged = {
 describe('deve converter a whey para valores com VD', () => {
   it('deve existir a classe de converter', () => {
     const whey = powders[0]
-    const powder = new PowderNutritionalFactsSetter(whey)
-    powder.init()
-    expect(powder).toBeDefined()
+    const sut = new PowderNutritionalFactsSetter(whey)
+    sut.main()
+    expect(sut).toBeDefined()
   })
   it('deve existir vd na whey convertida', () => {
     const whey = powders[0]
-    const powder = new PowderNutritionalFactsSetter(whey)
-    powder.init()
-    expect(powder.nutrientsWithVD!.transFat.vd).toBe('**')
+    const sut = new PowderNutritionalFactsSetter(whey)
+    sut.main()
+    expect(sut.nutrients!.transFat.vd).toBe('**')
   })
   it('deve converter powder', () => {
     const whey = powders[0]
-    const powder = new PowderNutritionalFactsSetter(whey)
-    powder.init()
-    expect(JSON.stringify(powder)).toBe(JSON.stringify(wheyMock))
+    const sut = new PowderNutritionalFactsSetter(whey).main()
+    expect(sut).toMatchObject(wheyMock)
   })
   it('deve retornar o powder tratado', () => {
     const whey = powders[0]
-    const powder = new PowderNutritionalFactsSetter(whey)
-    powder.init()
-    expect(JSON.stringify(powder.getNutritionalFacts())).toBe(
-      JSON.stringify(wheyMockChanged)
-    )
+    const sut = new PowderNutritionalFactsSetter(whey).main()
+    expect(sut.getNutritionalFacts()).toMatchObject(wheyMockChanged)
   })
 })

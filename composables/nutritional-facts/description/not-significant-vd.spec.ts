@@ -33,9 +33,7 @@ describe('deve procurar valores não significativos', () => {
       nutrientsWithVdMock
     ).setNotSignificantNutrient()
     expect(mock.notSignificantNutrient).toEqual(notSignificantMock)
-    expect(JSON.stringify(mock.notSignificantNutrient)).toBe(
-      JSON.stringify(notSignificantMock)
-    )
+    expect(mock.notSignificantNutrient).toMatchObject(notSignificantMock)
   })
   it('deve criar frase para tabela nutricional', () => {
     const mock = new NotSignificantVD(nutrientsWithVdMock)
