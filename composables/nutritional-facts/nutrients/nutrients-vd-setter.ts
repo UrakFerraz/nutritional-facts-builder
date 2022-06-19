@@ -12,13 +12,6 @@ export default class NutrientsVD {
     return vd !== undefined ? Math.round((source! * 100) / vd) : '**'
   }
 
-  convertCaloriesTokJ() {
-    const kJ = 4.184
-    return `${this.nutrients.calories.value} kcal / ${Math.round(
-      Number(this.nutrients.calories.value) * kJ
-    )} kJ`
-  }
-
   addVD() {
     const values = Object.entries(this.nutrients)
     const defaultNutriValues = Object.entries(nutritionalValues)

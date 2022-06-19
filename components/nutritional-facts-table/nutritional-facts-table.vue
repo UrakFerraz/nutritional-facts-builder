@@ -55,12 +55,10 @@
           :type="'nutrient'"
         >
           <p v-if="nutrient">{{ nutrient.name }}</p>
-          <p
-            v-if="
-              nutrient && nutrient.unit === 'kcal' && typeof nutrient.value === 'string'
-            "
-          >
-            {{ `${nutrient.value}` }}
+          <p v-if="nutrient && nutrient.unit === 'kcal'">
+            {{
+              `${nutrient.value} kcal / ${Math.round(Number(nutrient.value) * 4.184)} kJ`
+            }}
           </p>
           <p v-if="nutrient && nutrient.unit !== 'kcal'">
             {{ `${nutrient.value} ${nutrient.unit}` }}
