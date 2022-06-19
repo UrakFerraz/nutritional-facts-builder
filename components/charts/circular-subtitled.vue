@@ -15,6 +15,7 @@ export type NutrientInfoProps = {
 };
 
 export default Vue.extend({
+  name: "CircularSubtitled",
   props: {
     nutrient: {
       type: Object as PropType<NutrientInfoProps>,

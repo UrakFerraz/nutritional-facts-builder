@@ -4,6 +4,14 @@
   </div>
 </template>
 
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
+  name: "ChartBox",
+});
+</script>
+
 <style scoped lang="scss">
 .curcular-chart {
   display: flex;

@@ -16,6 +16,7 @@
 import Vue from "vue";
 
 export default Vue.extend({
+  name: "CircularSvg",
   props: {
     percentage: { type: Number, required: true },
   },

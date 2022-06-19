@@ -29,6 +29,7 @@ export type NutrientsInfo = {
 };
 
 export default Vue.extend({
+  name: "ChartsGrid",
   props: {
     nutrients: {
       type: Object as PropType<NutrientsInfo>,

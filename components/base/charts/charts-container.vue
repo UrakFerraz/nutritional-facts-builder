@@ -4,6 +4,14 @@
   </div>
 </template>
 
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
+  name: "ChartsContainer",
+});
+</script>
+
 <style scoped>
 .charts {
   padding: 20px;

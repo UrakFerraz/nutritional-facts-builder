@@ -4,6 +4,14 @@
   </div>
 </template>
 
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
+  name: "NutritionalFactsTableContainer",
+});
+</script>
+
 <style scoped lang="scss">
 .container {
   display: flex;

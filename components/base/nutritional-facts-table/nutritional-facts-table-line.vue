@@ -11,6 +11,7 @@ import { PropType } from "vue-demi";
 export type LineType = "nutrient" | "title" | "infos" | undefined;
 
 export default Vue.extend({
+  name: "NutritionalFactsTableLine",
   props: {
     type: {
       type: String as PropType<LineType>,

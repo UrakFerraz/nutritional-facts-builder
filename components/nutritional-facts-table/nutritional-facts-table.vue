@@ -91,6 +91,7 @@ import { PropType } from "vue-demi";
 import { PowderInterface } from "~/composables/interfaces/powder";
 
 export default Vue.extend({
+  name: "NutritionalFactsTable",
   props: {
     nutritionalFacts: {
       type: Object as PropType<PowderInterface>,

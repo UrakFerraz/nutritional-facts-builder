@@ -9,6 +9,7 @@
 import Vue from "vue";
 
 export default Vue.extend({
+  name: "Circular",
   props: {
     percentage: { type: Number, required: true },
   },
