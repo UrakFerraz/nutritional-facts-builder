@@ -1,11 +1,11 @@
-import NutrientNamedAbstract from "./nutrient-named-base";
-import nutrientsNames from '~/static/mocks/nutrients-names';
-import { NutrientInterface } from "~/composables/interfaces/nutrient";
-import { NutrientsInterface } from "~/composables/interfaces/nutrients";
+import NutrientNamedAbstract from './nutrient-named-base'
+import nutrientsNames from '~/static/mocks/nutrients-names'
+import { NutrientInterface } from '~/composables/interfaces/nutrient'
+import { NutrientsInterface } from '~/composables/interfaces/nutrients'
 
 export default class NutrientNamed extends NutrientNamedAbstract {
   static _nutrientNamed: NutrientInterface
-  addName( nutrientName: string, nutrients: NutrientsInterface ): void {
+  addName(nutrientName: string, nutrients: NutrientsInterface): void {
     const name = nutrientName as keyof NutrientsInterface
     const ptName = nutrientName as keyof typeof nutrientsNames
     NutrientNamed._nutrientNamed = nutrients[name]!

@@ -1,8 +1,7 @@
-/* eslint-disable no-console */
 import { PowderInterface } from '../interfaces/powder'
 import { NutrientInterface } from '../interfaces/nutrient'
 import { NutritionalValuesInterface } from '../interfaces/nutritional-values'
-import { NutrientsInterface } from './../interfaces/Nutrients';
+import { NutrientsInterface } from '../interfaces/nutrients'
 import nutritionalValues from '~/static/mocks/nutritional-values'
 
 type PowderNutrients = Pick<PowderInterface, 'nutrients'>
@@ -115,8 +114,7 @@ export default class PowderUnitsConverter {
     fromNutrients.forEach((nutrient) => {
       this.converterConfig.forEach((item) => {
         if (nutrient[0] === item.nutrientName) {
-          const fromNutrientName =
-            item.nutrientName as keyof NutrientsInterface
+          const fromNutrientName = item.nutrientName as keyof NutrientsInterface
           this.converted.nutrients[fromNutrientName]!.unit = item.unit
           this.converted.nutrients[fromNutrientName]!.value = item.convertion
         }

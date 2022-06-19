@@ -1,15 +1,16 @@
 import NutrientsVD from '../nutrients/nutrients-vd-setter'
 import PowderDescription from '../description/powder-description-setter'
+import { NutrientsNamed } from './../nutrients/nutrients-named'
 import { PowderInterface } from '~/composables/interfaces/powder'
 import { NutrientsInterface } from '~/composables/interfaces/nutrients'
 import { PowderDescriptionInterface } from '~/composables/interfaces/powder-description'
 export class PowderNutritionalFactsSetter {
   constructor(private readonly powder: PowderInterface) {}
   private static _id: number
-  private static _nutrientsWithVD: NutrientsInterface
+  private static _nutrients: NutrientsInterface
   private static _description: PowderDescriptionInterface
-  get nutrientsWithVD() {
-    return PowderNutritionalFactsSetter._nutrientsWithVD
+  get nutrients() {
+    return PowderNutritionalFactsSetter._nutrients
   }
 
   get description() {
@@ -26,26 +27,39 @@ export class PowderNutritionalFactsSetter {
 
   private setNutrientsVD() {
     const vdSetter = new NutrientsVD(this.powder.nutrients)
-    PowderNutritionalFactsSetter._nutrientsWithVD =
-      vdSetter.addVD().nutrientsWithVD
+    return vdSetter.addVD().nutrients
+  }
+
+  private setNutrientsNames() {
+    const nutrientsNamed = new NutrientsNamed(this.powder.nutrients)
+    return nutrientsNamed.addNames().nutrients
+  }
+
+  setNutrients() {
+    const nutrientsWithVD = this.setNutrientsVD()
+    const nutrientsWithNames = this.setNutrientsNames()
+    PowderNutritionalFactsSetter._nutrients = Object.assign(
+      nutrientsWithVD,
+      nutrientsWithNames
+    )
   }
 
   private setDescription() {
-    const powderWithVD = Object.assign({}, this.powder, {
-      nutrients: this.nutrientsWithVD,
+    const powder = Object.assign({}, this.powder, {
+      nutrients: PowderNutritionalFactsSetter._nutrients,
     })
-    const descriptionSetter = new PowderDescription(powderWithVD)
+    const descriptionSetter = new PowderDescription(powder)
     PowderNutritionalFactsSetter._description =
-      descriptionSetter.init().powderDescription
+      descriptionSetter.main().powderDescription
   }
 
   private removeNotSignificantVDNutrientes() {
-    const newly = Object.entries(this.nutrientsWithVD)
+    const newly = Object.entries(this.nutrients)
     newly.forEach((nutrient) => {
       if (nutrient[1].vd < 1) {
         const nutrientName =
-          nutrient[0] as keyof typeof PowderNutritionalFactsSetter._nutrientsWithVD
-        delete PowderNutritionalFactsSetter._nutrientsWithVD[nutrientName]
+          nutrient[0] as keyof typeof PowderNutritionalFactsSetter._nutrients
+        delete PowderNutritionalFactsSetter._nutrients[nutrientName]
       }
     })
     return this
@@ -53,15 +67,15 @@ export class PowderNutritionalFactsSetter {
 
   getNutritionalFacts() {
     return {
-      id: this.id,
-      nutrients: this.nutrientsWithVD,
-      description: this.description,
+      id: PowderNutritionalFactsSetter._id,
+      nutrients: PowderNutritionalFactsSetter._nutrients,
+      description: PowderNutritionalFactsSetter._description,
     }
   }
 
-  init() {
+  main() {
     this.setId()
-    this.setNutrientsVD()
+    this.setNutrients()
     this.setDescription()
     this.removeNotSignificantVDNutrientes()
     return this

@@ -18,7 +18,7 @@ export default Vue.extend({
       nutritionalFacts: new PowderNutritionalFactsSetter(
         powders[Number(this.$nuxt.$route.params.id)]
       )
-        .init()
+        .main()
         .getNutritionalFacts(),
     };
   },

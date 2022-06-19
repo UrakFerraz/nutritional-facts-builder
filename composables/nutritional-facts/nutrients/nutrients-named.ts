@@ -10,14 +10,15 @@ export class NutrientsNamed extends NutrientsNamedAbstract {
     super()
   }
 
-  addNames(): void {
+  addNames() {
     const nutrientsToArray: NutrientsToArray = Object.entries(this.nutrients)
     nutrientsToArray.forEach((nutrient) => {
       const nutrientName = nutrient[0] as keyof NutrientsInterface
       const nutrientNamed = new NutrientNamed()
       nutrientNamed.addName(nutrientName, this.nutrients)
-      this._nutrients[nutrientName] = nutrientNamed.nutrientNamed
+      this._nutrients[nutrientName]!.name = nutrientNamed.nutrientNamed.name
     })
+    return this
   }
 
   get nutrients(): NutrientsInterface {
