@@ -1,6 +1,6 @@
 import NutrientsVD from '../nutrients/nutrients-vd-setter'
 import PowderDescription from '../description/powder-description-setter'
-import { NutrientsNamed } from './../nutrients/nutrients-named'
+import { NutrientsNamed } from '../nutrients/nutrients-named'
 import { PowderInterface } from '~/composables/interfaces/powder'
 import { NutrientsInterface } from '~/composables/interfaces/nutrients'
 import { PowderDescriptionInterface } from '~/composables/interfaces/powder-description'
@@ -9,6 +9,7 @@ export class PowderNutritionalFactsSetter {
   private static _id: number
   private static _nutrients: NutrientsInterface
   private static _description: PowderDescriptionInterface
+  private static _ingredients: string
   get nutrients() {
     return PowderNutritionalFactsSetter._nutrients
   }
@@ -19,6 +20,10 @@ export class PowderNutritionalFactsSetter {
 
   get id() {
     return PowderNutritionalFactsSetter._id
+  }
+
+  get ingredients() {
+    return PowderNutritionalFactsSetter._ingredients
   }
 
   private setId() {
@@ -70,6 +75,7 @@ export class PowderNutritionalFactsSetter {
       id: PowderNutritionalFactsSetter._id,
       nutrients: PowderNutritionalFactsSetter._nutrients,
       description: PowderNutritionalFactsSetter._description,
+      ingredients: PowderNutritionalFactsSetter._ingredients,
     }
   }
 
@@ -78,6 +84,7 @@ export class PowderNutritionalFactsSetter {
     this.setNutrients()
     this.setDescription()
     this.removeNotSignificantVDNutrientes()
+    PowderNutritionalFactsSetter._ingredients = this.powder.ingredients
     return this
   }
 }

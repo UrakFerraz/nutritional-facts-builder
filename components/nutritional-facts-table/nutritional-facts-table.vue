@@ -75,10 +75,7 @@
           </span>
         </nutritional-facts-table-line>
         <nutritional-facts-table-line :type="'infos'">
-          <span
-            ><strong>Ingredientes:</strong>
-            {{ nutritionalFacts.description.ingredients }}</span
-          >
+          <span><strong>Ingredientes:</strong> {{ nutritionalFacts.ingredients }}</span>
         </nutritional-facts-table-line>
       </nutritional-facts-table-body>
     </nutritional-facts-table-container>

@@ -1,5 +1,5 @@
 import { NutrientsNamed } from './nutrients-named'
-import foodsDatabase from '~/static/mocks/foodsDatabase'
+import foodsDatabase from '~/static/mocks/foods-database'
 describe('deve criar adicionar nomes dos nutrientes ao todos os nutrientes', () => {
   it('deve instanciar a classe que adicipona nomes', () => {
     const nutrientsNamed = new NutrientsNamed(foodsDatabase[0].nutrients)

@@ -33,9 +33,7 @@ const identifiedMock = [
 
 describe('deve identificar ingredientes', () => {
   it('deve listar ingredientes existentes', () => {
-    const res = new IdentifyIngredients(
-      foodsDatabase[1].description.ingredients
-    )
+    const res = new IdentifyIngredients(foodsDatabase[1].ingredients)
     const identified = res.identify()
     expect(identified).toEqual(identifiedMock)
   })

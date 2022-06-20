@@ -17,10 +17,10 @@ const wheyMock = {
         '(*) % Valores Diários de referência com base em uma dieta de 2.000kcal ou 8.400kJ. Seus valores diários podem ser maiores ou menores, dependendo das suas necessidades energéticas',
         '(**) Valores diários não estabelecidos.',
       ],
-      ingredients:
-        'Protein Blend (Whey Protein Isolate, Whey Protein Concentrate, Whey Peptides), Natural And Artificial Flavor, Lecithin, Salt, Acesulfame Potassium, Sucralose, Lactase.',
       contains: 'Milk ans soy',
     },
+    ingredients:
+      'Protein Blend (Whey Protein Isolate, Whey Protein Concentrate, Whey Peptides), Natural And Artificial Flavor, Lecithin, Salt, Acesulfame Potassium, Sucralose, Lactase.',
     nutrients: {
       calories: { unit: 'kcal', value: 120 },
       carbohydrate: { unit: 'g', value: 4 },
@@ -62,10 +62,10 @@ const wheyMockChanged = {
       '(*) % Valores Diários de referência com base em uma dieta de 2.000kcal ou 8.400kJ. Seus valores diários podem ser maiores ou menores, dependendo das suas necessidades energéticas',
       '(**) Valores diários não estabelecidos.',
     ],
-    ingredients:
-      'Protein Blend (Whey Protein Isolate, Whey Protein Concentrate, Whey Peptides), Natural And Artificial Flavor, Lecithin, Salt, Acesulfame Potassium, Sucralose, Lactase.',
     contains: 'Milk ans soy',
   },
+  ingredients:
+    'Protein Blend (Whey Protein Isolate, Whey Protein Concentrate, Whey Peptides), Natural And Artificial Flavor, Lecithin, Salt, Acesulfame Potassium, Sucralose, Lactase.',
 }
 describe('deve converter a whey para valores com VD', () => {
   it('deve existir a classe de converter', () => {

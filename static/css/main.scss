@@ -92,14 +92,13 @@ span {
 
 .fade-in-animation {
   animation: fade-in 500ms ease-in 300ms 1 normal both;
-}
+  &-fast {
+    animation: fade-in 500ms ease-in 100ms 1 normal both;
+  }
 
-.fade-in-animation-fast {
-  animation: fade-in 500ms ease-in 100ms 1 normal both;
-}
-
-.fade-in-animation-delayed {
-  animation: fade-in 500ms ease-in 500ms 1 normal both;
+  &-delayed {
+    animation: fade-in 500ms ease-in 500ms 1 normal both;
+  }
 }
 
 @media (min-width: 768px) {

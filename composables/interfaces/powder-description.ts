@@ -7,6 +7,5 @@ export interface PowderDescriptionInterface {
   size: number
   servingSize: number
   infos: string[]
-  ingredients: string
   contains?: string
 }

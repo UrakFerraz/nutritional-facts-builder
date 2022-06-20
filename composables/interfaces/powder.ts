@@ -4,5 +4,6 @@ import { NutrientsInterface } from '~/composables/interfaces/nutrients'
 export interface PowderInterface {
   id: number
   description: PowderDescriptionInterface
+  ingredients: string
   nutrients: NutrientsInterface
 }
