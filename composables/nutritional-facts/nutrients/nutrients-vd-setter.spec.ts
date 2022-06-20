@@ -1,5 +1,5 @@
 import NutrientsVD from './nutrients-vd-setter'
-import foodsDatabase from '~/static/mocks/foodsDatabase'
+import foodsDatabase from '~/static/mocks/foods-database'
 
 const nutrientsWithVdMock = {
   calories: {

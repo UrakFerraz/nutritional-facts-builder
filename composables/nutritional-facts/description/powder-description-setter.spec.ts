@@ -1,5 +1,5 @@
 import PowderDescription from './powder-description-setter'
-import foodsDatabase from '~/static/mocks/foodsDatabase'
+import foodsDatabase from '~/static/mocks/foods-database'
 describe('deve retornar os ingredientes da descrição', () => {
   it('deve criar as classes e buscar ingredientes', () => {
     const description = new PowderDescription(foodsDatabase[1])

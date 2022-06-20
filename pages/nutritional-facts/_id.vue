@@ -10,7 +10,7 @@ import Vue from "vue";
 import { PowderNutritionalFactsSetter } from "~/composables/nutritional-facts/powder/nutritional-facts-setter";
 import CarbohydrateServing from "~/composables/disassembled/nutrient-serving-carbo";
 import ProteinServing from "~/composables/disassembled/nutrient-serving-protein";
-import foodsDatabase from "~/static/mocks/foodsDatabase";
+import foodsDatabase from "~/static/mocks/foods-database";
 
 export default Vue.extend({
   data() {

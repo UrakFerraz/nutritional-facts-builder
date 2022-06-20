@@ -13,10 +13,10 @@ const foodsDatabase = [
         'Not a significant source of trans fat, dietary fiber, added sugars, vitamin D and iron.',
         '* The % Daily Value tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice',
       ],
-      ingredients:
-        'Protein Blend (Whey Protein Isolate, Whey Protein Concentrate, Whey Peptides), Natural And Artificial Flavor, Lecithin, Salt, Acesulfame Potassium, Sucralose, Lactase.',
       contains: 'Milk ans soy',
     },
+    ingredients:
+      'Protein Blend (Whey Protein Isolate, Whey Protein Concentrate, Whey Peptides), Natural And Artificial Flavor, Lecithin, Salt, Acesulfame Potassium, Sucralose, Lactase.',
     nutrients: {
       // a ordem dos nutrientes neste objeto determina a ordenação na tabela nutricional renderizada no html
       calories: { unit: 'kcal', value: 120 },
@@ -44,10 +44,10 @@ const foodsDatabase = [
         'Not a significant source of trans fat and vitamin D.',
         '* The % Daily Value tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice',
       ],
-      ingredients:
-        'Protein Matrix comprised of (Whey Protein Concentrate, Whey Protein Isolate, Calcium Caseinate, Micellar Casein, Milk Protein Isolate, Egg Albumin, Glutamine Peptides), Polydextrose, Sunflower Creamer (Sunflower Oil, Corn Syrup Solids, Sodium Caseinate, Mono- And Diglycerides, Dipotassium Phosphate, Tricalcium Phosphate, Soy Lecithin, Tocopherols), Natural and Artificial Flavor, MCT Powder (Medium Chain Triglycerides, Nonfat Dry Milk, Disodium Phosphate, Silicon Dioxide), Lecithin, Cellulose Gum, Salt, Yellow 5, Sucralose, Acesulfame Potassium, Papain, Bromelain.',
       contains: 'Egg, Milk, Soy, and Wheat.',
     },
+    ingredients:
+      'Protein Matrix comprised of (Whey Protein Concentrate, Whey Protein Isolate, Calcium Caseinate, Micellar Casein, Milk Protein Isolate, Egg Albumin, Glutamine Peptides), Polydextrose, Sunflower Creamer (Sunflower Oil, Corn Syrup Solids, Sodium Caseinate, Mono- And Diglycerides, Dipotassium Phosphate, Tricalcium Phosphate, Soy Lecithin, Tocopherols), Natural and Artificial Flavor, MCT Powder (Medium Chain Triglycerides, Nonfat Dry Milk, Disodium Phosphate, Silicon Dioxide), Lecithin, Cellulose Gum, Salt, Yellow 5, Sucralose, Acesulfame Potassium, Papain, Bromelain.',
     nutrients: {
       // a ordem dos nutrientes neste objeto determina a ordenação na tabela nutricional renderizada no html
       calories: { unit: 'kcal', value: 200 },
@@ -80,10 +80,10 @@ const foodsDatabase = [
         'Not a significant source of trans fat and vitamin D.',
         '* The % Daily Value tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice',
       ],
-      ingredients:
-        'Açúcar, cacau em pó, maltodextrina, minerais [cálcio (carbonato de cálcio) e ferro (pirofosfato férrico)], soro de leite em pó, vitaminas [vitamina C (ácido L-ascórbico), niacina (nicotinamida), vitamina B2 (riboflavina), vitamina A (acetato de retinila), vitamina B6 (cloridrato de piridoxina), vitamina D (colecalciferol) e vitamina B12 (cianocobalamina)], emulsificante lecitina de soja e aromatizante.',
       contains: 'Egg, Milk, Soy, and Wheat.',
     },
+    ingredients:
+      'Açúcar, cacau em pó, maltodextrina, minerais [cálcio (carbonato de cálcio) e ferro (pirofosfato férrico)], soro de leite em pó, vitaminas [vitamina C (ácido L-ascórbico), niacina (nicotinamida), vitamina B2 (riboflavina), vitamina A (acetato de retinila), vitamina B6 (cloridrato de piridoxina), vitamina D (colecalciferol) e vitamina B12 (cianocobalamina)], emulsificante lecitina de soja e aromatizante.',
     nutrients: {
       // a ordem dos nutrientes neste objeto determina a ordenação na tabela nutricional renderizada no html
       calories: { unit: 'kcal', value: 73 },

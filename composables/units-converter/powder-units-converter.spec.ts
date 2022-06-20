@@ -1,5 +1,5 @@
 import PowderUnitsConverter from './powder-units-converter'
-import foodsDatabase from '~/static/mocks/foodsDatabase'
+import foodsDatabase from '~/static/mocks/foods-database'
 import wheyWrongUnits from '~/static/mocks/wrong-units-whey'
 
 const convertedValues = [

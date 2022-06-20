@@ -1,5 +1,5 @@
 import IdentifyIngredients from './ingredients-identify'
-import foodsDatabase from '~/static/mocks/foodsDatabase'
+import foodsDatabase from '~/static/mocks/foods-database'
 
 const identifiedMock = [
   'Acesulfame Potassium',

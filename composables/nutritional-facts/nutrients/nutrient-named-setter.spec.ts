@@ -1,5 +1,5 @@
 import NutrientNamed from './nutrient-named'
-import foodsDatabase from '~/static/mocks/foodsDatabase'
+import foodsDatabase from '~/static/mocks/foods-database'
 
 describe('deve adicionar nomes nos nutrientes', () => {
   it('deve criar a classe que pega o nomedo nutriente', () => {
