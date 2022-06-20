@@ -1,5 +1,5 @@
 import PowderUnitsConverter from './powder-units-converter'
-import powders from '~/static/mocks/powders'
+import foodsDatabase from '~/static/mocks/foodsDatabase'
 import wheyWrongUnits from '~/static/mocks/wrong-units-whey'
 
 const convertedValues = [
@@ -17,7 +17,7 @@ const convertedValues2 = [
 
 describe('deve converter unidades de pós', () => {
   it('deve converter 1 valor', () => {
-    const converter = new PowderUnitsConverter(powders[1])
+    const converter = new PowderUnitsConverter(foodsDatabase[1])
     converter.convertUnits()
     converter.setConvertedPowder()
     expect(converter.converterConfig).toEqual(convertedValues)
@@ -27,6 +27,6 @@ describe('deve converter unidades de pós', () => {
     converter.convertUnits()
     expect(converter.converterConfig).toEqual(convertedValues2)
     converter.setConvertedPowder()
-    expect(converter.converted).toEqual(powders[1])
+    expect(converter.converted).toEqual(foodsDatabase[1])
   })
 })

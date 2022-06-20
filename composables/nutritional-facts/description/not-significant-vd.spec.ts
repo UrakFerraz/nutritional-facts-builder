@@ -3,7 +3,7 @@ const nutrientsWithVdMock = {
   calories: {
     unit: 'kcal',
     name: 'Calorias',
-    value: '200 cal / 837 kJ',
+    value: 200,
     vd: 10,
   },
   carbohydrate: { unit: 'g', name: 'Carboidrato', value: 15, vd: 5 },

@@ -7,16 +7,16 @@
 
 <script lang="ts">
 import Vue from "vue";
-import powders from "~/static/mocks/powders";
 import { PowderNutritionalFactsSetter } from "~/composables/nutritional-facts/powder/nutritional-facts-setter";
 import CarbohydrateServing from "~/composables/disassembled/nutrient-serving-carbo";
 import ProteinServing from "~/composables/disassembled/nutrient-serving-protein";
+import foodsDatabase from "~/static/mocks/foodsDatabase";
 
 export default Vue.extend({
   data() {
     return {
       nutritionalFacts: new PowderNutritionalFactsSetter(
-        powders[Number(this.$nuxt.$route.params.id)]
+        foodsDatabase[Number(this.$nuxt.$route.params.id)]
       )
         .main()
         .getNutritionalFacts(),
@@ -26,10 +26,10 @@ export default Vue.extend({
     disassembledNutrients() {
       return {
         carbohydrate: CarbohydrateServing.getSpecification(
-          powders[Number(this.$nuxt.$route.params.id)]
+          foodsDatabase[Number(this.$nuxt.$route.params.id)]
         ),
         protein: ProteinServing.getSpecification(
-          powders[Number(this.$nuxt.$route.params.id)]
+          foodsDatabase[Number(this.$nuxt.$route.params.id)]
         ),
       };
     },

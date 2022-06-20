@@ -1,5 +1,5 @@
 import NutrientsVD from './nutrients-vd-setter'
-import powders from '~/static/mocks/powders'
+import foodsDatabase from '~/static/mocks/foodsDatabase'
 
 const nutrientsWithVdMock = {
   calories: {
@@ -24,7 +24,7 @@ const nutrientsWithVdMock = {
 
 describe('deve adicionar vd', () => {
   it('deve adicionar vd no powder', () => {
-    const sut = new NutrientsVD(powders[1].nutrients).addVD()
+    const sut = new NutrientsVD(foodsDatabase[1].nutrients).addVD()
     expect(sut.nutrients).toEqual(nutrientsWithVdMock)
   })
 })

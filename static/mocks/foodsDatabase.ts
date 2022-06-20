@@ -1,4 +1,4 @@
-const powders = [
+const foodsDatabase = [
   {
     id: 1,
     description: {
@@ -106,4 +106,4 @@ const powders = [
   },
 ]
 
-export default powders
+export default foodsDatabase

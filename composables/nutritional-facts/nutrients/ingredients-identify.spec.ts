@@ -1,5 +1,5 @@
 import IdentifyIngredients from './ingredients-identify'
-import powders from '~/static/mocks/powders'
+import foodsDatabase from '~/static/mocks/foodsDatabase'
 
 const identifiedMock = [
   'Acesulfame Potassium',
@@ -33,7 +33,9 @@ const identifiedMock = [
 
 describe('deve identificar ingredientes', () => {
   it('deve listar ingredientes existentes', () => {
-    const res = new IdentifyIngredients(powders[1].description.ingredients)
+    const res = new IdentifyIngredients(
+      foodsDatabase[1].description.ingredients
+    )
     const identified = res.identify()
     expect(identified).toEqual(identifiedMock)
   })

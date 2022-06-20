@@ -1,5 +1,5 @@
 import { PowderNutritionalFactsSetter } from './powder/nutritional-facts-setter'
-import powders from '~/static/mocks/powders'
+import foodsDatabase from '~/static/mocks/foodsDatabase'
 
 const wheyMock = {
   powder: {
@@ -69,22 +69,22 @@ const wheyMockChanged = {
 }
 describe('deve converter a whey para valores com VD', () => {
   it('deve existir a classe de converter', () => {
-    const whey = powders[0]
+    const whey = foodsDatabase[0]
     const sut = new PowderNutritionalFactsSetter(whey).main()
     expect(sut).toBeDefined()
   })
   it('deve existir vd na whey convertida', () => {
-    const whey = powders[0]
+    const whey = foodsDatabase[0]
     const sut = new PowderNutritionalFactsSetter(whey).main()
     expect(sut.nutrients!.transFat.vd).toBe('**')
   })
   it('deve converter powder', () => {
-    const whey = powders[0]
+    const whey = foodsDatabase[0]
     const sut = new PowderNutritionalFactsSetter(whey).main()
     expect(sut).toMatchObject(wheyMock)
   })
   it('deve retornar o powder tratado', () => {
-    const whey = powders[0]
+    const whey = foodsDatabase[0]
     const sut = new PowderNutritionalFactsSetter(whey).main()
     expect(sut.getNutritionalFacts()).toMatchObject(wheyMockChanged)
   })
