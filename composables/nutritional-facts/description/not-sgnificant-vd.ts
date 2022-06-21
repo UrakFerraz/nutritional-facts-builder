@@ -2,7 +2,7 @@ import { NutrientsInterface } from '~/composables/interfaces/nutrients'
 import VD from '~/static/mocks/BR_VD'
 import { NutrientInterface } from '~/composables/interfaces/nutrient'
 
-type NotSignificantNutrients = [string, NutrientInterface]
+type NotSignificantNutrients = [string, NutrientInterface | undefined]
 
 export default class NotSignificantVD {
   private readonly _notSignificantNutrients: NotSignificantNutrients[] = []
@@ -23,11 +23,16 @@ export default class NotSignificantVD {
     )
     const vd = Object.entries(VD)
     const identified = nutrients.filter(
-      (nutrient) => nutrient[1].vd! < 1 && nutrient[1].value !== 0
+      (nutrient) => nutrient[1]!.vd! < 1 && nutrient[1]!.value !== 0
     )
     return identified.reduce(
-      (filtered: any[], nutrient: NotSignificantNutrients) => {
-        const res = vd.filter((item) => item[0] === nutrient[0])
+      (
+        filtered: NotSignificantNutrients[],
+        nutrient: NotSignificantNutrients
+      ) => {
+        const res: NotSignificantNutrients[] = vd.filter(
+          (item) => item[0] === nutrient[0]
+        )
         if (
           !this.notSignificantNutrient.some((notSign) =>
             notSign[0].includes(nutrient[0])
@@ -50,26 +55,26 @@ export default class NotSignificantVD {
     return nutrients.reduce(
       (acc: string, nutrient: NotSignificantNutrients, index: number) => {
         if (index === nutrients.length - 1 && nutrients.length > 1) {
-          return acc + ' e ' + nutrient[1].name!.toLowerCase() + '.'
+          return acc + ' e ' + nutrient[1]!.name!.toLowerCase() + '.'
         } else if (nutrients.length === 1) {
           return (
             acc +
             'Não contém quantidade significativa de' +
             ' ' +
-            nutrient[1].name!.toLowerCase() +
+            nutrient[1]!.name!.toLowerCase() +
             '.'
           )
         } else if (index === nutrients.length - 2 && nutrients.length > 2) {
-          return acc + ', ' + nutrient[1].name!.toLowerCase()
+          return acc + ', ' + nutrient[1]!.name!.toLowerCase()
         } else if (index === 0 && nutrient.length > 1) {
           return (
             acc +
             'Não contém quantidades significativas de' +
             ' ' +
-            nutrient[1].name!.toLowerCase()
+            nutrient[1]!.name!.toLowerCase()
           )
         } else {
-          return acc + ', ' + nutrient[1].name!.toLowerCase()
+          return acc + ', ' + nutrient[1]!.name!.toLowerCase()
         }
       },
       ''
