@@ -1,5 +1,5 @@
 <template>
-  <div :class="`nutritional-facts-table__${className}`">
+  <div :class="className">
     <slot></slot>
   </div>
 </template>
@@ -21,16 +21,17 @@ export default Vue.extend({
   },
   computed: {
     className() {
+      const className = "nutritional-facts-table__line";
       if (this.type === "nutrient") {
-        return "line--nutrient";
+        return className + "--nutrient";
       }
       if (this.type === "title") {
-        return "line--title";
+        return className + "--title";
       }
       if (this.type === "infos") {
-        return "line--infos";
+        return className + "--infos";
       }
-      return "line";
+      return className;
     },
   },
 });
@@ -74,7 +75,11 @@ export default Vue.extend({
   @include nutrientRow;
   &--infos {
     padding: 10px 0;
+    border-top: 3px solid rgb(156, 155, 165);
     border-bottom: 1px solid rgb(112, 110, 133);
+    &:nth-of-type(1) {
+      border-top: 4px solid rgb(156, 155, 165);
+    }
   }
   @include row;
   &--title {

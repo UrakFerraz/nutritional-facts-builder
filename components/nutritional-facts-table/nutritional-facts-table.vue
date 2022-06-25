@@ -68,7 +68,7 @@
         </nutritional-facts-table-line>
         <nutritional-facts-table-line
           v-if="
-            nutritionalFacts.infos![0] !== undefined || nutritionalFacts.infos![0] !== ''
+            nutritionalFacts.infos[0] !== undefined || nutritionalFacts.infos[0] !== ''
           "
           :type="'infos'"
         >

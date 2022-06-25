@@ -1,7 +1,7 @@
 <template>
   <div class="circular-chart">
-    <CircularSvg :percentage="percentage" />
-    <span class="circular-chart__percent">{{ Math.round(percentage) }}</span>
+    <CircularSvg :percentage="maxLimit" />
+    <span class="circular-chart__percent">{{ Math.round(maxLimit) }}</span>
   </div>
 </template>
 
@@ -12,6 +12,11 @@ export default Vue.extend({
   name: "Circular",
   props: {
     percentage: { type: Number, required: true },
+  },
+  computed: {
+    maxLimit() {
+      return this.percentage <= 100 ? this.percentage : 100;
+    },
   },
 });
 </script>
