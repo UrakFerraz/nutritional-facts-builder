@@ -9,10 +9,6 @@ const foodsDatabase = [
       flavor: 'Vanilla Ice Cream',
       size: 2200,
       servingSize: 31,
-      infos: [
-        'Not a significant source of trans fat, dietary fiber, added sugars, vitamin D and iron.',
-        '* The % Daily Value tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice',
-      ],
       contains: 'Milk ans soy',
     },
     ingredients:
@@ -40,10 +36,6 @@ const foodsDatabase = [
       flavor: 'Vanilla Ice Cream',
       size: 2200,
       servingSize: 47,
-      infos: [
-        'Not a significant source of trans fat and vitamin D.',
-        '* The % Daily Value tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice',
-      ],
       contains: 'Egg, Milk, Soy, and Wheat.',
     },
     ingredients:
@@ -76,10 +68,6 @@ const foodsDatabase = [
       flavor: 'Chocolate',
       size: 400,
       servingSize: 20,
-      infos: [
-        'Not a significant source of trans fat and vitamin D.',
-        '* The % Daily Value tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice',
-      ],
       contains: 'Egg, Milk, Soy, and Wheat.',
     },
     ingredients:

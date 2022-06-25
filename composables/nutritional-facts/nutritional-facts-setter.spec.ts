@@ -12,11 +12,6 @@ const wheyMock = {
       flavor: 'Vanilla Ice Cream',
       size: 2200,
       servingSize: 31,
-      infos: [
-        '',
-        '(*) % Valores Diários de referência com base em uma dieta de 2.000kcal ou 8.400kJ. Seus valores diários podem ser maiores ou menores, dependendo das suas necessidades energéticas',
-        '(**) Valores diários não estabelecidos.',
-      ],
       contains: 'Milk ans soy',
     },
     ingredients:
@@ -57,11 +52,6 @@ const wheyMockChanged = {
     flavor: 'Vanilla Ice Cream',
     size: 2200,
     servingSize: 31,
-    infos: [
-      '',
-      '(*) % Valores Diários de referência com base em uma dieta de 2.000kcal ou 8.400kJ. Seus valores diários podem ser maiores ou menores, dependendo das suas necessidades energéticas',
-      '(**) Valores diários não estabelecidos.',
-    ],
     contains: 'Milk ans soy',
   },
   ingredients:

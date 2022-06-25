@@ -21,7 +21,7 @@ export default class NotSignificantVD {
     const nutrients: NotSignificantNutrients[] = Object.entries(
       this.nutrientsWithVD
     )
-    const vd = Object.entries(VD)
+    const vd = Object.entries(VD.nutrients)
     const identified = nutrients.filter(
       (nutrient) => nutrient[1]!.vd! < 1 && nutrient[1]!.value !== 0
     )

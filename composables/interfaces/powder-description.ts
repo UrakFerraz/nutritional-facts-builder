@@ -6,6 +6,5 @@ export interface PowderDescriptionInterface {
   flavor?: string
   size: number
   servingSize: number
-  infos: string[]
   contains?: string
 }

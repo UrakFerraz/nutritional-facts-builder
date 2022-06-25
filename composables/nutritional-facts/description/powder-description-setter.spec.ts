@@ -12,11 +12,6 @@ const data = {
       flavor: 'Vanilla Ice Cream',
       size: 2200,
       servingSize: 47,
-      infos: [
-        '',
-        '(*) % Valores Diários de referência com base em uma dieta de 2.000kcal ou 8.400kJ. Seus valores diários podem ser maiores ou menores, dependendo das suas necessidades energéticas',
-        '(**) Valores diários não estabelecidos.',
-      ],
       contains: 'Egg, Milk, Soy, and Wheat.',
     },
     ingredients:

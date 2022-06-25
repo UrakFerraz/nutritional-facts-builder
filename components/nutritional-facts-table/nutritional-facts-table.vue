@@ -67,10 +67,12 @@
           <p v-else-if="nutrient">{{ nutrient.vd }} %</p>
         </nutritional-facts-table-line>
         <nutritional-facts-table-line
-          v-if="nutritionalFacts.description.infos !== undefined"
+          v-if="
+            nutritionalFacts.infos![0] !== undefined || nutritionalFacts.infos![0] !== ''
+          "
           :type="'infos'"
         >
-          <span v-for="(info, index) in nutritionalFacts.description.infos" :key="index">
+          <span v-for="(info, index) in nutritionalFacts.infos" :key="index">
             {{ info }}
           </span>
         </nutritional-facts-table-line>
