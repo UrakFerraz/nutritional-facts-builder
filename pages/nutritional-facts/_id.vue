@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { PowderNutritionalFactsSetter } from "~/composables/nutritional-facts/powder/nutritional-facts-setter";
+import { NutritionalFactsBuilder } from "~/composables/nutritional-facts/powder/nutritional-facts-builder";
 import CarbohydrateServing from "~/composables/disassembled/nutrient-serving-carbo";
 import ProteinServing from "~/composables/disassembled/nutrient-serving-protein";
 import foodsDatabase from "~/static/mocks/foods-database";
@@ -15,7 +15,7 @@ import foodsDatabase from "~/static/mocks/foods-database";
 export default Vue.extend({
   data() {
     return {
-      nutritionalFacts: new PowderNutritionalFactsSetter(
+      nutritionalFacts: new NutritionalFactsBuilder(
         foodsDatabase[Number(this.$nuxt.$route.params.id)]
       )
         .main()

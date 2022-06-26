@@ -8,7 +8,7 @@ export default class NutrientsVD {
     return this._nutrients
   }
 
-  setVD(vd: number | undefined, source: number) {
+  private setVD(vd: number | undefined, source: number) {
     return vd !== undefined ? Math.round((source! * 100) / vd) : '**'
   }
 

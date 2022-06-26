@@ -6,7 +6,7 @@ import { PowderInterface } from '~/composables/interfaces/powder'
 import { NutrientsInterface } from '~/composables/interfaces/nutrients'
 import { PowderDescriptionInterface } from '~/composables/interfaces/powder-description'
 import VD from '~/static/mocks/BR_VD'
-export class PowderNutritionalFactsSetter {
+export class NutritionalFactsBuilder {
   constructor(private readonly powder: PowderInterface) {}
   private static _id: number
   private static _nutrients: NutrientsInterface
@@ -14,27 +14,31 @@ export class PowderNutritionalFactsSetter {
   private static _ingredients: string
   private static _infos: string[]
   get nutrients() {
-    return PowderNutritionalFactsSetter._nutrients
+    return NutritionalFactsBuilder._nutrients
   }
 
   get description() {
-    return PowderNutritionalFactsSetter._description
+    return NutritionalFactsBuilder._description
   }
 
   get id() {
-    return PowderNutritionalFactsSetter._id
+    return NutritionalFactsBuilder._id
   }
 
   get info() {
-    return PowderNutritionalFactsSetter._infos
+    return NutritionalFactsBuilder._infos
   }
 
   get ingredients() {
-    return PowderNutritionalFactsSetter._ingredients
+    return NutritionalFactsBuilder._ingredients
   }
 
   private setId() {
-    PowderNutritionalFactsSetter._id = this.powder.id
+    NutritionalFactsBuilder._id = this.powder.id
+  }
+
+  private setIngredients() {
+    NutritionalFactsBuilder._ingredients = this.powder.ingredients
   }
 
   private setNutrientsVD() {
@@ -50,7 +54,7 @@ export class PowderNutritionalFactsSetter {
   private setNutrients() {
     const nutrientsWithVD = this.setNutrientsVD()
     const nutrientsWithNames = this.setNutrientsNames()
-    PowderNutritionalFactsSetter._nutrients = Object.assign(
+    NutritionalFactsBuilder._nutrients = Object.assign(
       nutrientsWithVD,
       nutrientsWithNames
     )
@@ -58,10 +62,10 @@ export class PowderNutritionalFactsSetter {
 
   private setDescription() {
     const powder = Object.assign({}, this.powder, {
-      nutrients: PowderNutritionalFactsSetter._nutrients,
+      nutrients: NutritionalFactsBuilder._nutrients,
     })
     const descriptionSetter = new PowderDescription(powder)
-    PowderNutritionalFactsSetter._description =
+    NutritionalFactsBuilder._description =
       descriptionSetter.main().powderDescription
   }
 
@@ -69,27 +73,16 @@ export class PowderNutritionalFactsSetter {
     const notSignificantText = new NotSignificantVD(this.nutrients)
       .setNotSignificantNutrient()
       .createNotSignificantNutrientText().notSignificantNutrientText
-    PowderNutritionalFactsSetter._infos = [notSignificantText, ...VD.infos]
-  }
-
-  private setNotSignificantVDNutrientes() {
-    Object.entries(this.nutrients).forEach((nutrient) => {
-      if (nutrient[1].vd < 1 && nutrient[1].value !== 0) {
-        const nutrientName =
-          nutrient[0] as keyof typeof PowderNutritionalFactsSetter._nutrients
-        delete PowderNutritionalFactsSetter._nutrients[nutrientName]
-      }
-    })
-    return this
+    NutritionalFactsBuilder._infos = [notSignificantText, ...VD.infos]
   }
 
   getNutritionalFacts() {
     return {
-      id: PowderNutritionalFactsSetter._id,
-      nutrients: PowderNutritionalFactsSetter._nutrients,
-      description: PowderNutritionalFactsSetter._description,
-      ingredients: PowderNutritionalFactsSetter._ingredients,
-      infos: PowderNutritionalFactsSetter._infos,
+      id: NutritionalFactsBuilder._id,
+      nutrients: NutritionalFactsBuilder._nutrients,
+      description: NutritionalFactsBuilder._description,
+      ingredients: NutritionalFactsBuilder._ingredients,
+      infos: NutritionalFactsBuilder._infos,
     }
   }
 
@@ -98,8 +91,7 @@ export class PowderNutritionalFactsSetter {
     this.setNutrients()
     this.setDescription()
     this.setInfos()
-    this.setNotSignificantVDNutrientes()
-    PowderNutritionalFactsSetter._ingredients = this.powder.ingredients
+    this.setIngredients()
     return this
   }
 }
