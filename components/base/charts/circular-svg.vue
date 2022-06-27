@@ -25,7 +25,9 @@ export default Vue.extend({
   },
   computed: {
     percentageStroke() {
-      return `${this.percentage} ${100 - Number(this.percentage)}`;
+      return this.percentage <= 100
+        ? `${this.percentage} ${100 - Number(this.percentage)}`
+        : "100 0";
     },
   },
 });
