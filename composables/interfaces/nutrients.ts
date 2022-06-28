@@ -27,7 +27,7 @@ export interface NutrientsInterface {
   pantothenicAcid?: NutrientInterface
   phosphorus?: NutrientInterface
   potassium?: NutrientInterface
-  riboflvin?: NutrientInterface
+  riboflavin?: NutrientInterface
   selenium?: NutrientInterface
   thiamine?: NutrientInterface
   vitaminA?: NutrientInterface
