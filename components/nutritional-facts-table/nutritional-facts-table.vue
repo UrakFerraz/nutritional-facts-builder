@@ -85,8 +85,7 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import { PropType } from "vue-demi";
+import Vue, { PropType } from "vue";
 import { PowderInterface } from "~/composables/interfaces/powder";
 
 export default Vue.extend({

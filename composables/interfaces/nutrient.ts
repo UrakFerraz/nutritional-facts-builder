@@ -4,3 +4,5 @@ export interface NutrientInterface {
   vd?: number | string
   name?: string
 }
+
+export type NutrientIterableInterface = [string, NutrientInterface]

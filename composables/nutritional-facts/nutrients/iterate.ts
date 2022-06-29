@@ -1,9 +1,8 @@
 import foodsDatabase from '../../../static/mocks/foods-database'
 import nutritionalValues from '../../../static/mocks/nutritional-values'
 import { NutrientsInterface } from '../../../composables/interfaces/nutrients'
-import { NutrientInterface } from '../../../composables/interfaces/nutrient'
+import { NutrientIterableInterface } from '../../../composables/interfaces/nutrient'
 import nutrientsNames from '../../../static/mocks/nutrients-names'
-export type NutrientIterableInterface = [string, NutrientInterface]
 
 const nutrients = Object.entries(foodsDatabase[0].nutrients)[Symbol.iterator]()
 
@@ -45,3 +44,5 @@ for (const nutrient of nutrients) {
   const nutrientName = data[0] as keyof NutrientsInterface
   iteratedNutrients[nutrientName] = data[1]
 }
+
+console.log(iteratedNutrients)
