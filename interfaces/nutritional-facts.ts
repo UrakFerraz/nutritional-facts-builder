@@ -1,7 +1,7 @@
 import { PowderDescriptionInterface } from '~/interfaces/powder-description'
 import { NutrientsInterface } from '~/interfaces/nutrients'
 
-export interface PowderInterface {
+export interface NutritionalFactsInterface {
   id: number
   description: PowderDescriptionInterface
   infos?: string[]

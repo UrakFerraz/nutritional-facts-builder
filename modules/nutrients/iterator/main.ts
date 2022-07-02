@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import foodsDatabase from '../../../../static/mocks/foods-database'
+import foodsDatabase from '../../../static/mocks/foods-database'
 import { NutrientsNameIterator } from './iterator-addName'
 import { NutrientsIteratorStructure } from './nutrients-structure'
 

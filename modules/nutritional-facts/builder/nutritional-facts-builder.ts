@@ -1,14 +1,14 @@
 
-import PowderDescription from '../description/powder-description-setter'
-import NotSignificantVD from '../description/not-sgnificant-vd'
-import { PowderInterface } from '~/interfaces/powder'
+import PowderDescription from '../../description/powder-description-setter'
+import NotSignificantVD from '../../description/not-sgnificant-vd'
+import { NutritionalFactsInterface } from '~/interfaces/nutritional-facts'
 import { NutrientsInterface } from '~/interfaces/nutrients'
 import { PowderDescriptionInterface } from '~/interfaces/powder-description'
 import VD from '~/static/mocks/BR_VD'
 import NutrientsVD from '~/modules/nutrients/nutrients-vd-setter'
 import { NutrientsNamed } from '~/modules/nutrients/nutrients-named'
 export class NutritionalFactsBuilder {
-  constructor(private readonly powder: PowderInterface) {}
+  constructor(private readonly powder: NutritionalFactsInterface) {}
   private static _id: number
   private static _nutrients: NutrientsInterface
   private static _description: PowderDescriptionInterface

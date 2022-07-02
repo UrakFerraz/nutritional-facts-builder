@@ -1,7 +1,7 @@
 import foodsDatabase from '../../../static/mocks/foods-database'
 import nutritionalValues from '../../../static/mocks/nutritional-values'
-import { NutrientsInterface } from '../../../modules/interfaces/nutrients'
-import { NutrientIterableInterface } from '../../../modules/interfaces/nutrient'
+import { NutrientsInterface } from '../../../interfaces/nutrients'
+import { NutrientIterableInterface } from '../../../interfaces/nutrient'
 import nutrientsNames from '../../../static/mocks/nutrients-names'
 
 const nutrients = Object.entries(foodsDatabase[0].nutrients)[Symbol.iterator]()

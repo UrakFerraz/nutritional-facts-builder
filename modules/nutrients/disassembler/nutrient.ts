@@ -1,7 +1,7 @@
-import { PowderInterface } from '~/interfaces/powder'
+import { NutritionalFactsInterface } from '~/interfaces/nutritional-facts'
 
 export default abstract class DisassembledNutrient {
-  constructor(private readonly _powder: PowderInterface) {}
+  constructor(private readonly _powder: NutritionalFactsInterface) {}
 
   protected _data = {
     percentageInServingSize: 0,
