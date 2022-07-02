@@ -1,4 +1,4 @@
-import { NutritionalFactsBuilder } from './powder/nutritional-facts-builder'
+import { NutritionalFactsBuilder } from './nutritional-facts-builder'
 import foodsDatabase from '~/static/mocks/foods-database'
 
 const wheyMock = {

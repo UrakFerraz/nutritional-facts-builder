@@ -1,10 +1,9 @@
-import nutritionalValues from '../../../../static/mocks/nutritional-values'
+import nutrientsNames from '../../../../static/mocks/nutrients-names'
 import { NutrientsIteratorStructure } from './nutrients-structure'
-import { NutrientsIteratorInterface } from '~/composables/interfaces/nutrients-iterator'
-import { NutrientIterableInterface } from '~/composables/interfaces/nutrient'
-import { NutrientsInterface } from '~/composables/interfaces/nutrients'
+import { NutrientsIteratorInterface } from '~/interfaces/nutrients-iterator'
+import { NutrientIterableInterface } from '~/interfaces/nutrient'
 
-export class NutrientsVDIterator implements NutrientsIteratorInterface {
+export class NutrientsNameIterator implements NutrientsIteratorInterface {
   private index = 0
   constructor(
     private readonly nutrientsStructure: NutrientsIteratorStructure
@@ -21,11 +20,9 @@ export class NutrientsVDIterator implements NutrientsIteratorInterface {
   }
 
   makeValue(nutrient: NutrientIterableInterface): IteratorResult<unknown> {
-    function _calculateVD() {
-      const nutrientName = nutrient[0] as keyof NutrientsInterface
-      const baseValue = nutritionalValues[nutrientName].value
-      const vd = Math.round((Number(nutrient[1].value) * 100) / baseValue!)
-      return !isNaN(vd) ? vd : '**'
+    function getName() {
+      const nutrientName = nutrient[0] as keyof typeof nutrientsNames
+      return nutrientsNames[nutrientName].pt
     }
     return {
       value: [
@@ -33,7 +30,8 @@ export class NutrientsVDIterator implements NutrientsIteratorInterface {
         {
           unit: nutrient[1].unit,
           value: nutrient[1].value,
-          vd: _calculateVD(),
+          vd: nutrient[1].value,
+          name: getName(),
         },
       ],
       done: false,

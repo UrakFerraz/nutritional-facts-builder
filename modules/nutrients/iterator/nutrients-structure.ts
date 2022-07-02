@@ -1,7 +1,7 @@
 import { NutrientsVDIterator } from './main-iterator-addVD'
-import { NutrientIterableInterface } from '~/composables/interfaces/nutrient'
-import { NutrientsInterface } from '~/composables/interfaces/nutrients'
-import { NutrientsIteratorInterface } from '~/composables/interfaces/nutrients-iterator'
+import { NutrientIterableInterface } from '~/interfaces/nutrient'
+import { NutrientsInterface } from '~/interfaces/nutrients'
+import { NutrientsIteratorInterface } from '~/interfaces/nutrients-iterator'
 
 export class NutrientsIteratorStructure {
   private _nutrients: NutrientIterableInterface[] = []

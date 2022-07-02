@@ -1,7 +1,7 @@
 import NutrientsNamedAbstract from './nutrients-named-base'
 import NutrientNamed from './nutrient-named'
-import { NutrientsInterface } from '~/composables/interfaces/nutrients'
-import { NutrientIterableInterface } from '~/composables/interfaces/nutrient'
+import { NutrientsInterface } from '~/interfaces/nutrients'
+import { NutrientIterableInterface } from '~/interfaces/nutrient'
 
 export class NutrientsNamed extends NutrientsNamedAbstract {
   constructor(private _nutrients: NutrientsInterface) {

@@ -1,4 +1,4 @@
-import { PowderInterface } from '../interfaces/powder'
+import { PowderInterface } from '../../interfaces/powder'
 import NutrientServing from './nutrient-serving'
 
 export default class ProteinServing extends NutrientServing {

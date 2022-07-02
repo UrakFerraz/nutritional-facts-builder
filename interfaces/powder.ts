@@ -1,5 +1,5 @@
-import { PowderDescriptionInterface } from '~/composables/interfaces/powder-description'
-import { NutrientsInterface } from '~/composables/interfaces/nutrients'
+import { PowderDescriptionInterface } from '~/interfaces/powder-description'
+import { NutrientsInterface } from '~/interfaces/nutrients'
 
 export interface PowderInterface {
   id: number

@@ -1,6 +1,6 @@
-import { NutrientsInterface } from '~/composables/interfaces/nutrients'
+import { NutrientsInterface } from '~/interfaces/nutrients'
 import VD from '~/static/mocks/BR_VD'
-import { NutrientInterface } from '~/composables/interfaces/nutrient'
+import { NutrientInterface } from '~/interfaces/nutrient'
 
 type NotSignificantNutrients = [string, NutrientInterface | undefined]
 

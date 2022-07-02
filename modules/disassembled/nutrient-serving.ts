@@ -1,4 +1,4 @@
-import { NutrientsInterface } from '../interfaces/nutrients'
+import { NutrientsInterface } from '../../interfaces/nutrients'
 import DisassembledNutrient from './nutrient'
 
 export default abstract class NutrientServing extends DisassembledNutrient {

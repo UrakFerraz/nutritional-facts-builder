@@ -1,7 +1,7 @@
 import NutrientNamedAbstract from './nutrient-named-base'
 import nutrientsNames from '~/static/mocks/nutrients-names'
-import { NutrientInterface } from '~/composables/interfaces/nutrient'
-import { NutrientsInterface } from '~/composables/interfaces/nutrients'
+import { NutrientInterface } from '~/interfaces/nutrient'
+import { NutrientsInterface } from '~/interfaces/nutrients'
 
 export default class NutrientNamed extends NutrientNamedAbstract {
   static _nutrientNamed: NutrientInterface

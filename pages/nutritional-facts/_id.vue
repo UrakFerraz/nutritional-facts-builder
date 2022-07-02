@@ -7,9 +7,9 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { NutritionalFactsBuilder } from "~/composables/nutritional-facts/powder/nutritional-facts-builder";
-import CarbohydrateServing from "~/composables/disassembled/nutrient-serving-carbo";
-import ProteinServing from "~/composables/disassembled/nutrient-serving-protein";
+import { NutritionalFactsBuilder } from "~/modules/nutritional-facts/builder/nutritional-facts-builder";
+import CarbohydrateServing from "~/modules/disassembled/nutrient-serving-carbo";
+import ProteinServing from "~/modules/disassembled/nutrient-serving-protein";
 import foodsDatabase from "~/static/mocks/foods-database";
 
 export default Vue.extend({

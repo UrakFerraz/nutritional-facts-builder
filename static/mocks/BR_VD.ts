@@ -1,6 +1,6 @@
 // Valores diários de referência de nutrientes de declaração obrigatória
 
-import { NutrientsInterface } from '~/composables/interfaces/nutrients'
+import { NutrientsInterface } from '~/interfaces/nutrients'
 
 type MainNutrientsVD = Pick<
   NutrientsInterface,

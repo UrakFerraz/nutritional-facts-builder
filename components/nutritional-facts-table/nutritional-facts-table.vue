@@ -86,7 +86,7 @@
 
 <script lang="ts">
 import Vue, { PropType } from "vue";
-import { PowderInterface } from "~/composables/interfaces/powder";
+import { PowderInterface } from "~/modules/interfaces/powder";
 
 export default Vue.extend({
   name: "NutritionalFactsTable",

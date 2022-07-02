@@ -1,5 +1,5 @@
-import { PowderInterface } from '~/composables/interfaces/powder'
-import { PowderDescriptionInterface } from '~/composables/interfaces/powder-description'
+import { PowderInterface } from '~/interfaces/powder'
+import { PowderDescriptionInterface } from '~/interfaces/powder-description'
 
 export default class PowderDescription {
   private static _powderDescription: PowderDescriptionInterface

@@ -1,4 +1,4 @@
-import { PowderInterface } from '~/composables/interfaces/powder'
+import { PowderInterface } from '~/interfaces/powder'
 
 export default abstract class DisassembledNutrient {
   constructor(private readonly _powder: PowderInterface) {}
