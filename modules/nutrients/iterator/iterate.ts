@@ -45,4 +45,5 @@ for (const nutrient of nutrients) {
   iteratedNutrients[nutrientName] = data[1]
 }
 
+// eslint-disable-next-line no-console
 console.log(iteratedNutrients)

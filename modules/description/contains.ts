@@ -1,5 +1,5 @@
 import IdentifyIngredients from '../nutrients/ingredients-identify'
-import { DescriptionInterface } from '~/interfaces/powder-description'
+import { DescriptionInterface } from '~/interfaces/description'
 
 export default class Contains {
   private static _contains: IdentifyIngredients

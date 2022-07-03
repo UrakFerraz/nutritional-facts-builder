@@ -1,5 +1,5 @@
-import nutritionalValues from '../../../../static/mocks/nutritional-values'
 import { NutrientsIteratorStructure } from './nutrients-structure'
+import nutritionalValues from '~/static/mocks/nutritional-values'
 import { NutrientsIteratorInterface } from '~/interfaces/nutrients-iterator'
 import { NutrientIterableInterface } from '~/interfaces/nutrient'
 import { NutrientsInterface } from '~/interfaces/nutrients'

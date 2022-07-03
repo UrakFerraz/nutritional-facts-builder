@@ -1,4 +1,4 @@
-import { DescriptionInterface } from '~/interfaces/powder-description'
+import { DescriptionInterface } from '~/interfaces/description'
 import { NutrientsInterface } from '~/interfaces/nutrients'
 
 export interface NutritionalFactsInterface {

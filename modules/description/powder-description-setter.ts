@@ -1,5 +1,5 @@
 import { NutritionalFactsInterface } from '~/interfaces/nutritional-facts'
-import { DescriptionInterface } from '~/interfaces/powder-description'
+import { DescriptionInterface } from '~/interfaces/description'
 
 export default class PowderDescription {
   private static _powderDescription: DescriptionInterface

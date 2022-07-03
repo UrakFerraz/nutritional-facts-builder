@@ -86,13 +86,13 @@
 
 <script lang="ts">
 import Vue, { PropType } from "vue";
-import { PowderInterface } from "~/modules/interfaces/powder";
+import { NutritionalFactsInterface } from "~/interfaces/nutritional-facts";
 
 export default Vue.extend({
   name: "NutritionalFactsTable",
   props: {
     nutritionalFacts: {
-      type: Object as PropType<PowderInterface>,
+      type: Object as PropType<NutritionalFactsInterface>,
       required: true,
     },
   },

@@ -8,15 +8,19 @@
 <script lang="ts">
 import Vue from "vue";
 import { NutritionalFactsBuilder } from "~/modules/nutritional-facts/builder/nutritional-facts-builder";
-import CarbohydrateServing from "~/modules/disassembled/nutrient-serving-carbo";
-import ProteinServing from "~/modules/disassembled/nutrient-serving-protein";
+import CarbohydrateServing from "~/modules/nutrients/disassembler/nutrient-serving-carbo";
+import ProteinServing from "~/modules/nutrients/disassembler/nutrient-serving-protein";
 import foodsDatabase from "~/static/mocks/foods-database";
+
+const nutritionalValueStructure = (routeParamsId: string) => {
+  return foodsDatabase.find((item) => item.id === Number(routeParamsId));
+};
 
 export default Vue.extend({
   data() {
     return {
       nutritionalFacts: new NutritionalFactsBuilder(
-        foodsDatabase[Number(this.$nuxt.$route.params.id)]
+        nutritionalValueStructure(this.$nuxt.$route.params.id)!
       )
         .main()
         .getNutritionalFacts(),
@@ -26,10 +30,10 @@ export default Vue.extend({
     disassembledNutrients() {
       return {
         carbohydrate: CarbohydrateServing.getSpecification(
-          foodsDatabase[Number(this.$nuxt.$route.params.id)]
+          nutritionalValueStructure(this.$nuxt.$route.params.id)!
         ),
         protein: ProteinServing.getSpecification(
-          foodsDatabase[Number(this.$nuxt.$route.params.id)]
+          nutritionalValueStructure(this.$nuxt.$route.params.id)!
         ),
       };
     },

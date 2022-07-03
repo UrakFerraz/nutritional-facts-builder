@@ -1,5 +1,5 @@
-import nutrientsNames from '../../../../static/mocks/nutrients-names'
 import { NutrientsIteratorStructure } from './nutrients-structure'
+import nutrientsNames from '~/static/mocks/nutrients-names'
 import { NutrientsIteratorInterface } from '~/interfaces/nutrients-iterator'
 import { NutrientIterableInterface } from '~/interfaces/nutrient'
 
