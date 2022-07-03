@@ -1,15 +1,15 @@
 import IdentifyIngredients from '../nutrients/ingredients-identify'
-import { PowderDescriptionInterface } from '~/interfaces/powder-description'
+import { DescriptionInterface } from '~/interfaces/powder-description'
 
 export default class Contains {
   private static _contains: IdentifyIngredients
 
-  get powderDescription(): PowderDescriptionInterface {
+  get powderDescription(): DescriptionInterface {
     return this._powderDescription
   }
 
   constructor(
-    private readonly _powderDescription: PowderDescriptionInterface
+    private readonly _powderDescription: DescriptionInterface
   ) {}
 
   set contains(value: IdentifyIngredients) {

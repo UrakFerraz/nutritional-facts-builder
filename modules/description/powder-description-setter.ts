@@ -1,10 +1,10 @@
 import { NutritionalFactsInterface } from '~/interfaces/nutritional-facts'
-import { PowderDescriptionInterface } from '~/interfaces/powder-description'
+import { DescriptionInterface } from '~/interfaces/powder-description'
 
 export default class PowderDescription {
-  private static _powderDescription: PowderDescriptionInterface
+  private static _powderDescription: DescriptionInterface
   constructor(private readonly _powder: NutritionalFactsInterface) {}
-  get powderDescription(): PowderDescriptionInterface {
+  get powderDescription(): DescriptionInterface {
     return PowderDescription._powderDescription
   }
 

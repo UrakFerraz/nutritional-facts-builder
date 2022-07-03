@@ -1,9 +1,9 @@
-import { PowderDescriptionInterface } from '~/interfaces/powder-description'
+import { DescriptionInterface } from '~/interfaces/powder-description'
 import { NutrientsInterface } from '~/interfaces/nutrients'
 
 export interface NutritionalFactsInterface {
   id: number
-  description: PowderDescriptionInterface
+  description: DescriptionInterface
   infos?: string[]
   ingredients: string
   nutrients: NutrientsInterface
