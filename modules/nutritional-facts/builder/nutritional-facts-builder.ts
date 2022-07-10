@@ -73,8 +73,6 @@ export class NutritionalFactsBuilder {
   }
 
   main() {
-    // eslint-disable-next-line no-debugger
-    debugger
     this.setId()
     this.setNutrients()
     this.setDescription()
