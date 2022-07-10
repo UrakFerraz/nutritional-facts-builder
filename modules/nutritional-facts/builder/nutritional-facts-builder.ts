@@ -1,12 +1,10 @@
-
 import PowderDescription from '../../description/powder-description-setter'
 import NotSignificantVD from '../../description/not-sgnificant-vd'
 import { NutritionalFactsInterface } from '~/interfaces/nutritional-facts'
 import { NutrientsInterface } from '~/interfaces/nutrients'
 import { DescriptionInterface } from '~/interfaces/description'
 import VD from '~/static/mocks/BR_VD'
-import NutrientsVD from '~/modules/nutrients/nutrients-vd-setter'
-import { NutrientsNamed } from '~/modules/nutrients/nutrients-named'
+import NutrientsIterator from '~/modules/nutrients/iterator/iterate'
 export class NutritionalFactsBuilder {
   constructor(private readonly powder: NutritionalFactsInterface) {}
   private static _id: number
@@ -42,23 +40,10 @@ export class NutritionalFactsBuilder {
     NutritionalFactsBuilder._ingredients = this.powder.ingredients
   }
 
-  private setNutrientsVD() {
-    const vdSetter = new NutrientsVD(this.powder.nutrients)
-    return vdSetter.addVD().nutrients
-  }
-
-  private setNutrientsNames() {
-    const nutrientsNamed = new NutrientsNamed(this.powder.nutrients)
-    return nutrientsNamed.addNames().nutrients
-  }
-
   private setNutrients() {
-    const nutrientsWithVD = this.setNutrientsVD()
-    const nutrientsWithNames = this.setNutrientsNames()
-    NutritionalFactsBuilder._nutrients = Object.assign(
-      nutrientsWithVD,
-      nutrientsWithNames
-    )
+    NutritionalFactsBuilder._nutrients = NutrientsIterator.editNutrients(
+      this.powder.nutrients
+    ).iteratedNutrients
   }
 
   private setDescription() {
@@ -88,6 +73,8 @@ export class NutritionalFactsBuilder {
   }
 
   main() {
+    // eslint-disable-next-line no-debugger
+    debugger
     this.setId()
     this.setNutrients()
     this.setDescription()

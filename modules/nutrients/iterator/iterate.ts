@@ -1,49 +1,56 @@
-import foodsDatabase from '../../../static/mocks/foods-database'
 import nutritionalValues from '../../../static/mocks/nutritional-values'
 import { NutrientsInterface } from '../../../interfaces/nutrients'
 import { NutrientIterableInterface } from '../../../interfaces/nutrient'
 import nutrientsNames from '../../../static/mocks/nutrients-names'
 
-const nutrients = Object.entries(foodsDatabase[0].nutrients)[Symbol.iterator]()
+export default class NutrientsIterator {
+  static iteratedNutrients: any = {}
 
-const iteratedNutrients: any = {}
+  private _nutrients: NutrientsInterface | null = null
+  get nutrients() {
+    return this._nutrients
+  }
 
-function _calculateVD(nutrient: NutrientIterableInterface) {
-  const nutrientName = nutrient[0] as keyof NutrientsInterface
-  const baseValue = nutritionalValues[nutrientName].value
-  const vd = Math.round((Number(nutrient[1].value) * 100) / baseValue!)
-  return !isNaN(vd) ? vd : '**'
-}
+  nutrientBuilder(nutrient: NutrientIterableInterface) {
+    const _calculateVD = () => {
+      const nutrientName = nutrient[0] as keyof NutrientsInterface
+      const baseValue = nutritionalValues[nutrientName].value
+      const vd = Math.round((Number(nutrient[1].value) * 100) / baseValue!)
+      return !isNaN(vd) ? vd : '**'
+    }
+    const _getName = () => {
+      const nutrientName = nutrient[0] as keyof typeof nutrientsNames
+      return nutrientsNames[nutrientName].pt
+    }
+    return {
+      next() {
+        return {
+          value: [
+            nutrient[0],
+            {
+              unit: nutrient[1].unit,
+              value: nutrient[1].value,
+              vd: _calculateVD(),
+              name: _getName(),
+            },
+          ],
+          done: false,
+        }
+      },
+    }
+  }
 
-function _getName(nutrient: NutrientIterableInterface) {
-  const nutrientName = nutrient[0] as keyof typeof nutrientsNames
-  return nutrientsNames[nutrientName].pt
-}
-
-function nutrientBuilder(nutrient: NutrientIterableInterface) {
-  return {
-    next() {
-      return {
-        value: [
-          nutrient[0],
-          {
-            unit: nutrient[1].unit,
-            value: nutrient[1].value,
-            vd: _calculateVD(nutrient),
-            name: _getName(nutrient),
-          },
-        ],
-        done: false,
-      }
-    },
+  static editNutrients(nutrients: NutrientsInterface) {
+    const Iterated = new NutrientsIterator()
+    Iterated._nutrients = nutrients
+    const iterableNutrients = Object.entries(Iterated._nutrients)[
+      Symbol.iterator
+    ]()
+    for (const nutrient of iterableNutrients) {
+      const data = Iterated.nutrientBuilder(nutrient).next().value
+      const nutrientName = data[0] as keyof NutrientsInterface
+      NutrientsIterator.iteratedNutrients[nutrientName] = data[1]
+    }
+    return this
   }
 }
-
-for (const nutrient of nutrients) {
-  const data = nutrientBuilder(nutrient).next().value
-  const nutrientName = data[0] as keyof NutrientsInterface
-  iteratedNutrients[nutrientName] = data[1]
-}
-
-// eslint-disable-next-line no-console
-console.log(iteratedNutrients)
