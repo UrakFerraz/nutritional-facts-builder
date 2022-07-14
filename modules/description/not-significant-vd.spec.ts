@@ -29,17 +29,17 @@ const notSignificantMock = [
 
 describe('deve procurar valores não significativos', () => {
   it('deve guardar valores não significativos', () => {
-    const mock = new NotSignificantVD(
+    const sut = new NotSignificantVD(
       nutrientsWithVdMock
     ).setNotSignificantNutrient()
-    expect(mock.notSignificantNutrient).toEqual(notSignificantMock)
-    expect(mock.notSignificantNutrient).toMatchObject(notSignificantMock)
+    expect(sut.notSignificantNutrient).toEqual(notSignificantMock)
+    expect(sut.notSignificantNutrient).toMatchObject(notSignificantMock)
   })
   it('deve criar frase para tabela nutricional', () => {
-    const mock = new NotSignificantVD(nutrientsWithVdMock)
+    const sut = new NotSignificantVD(nutrientsWithVdMock)
       .setNotSignificantNutrient()
       .createNotSignificantNutrientText()
-    expect(mock.notSignificantNutrientText).toEqual(
+    expect(sut.notSignificantNutrientText).toEqual(
       'Não contém quantidades significativas de gorduras saturadas, fibra alimentar e sódio.'
     )
   })

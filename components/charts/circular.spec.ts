@@ -6,7 +6,7 @@ describe('deve existir um gráfico circular com texto', () => {
       propsData: { percentage: 30 },
     })
     expect(sut.is(Circular)).toBe(true)
-    expect(sut.isVueInstance()).toBe(true)
+    expect(sut.exists()).toBeTruthy()
     expect(sut.find('div').exists()).toBe(true)
     expect(sut.find('.circular-chart').exists()).toBe(true)
     expect(sut.find('span').exists()).toBe(true)

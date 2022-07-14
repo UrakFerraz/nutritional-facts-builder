@@ -2,7 +2,7 @@ import CarbohydrateServing from './nutrient-serving-carbo'
 import ProteinServing from './nutrient-serving-protein'
 import foodsDatabase from '~/static/mocks/foods-database'
 describe('deve fracionar o powder', () => {
-  it('deve criar as classes que analisa os nutrientes', () => {
+  it('deve criar as classes que analisam os nutrientes', () => {
     const sutCarbo = new CarbohydrateServing(foodsDatabase[0])
     expect(sutCarbo).toBeDefined()
     const sutProtein = new ProteinServing(foodsDatabase[0])

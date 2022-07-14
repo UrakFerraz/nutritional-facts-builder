@@ -5,6 +5,7 @@ describe('deve existir uma div line', () => {
     const sut = shallowMount(NutritionalFactsTableLine, {
       propsData: { type: undefined },
     })
+    expect(sut.exists()).toBeTruthy()
     expect(sut.is(NutritionalFactsTableLine)).toBe(true)
     expect(sut.find('div').exists()).toBe(true)
     expect(sut.find('.nutritional-facts-table__line').exists()).toBe(true)
@@ -16,6 +17,7 @@ describe('deve existir uma div line', () => {
     const sut = shallowMount(NutritionalFactsTableLine, {
       propsData: { type: 'nutrient' },
     })
+    expect(sut.exists()).toBeTruthy()
     expect(sut.is(NutritionalFactsTableLine)).toBe(true)
     expect(sut.find('div').exists()).toBe(true)
     expect(sut.find('.nutritional-facts-table__line--nutrient').exists()).toBe(
@@ -29,6 +31,7 @@ describe('deve existir uma div line', () => {
     const sut = shallowMount(NutritionalFactsTableLine, {
       propsData: { type: 'title' },
     })
+    expect(sut.exists()).toBeTruthy()
     expect(sut.is(NutritionalFactsTableLine)).toBe(true)
     expect(sut.find('div').exists()).toBe(true)
     expect(sut.find('.nutritional-facts-table__line--title').exists()).toBe(
@@ -42,6 +45,7 @@ describe('deve existir uma div line', () => {
     const sut = shallowMount(NutritionalFactsTableLine, {
       propsData: { type: 'infos' },
     })
+    expect(sut.exists()).toBeTruthy()
     expect(sut.is(NutritionalFactsTableLine)).toBe(true)
     expect(sut.find('div').exists()).toBe(true)
     expect(sut.find('.nutritional-facts-table__line--infos').exists()).toBe(
